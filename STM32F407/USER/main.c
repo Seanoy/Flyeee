@@ -11,19 +11,19 @@ TaskHandle_t LED1Task_Handler;
 
 u16 temperature;//MPU9250读取的温度值
 
-//int main(void)
-//{ 	
-//    //初始化底层函数
-//	BSP_Init();
-//    //创建开始任务
-//    xTaskCreate((TaskFunction_t )start_task,            //任务函数
-//                (const char*    )"start_task",          //任务名称
-//                (uint16_t       )START_STK_SIZE,        //任务堆栈大小
-//                (void*          )NULL,                  //传递给任务函数的参数
-//                (UBaseType_t    )START_TASK_PRIO,       //任务优先级
-//                (TaskHandle_t*  )&StartTask_Handler);   //任务句柄              
-//    vTaskStartScheduler();          //开启任务调度
-//}
+int main(void)
+{ 	
+    //初始化底层函数
+	BSP_Init();
+    //创建开始任务
+    xTaskCreate((TaskFunction_t )start_task,            //任务函数
+                (const char*    )"start_task",          //任务名称
+                (uint16_t       )START_STK_SIZE,        //任务堆栈大小
+                (void*          )NULL,                  //传递给任务函数的参数
+                (UBaseType_t    )START_TASK_PRIO,       //任务优先级
+                (TaskHandle_t*  )&StartTask_Handler);   //任务句柄              
+    vTaskStartScheduler();          //开启任务调度
+}
  
 //开始任务任务函数
 void start_task(void *pvParameters)
@@ -58,6 +58,10 @@ void led0_task(void *pvParameters)
 		MPU_Get_Accelerometer(&acc);
 		MPU_Get_Magnetometer(&mag);
 		temperature = MPU_Get_Temperature();
+        printf("gyro: %d, %d, %d\r\n",gyro.gx, gyro.gy, gyro.gz);
+        printf("acc: %d, %d, %d\r\n",acc.ax, acc.ay, acc.az);
+        printf("mag: %d, %d, %d\r\n",mag.mx, mag.my, mag.mz);
+        printf("temperature:%d", temperature);
         vTaskDelay(pdMS_TO_TICKS(1000));
     }
 }

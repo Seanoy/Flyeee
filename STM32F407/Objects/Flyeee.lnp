@@ -42,6 +42,8 @@
 ".\objects\queue_rxdatafrommultiqueue.o"
 ".\objects\queue_rxdatafrommultiqueuerealistic.o"
 ".\objects\queue_createmailbox.o"
+".\objects\softwaretimer_basic.o"
+".\objects\softwaretimer_timerid.o"
 ".\objects\main.o"
 ".\objects\stm32f4xx_it.o"
 ".\objects\circulebuffer.o"

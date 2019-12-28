@@ -580,7 +580,7 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>RTOStest</GroupName>
+          <GroupName>RTOS_Test/queue</GroupName>
           <Files>
             <File>
               <FileName>queue_basic.c</FileName>
@@ -611,6 +611,21 @@
               <FileName>queue_createMailbox.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\FREERTOS_Test\queue\queue_createMailbox.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>RTOS_Test/softwaretimer</GroupName>
+          <Files>
+            <File>
+              <FileName>softwaretimer_basic.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\FREERTOS_Test\softwaretimer\softwaretimer_basic.c</FilePath>
+            </File>
+            <File>
+              <FileName>softwaretimer_timerID.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\FREERTOS_Test\softwaretimer\softwaretimer_timerID.c</FilePath>
             </File>
           </Files>
         </Group>
