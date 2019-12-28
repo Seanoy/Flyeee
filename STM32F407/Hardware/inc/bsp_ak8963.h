@@ -5,7 +5,7 @@
 #include <stdio.h>
 #include "bsp_sys.h" 	
 #include "bsp_myiic.h"
-#include "bsp_systick.h"
+
 
 //MPU9250内部封装了一个AK8963磁力计,地址和ID如下:
 #define AK8963_ADDR						0X0C	//AK8963的I2C地址

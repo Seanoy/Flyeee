@@ -1,0 +1,13 @@
+.\objects\heap_4.o: ThirdParty\FreeRTOSV10.2.1\portable\MemMang\heap_4.c
+.\objects\heap_4.o: F:\keil\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\heap_4.o: .\ThirdParty\FreeRTOSV10.2.1\include\FreeRTOS.h
+.\objects\heap_4.o: F:\keil\ARM\ARMCC\Bin\..\include\stddef.h
+.\objects\heap_4.o: F:\keil\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\heap_4.o: .\ThirdParty\FreeRTOSV10.2.1\include\FreeRTOSConfig.h
+.\objects\heap_4.o: .\ThirdParty\FreeRTOSV10.2.1\include\projdefs.h
+.\objects\heap_4.o: .\ThirdParty\FreeRTOSV10.2.1\include\portable.h
+.\objects\heap_4.o: .\ThirdParty\FreeRTOSV10.2.1\include\deprecated_definitions.h
+.\objects\heap_4.o: .\ThirdParty\FreeRTOSV10.2.1\portable\RVDS\ARM_CM4F\portmacro.h
+.\objects\heap_4.o: .\ThirdParty\FreeRTOSV10.2.1\include\mpu_wrappers.h
+.\objects\heap_4.o: .\ThirdParty\FreeRTOSV10.2.1\include\task.h
+.\objects\heap_4.o: .\ThirdParty\FreeRTOSV10.2.1\include\list.h

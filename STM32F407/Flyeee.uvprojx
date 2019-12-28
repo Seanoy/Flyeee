@@ -324,7 +324,7 @@
             <wLevel>2</wLevel>
             <uThumb>0</uThumb>
             <uSurpInc>0</uSurpInc>
-            <uC99>0</uC99>
+            <uC99>1</uC99>
             <uGnu>0</uGnu>
             <useXO>0</useXO>
             <v6Lang>3</v6Lang>
@@ -338,7 +338,7 @@
               <MiscControls></MiscControls>
               <Define>USE_STDPERIPH_DRIVER,STM32F40_41xxx</Define>
               <Undefine></Undefine>
-              <IncludePath>.\USER;.\ThirdParty\fat_fs\inc;.\FWlib\inc;.\CORE;.\Communication\inc;.\Flight\inc;.\Hardware\inc;.\System\inc;.\ThirdParty\FreeRTOSV10.2.1\include;.\ThirdParty\FreeRTOSV10.2.1;.\ThirdParty\FreeRTOSV10.2.1\portable\RVDS\ARM_CM4F</IncludePath>
+              <IncludePath>.\USER;.\ThirdParty\fat_fs\inc;.\FWlib\inc;.\CORE;.\Communication\inc;.\Flight\inc;.\Hardware\inc;.\System\inc;.\ThirdParty\FreeRTOSV10.2.1\include;.\ThirdParty\FreeRTOSV10.2.1;.\ThirdParty\FreeRTOSV10.2.1\portable\RVDS\ARM_CM4F;.\FREERTOS_Test</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -580,6 +580,41 @@
           </Files>
         </Group>
         <Group>
+          <GroupName>RTOStest</GroupName>
+          <Files>
+            <File>
+              <FileName>queue_basic.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\FREERTOS_Test\queue\queue_basic.c</FilePath>
+            </File>
+            <File>
+              <FileName>queue_rxDataformMultiSource.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\FREERTOS_Test\queue\queue_rxDataformMultiSource.c</FilePath>
+            </File>
+            <File>
+              <FileName>queue_rxLargeData.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\FREERTOS_Test\queue\queue_rxLargeData.c</FilePath>
+            </File>
+            <File>
+              <FileName>queue_rxDataFromMultiQueue.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\FREERTOS_Test\queue\queue_rxDataFromMultiQueue.c</FilePath>
+            </File>
+            <File>
+              <FileName>queue_rxDatafromMultiQueueRealistic.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\FREERTOS_Test\queue\queue_rxDatafromMultiQueueRealistic.c</FilePath>
+            </File>
+            <File>
+              <FileName>queue_createMailbox.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\FREERTOS_Test\queue\queue_createMailbox.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
           <GroupName>USER</GroupName>
           <Files>
             <File>
@@ -646,11 +681,6 @@
               <FileName>bsp_usart.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\System\src\bsp_usart.c</FilePath>
-            </File>
-            <File>
-              <FileName>delay.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\System\src\delay.c</FilePath>
             </File>
           </Files>
         </Group>

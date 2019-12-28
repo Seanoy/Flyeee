@@ -5,7 +5,6 @@
 
 #include "bsp_sys.h"
 #include "bsp_usart.h"
-#include "delay.h"
 #include "bsp_led.h"
 #include "bsp_mpu9250.h"
 #include "bsp_ak8963.h"

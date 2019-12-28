@@ -1,5 +1,13 @@
 #include "bsp_myiic.h"
 
+void delay_us(u16 us)
+{
+    while(us--)
+    {
+        __nop();__nop();__nop();__nop();__nop();__nop();
+    }
+}
+
 //≥ı ºªØIIC
 void IIC_Init(void)
 {			

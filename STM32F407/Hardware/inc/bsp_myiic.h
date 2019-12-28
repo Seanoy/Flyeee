@@ -2,7 +2,7 @@
 #define __BSP_MYIIC_H
 #include "bsp_sys.h" 
 
-#include "bsp_systick.h"
+//
 #include "bsp_mpu9250.h"
 #include <stdio.h>
    	   		   

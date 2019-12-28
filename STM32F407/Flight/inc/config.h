@@ -6,7 +6,7 @@
 #include "math.h"
 #include "config.h"
 #include "stmflash.h"
-#include "bsp_systick.h"
+
 #include <stdio.h>
 #include "watchdog.h"
 /*FreeRTOS相关头文件*/

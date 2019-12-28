@@ -104,9 +104,9 @@ bool motorsTest(void)
 	for (i = 0; i < sizeof(MOTORS) / sizeof(*MOTORS); i++)
 	{	
 		motorsSetRatio(MOTORS[i], 500);
-		delay_ms(MOTORS_TEST_ON_TIME_MS);
+//		delay_ms(MOTORS_TEST_ON_TIME_MS);
 		motorsSetRatio(MOTORS[i], 0);
-		delay_ms(MOTORS_TEST_ON_TIME_MS);
+//		delay_ms(MOTORS_TEST_ON_TIME_MS);
 	}
 
 	return isInit;

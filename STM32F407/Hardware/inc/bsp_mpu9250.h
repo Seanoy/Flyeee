@@ -5,7 +5,7 @@
 #include <stdio.h>
 #include "bsp_sys.h" 	
 #include "bsp_myiic.h"
-#include "bsp_systick.h"
+
 #include "stdbool.h"
 
 //如果AD0脚(9脚)接地,IIC地址为0X68(不包含最低位).

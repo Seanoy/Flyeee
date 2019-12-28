@@ -10,7 +10,7 @@ u8 AK8963_Init(void)
 	if(res==AK8963_ID)
 	{
 		IIC_Write_One_Byte(AK8963_ADDR,AK8963_CNTL2,0X01);		//复位AK8963
-		delay_ms(50);
+//		delay_ms(50);
 		IIC_Write_One_Byte(AK8963_ADDR,AK8963_CNTL1,0X11);		//设置AK8963为单次测量
         return 0;
 	}

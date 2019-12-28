@@ -4,67 +4,26 @@
 BMP180_Data BMP180;
 
 //BMP180初始化
-//对使用的IIC端口进行初始化
-//void BMP_Init(void)
-//{
-//	IIC_Init();
-//}
-
-
+void BMP_Init(void)
+{
 //	初始化 获取校正值 BMP_ReadCalibrationData();
 //读取数据
 //		ID=BMP_ReadOneByte(0xd0); 
 //		BMP_UncompemstatedToTrue();
 //		printf("ID = %d\t  temp = %d.%dC\t   Pressure = %ldPa\t   Altitude = %.5fm\r\n",ID,BMP180.Temp/10,BMP180.Temp%10,BMP180.p,BMP180.altitude);
 
-
-void BMP_Init(void)
-{
-	
-	
-	
 }
 
 
 //写一个数据到BMP180
 void BMP_WriteOneByte(uint8_t WriteAddr,uint8_t DataToWrite)
 {
-//	IIC_Start();
-//	
-//	IIC_Send_Byte(0xEE);
-//	IIC_Wait_Ack();
-//	
-//	IIC_Send_Byte(WriteAddr);
-//	IIC_Wait_Ack();
-//	
-//	IIC_Send_Byte(DataToWrite);
-//	IIC_Wait_Ack();
-//	IIC_Stop();
 	IIC_Write_One_Byte(WriteAddr,BMP180_ADDR,DataToWrite);
 }
 
 //从BMP180读一个字节数据
 uint8_t BMP_ReadOneByte(uint8_t ReadAddr)
 {
-//	uint8_t data = 0;
-//	
-//	IIC_Start();
-//	
-//	IIC_Send_Byte(0xEE);
-//	IIC_Wait_Ack();
-//	
-//	IIC_Send_Byte(ReadAddr);
-//	IIC_Wait_Ack();
-//	
-//	IIC_Start();
-//	
-//	IIC_Send_Byte(0xEF);
-//	IIC_Wait_Ack();
-//	
-//	data = IIC_Read_Byte(1);
-//	IIC_Stop();
-//	
-//	return data;
 return IIC_Read_One_Byte(BMP180_ADDR,ReadAddr);	
 }
 
@@ -98,7 +57,7 @@ long BMP_Read_UT(void)
 	long temp = 0;
 	BMP_WriteOneByte(0xF4,0x2E);
 	
-	delay_ms(5);
+//	delay_ms(5);
 	temp = (long)BMP_ReadTwoByte(0xF6);
 	return temp;
 }
@@ -109,7 +68,7 @@ long BMP_Read_UP(void)
 	long pressure = 0;
 	
 	BMP_WriteOneByte(0xF4,0x34);
-	delay_ms(5);
+//	delay_ms(5);
 	
 	pressure = (long)BMP_ReadTwoByte(0xF6);
 	//pressure = pressure + BMP_ReadOneByte(0xf8);
@@ -159,7 +118,3 @@ void BMP_UncompemstatedToTrue(void)
 	
 	BMP180.altitude = 44330 * (1-pow(((BMP180.p) / 101325.0),(1.0/5.255)));  
 }
-
-
-
-
