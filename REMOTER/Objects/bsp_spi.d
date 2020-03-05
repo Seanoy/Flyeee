@@ -1,0 +1,14 @@
+.\objects\bsp_spi.o: BSP\src\bsp_spi.c
+.\objects\bsp_spi.o: .\BSP\inc\bsp_spi.h
+.\objects\bsp_spi.o: .\BSP\inc\bsp_sys.h
+.\objects\bsp_spi.o: .\CMSIS\stm32f10x.h
+.\objects\bsp_spi.o: .\CMSIS\core_cm3.h
+.\objects\bsp_spi.o: F:\keil\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\bsp_spi.o: .\CMSIS\system_stm32f10x.h
+.\objects\bsp_spi.o: .\user\stm32f10x_conf.h
+.\objects\bsp_spi.o: .\FWlib\inc\stm32f10x_exti.h
+.\objects\bsp_spi.o: .\CMSIS\stm32f10x.h
+.\objects\bsp_spi.o: .\FWlib\inc\stm32f10x_gpio.h
+.\objects\bsp_spi.o: .\FWlib\inc\stm32f10x_rcc.h
+.\objects\bsp_spi.o: .\FWlib\inc\stm32f10x_usart.h
+.\objects\bsp_spi.o: .\FWlib\inc\misc.h

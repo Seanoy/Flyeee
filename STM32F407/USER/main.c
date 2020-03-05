@@ -76,12 +76,11 @@ void led1_task(void *pvParameters)
     u8 rxbuf[33] = {0};
     while(1)
     {
-        if(NRF24L01_RxPacket(rxbuf)==0)//接收成功
-        {
-            rxbuf[32]='\0';
-            printf("%s",rxbuf);
-        }
-
+//        if(NRF24L01_RxPacket(rxbuf)==0)//接收成功
+//        {
+//            rxbuf[32]='\0';
+//            printf("%s",rxbuf);
+//        }
         LED1=!LED1;
         vTaskDelay(pdMS_TO_TICKS(400));
     }

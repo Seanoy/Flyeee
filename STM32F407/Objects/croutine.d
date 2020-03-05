@@ -1,0 +1,14 @@
+.\objects\croutine.o: ThirdParty\FreeRTOSV10.2.1\croutine.c
+.\objects\croutine.o: .\ThirdParty\FreeRTOSV10.2.1\include\FreeRTOS.h
+.\objects\croutine.o: F:\keil\ARM\ARMCC\Bin\..\include\stddef.h
+.\objects\croutine.o: F:\keil\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\croutine.o: .\ThirdParty\FreeRTOSV10.2.1\include\FreeRTOSConfig.h
+.\objects\croutine.o: .\ThirdParty\FreeRTOSV10.2.1\include\projdefs.h
+.\objects\croutine.o: .\ThirdParty\FreeRTOSV10.2.1\include\portable.h
+.\objects\croutine.o: .\ThirdParty\FreeRTOSV10.2.1\include\deprecated_definitions.h
+.\objects\croutine.o: .\ThirdParty\FreeRTOSV10.2.1\portable\RVDS\ARM_CM4F\portmacro.h
+.\objects\croutine.o: .\ThirdParty\FreeRTOSV10.2.1\include\mpu_wrappers.h
+.\objects\croutine.o: .\ThirdParty\FreeRTOSV10.2.1\include\task.h
+.\objects\croutine.o: .\ThirdParty\FreeRTOSV10.2.1\include\list.h
+.\objects\croutine.o: .\ThirdParty\FreeRTOSV10.2.1\include\croutine.h
+.\objects\croutine.o: .\ThirdParty\FreeRTOSV10.2.1\include\list.h

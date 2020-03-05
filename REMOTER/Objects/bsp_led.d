@@ -1,0 +1,13 @@
+.\objects\bsp_led.o: BSP\src\bsp_led.c
+.\objects\bsp_led.o: .\BSP\inc\bsp_led.h
+.\objects\bsp_led.o: .\CMSIS\stm32f10x.h
+.\objects\bsp_led.o: .\CMSIS\core_cm3.h
+.\objects\bsp_led.o: F:\keil\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\bsp_led.o: .\CMSIS\system_stm32f10x.h
+.\objects\bsp_led.o: .\user\stm32f10x_conf.h
+.\objects\bsp_led.o: .\FWlib\inc\stm32f10x_exti.h
+.\objects\bsp_led.o: .\CMSIS\stm32f10x.h
+.\objects\bsp_led.o: .\FWlib\inc\stm32f10x_gpio.h
+.\objects\bsp_led.o: .\FWlib\inc\stm32f10x_rcc.h
+.\objects\bsp_led.o: .\FWlib\inc\stm32f10x_usart.h
+.\objects\bsp_led.o: .\FWlib\inc\misc.h

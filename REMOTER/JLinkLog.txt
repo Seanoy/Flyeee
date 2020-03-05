@@ -1,0 +1,6 @@
+
+TF5DC 1700:654 SEGGER J-Link V6.44a Log File (0000ms, 0012ms total)
+TF5DC 1700:654 DLL Compiled: Mar  8 2019 17:31:48 (0000ms, 0012ms total)
+TF5DC 1700:654 Logging started @ 2020-03-05 17:36 (0000ms, 0012ms total)
+TF5DC 1700:654 JLINK_SetWarnOutHandler(...) (0000ms, 0012ms total)
+TF5DC 1700:654 JLINK_OpenEx(...)

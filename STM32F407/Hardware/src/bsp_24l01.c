@@ -13,10 +13,11 @@
 //All rights reserved
 ////////////////////////////////////////////////////////////////////////////////// 	  
 /*
-CSN PA4
 SCK PA5
 MISO PA6
 MOSI PA7
+
+CSN PA4
 CE PC4
 IRQ PC5
 */
@@ -38,13 +39,20 @@ void NRF24L01_Init(void)
     //CSN
 	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_4;
 	GPIO_Init(GPIOA,&GPIO_InitStructure);
-    //CE IRQ
-	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_4 | GPIO_Pin_5;
+    //CE
+	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_4;
 	GPIO_Init(GPIOC,&GPIO_InitStructure);
-
+    //IRQ
+    GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_UP;
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN;
+	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_5;
+	GPIO_Init(GPIOC,&GPIO_InitStructure);
+    
+	NRF24L01_CSN=1;	//SPI片选取消
+    
 	SPI1_Init();    //初始化SPI
+    
 	NRF24L01_CE=0; 	//使能24L01
-	NRF24L01_CSN=1;	//SPI片选取消		  		 		  
 }
 //检测24L01是否存在
 //返回值:0，成功;1，失败	

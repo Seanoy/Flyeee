@@ -24,6 +24,8 @@ void BSP_Init(void)
     
     //nfr24l01 init
     NRF24L01_Init();
+    
+	NRF24L01_CSN=0;	//SPIÆ¬Ñ¡		  		 		  
     if(NRF24L01_Check())//¼ì²â²»µ½24L01
 		printf("Device Error!\r\n");
     else
