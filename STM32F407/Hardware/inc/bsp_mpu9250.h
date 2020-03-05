@@ -11,7 +11,7 @@
 //如果AD0脚(9脚)接地,IIC地址为0X68(不包含最低位).
 //如果接V3.3,则IIC地址为0X69(不包含最低位).
 #define MPU9250_ADDR      		0X68    //MPU9250的器件I2C地址
-#define MPU6500_ID              0X71  	//MPU6500的器件ID
+#define MPU9250_ID              0X71  	//MPU6500的器件ID
 
 
 //MPU6500的内部寄存器
@@ -22,7 +22,7 @@
 #define MPU_SELF_TEST_Y_ACCEL_REG		0X0E	//加速度自检寄存器Y
 #define MPU_SELF_TEST_Z_ACCEL_REG		0X0F	//加速度自检寄存器Z
 
-#define MPU_SELF_TESTA_REG					0X10	//自检寄存器A
+//#define MPU_SELF_TESTA_REG					0X10	//自检寄存器A
 
 #define MPU_XG_OFFSET_H_REG					0x13	
 #define MPU_XG_OFFSET_L_REG					0x14
@@ -32,36 +32,36 @@
 #define MPU_ZG_OFFSET_L_REG					0x18
 
 #define MPU_SAMPLE_RATE_REG					0X19	//采样频率分频器
-#define MPU_CFG_REG									0X1A	//配置寄存器
-#define MPU_GYRO_CFG_REG						0X1B	//陀螺仪配置寄存器
-#define MPU_ACCEL_CFG_REG						0X1C	//加速度计配置寄存器
+#define MPU_CFG_REG							0X1A	//低通滤波器配置寄存器
+#define MPU_GYRO_CFG_REG					0X1B	//陀螺仪配置寄存器
+#define MPU_ACCEL_CFG_REG					0X1C	//加速度计配置寄存器
 #define MPU_ACCEL_CFG2_REG					0X1D
 #define MPU_LP_ACCEL_ODR_REG				0X1E
 #define MPU_MOTION_DET_REG					0X1F	//运动检测阀值设置寄存器
-#define MPU_FIFO_EN_REG							0X23	//FIFO使能寄存器
+#define MPU_FIFO_EN_REG						0X23	//FIFO使能寄存器
 #define MPU_I2CMST_CTRL_REG					0X24	//IIC主机控制寄存器
 #define MPU_I2CSLV0_ADDR_REG				0X25	//IIC从机0器件地址寄存器
-#define MPU_I2CSLV0_REG							0X26	//IIC从机0数据地址寄存器
+#define MPU_I2CSLV0_REG						0X26	//IIC从机0数据地址寄存器
 #define MPU_I2CSLV0_CTRL_REG				0X27	//IIC从机0控制寄存器
 #define MPU_I2CSLV1_ADDR_REG				0X28	//IIC从机1器件地址寄存器
-#define MPU_I2CSLV1_REG							0X29	//IIC从机1数据地址寄存器
+#define MPU_I2CSLV1_REG						0X29	//IIC从机1数据地址寄存器
 #define MPU_I2CSLV1_CTRL_REG				0X2A	//IIC从机1控制寄存器
 #define MPU_I2CSLV2_ADDR_REG				0X2B	//IIC从机2器件地址寄存器
-#define MPU_I2CSLV2_REG							0X2C	//IIC从机2数据地址寄存器
+#define MPU_I2CSLV2_REG						0X2C	//IIC从机2数据地址寄存器
 #define MPU_I2CSLV2_CTRL_REG				0X2D	//IIC从机2控制寄存器
 #define MPU_I2CSLV3_ADDR_REG				0X2E	//IIC从机3器件地址寄存器
-#define MPU_I2CSLV3_REG							0X2F	//IIC从机3数据地址寄存器
+#define MPU_I2CSLV3_REG						0X2F	//IIC从机3数据地址寄存器
 #define MPU_I2CSLV3_CTRL_REG				0X30	//IIC从机3控制寄存器
 #define MPU_I2CSLV4_ADDR_REG				0X31	//IIC从机4器件地址寄存器
-#define MPU_I2CSLV4_REG							0X32	//IIC从机4数据地址寄存器
+#define MPU_I2CSLV4_REG						0X32	//IIC从机4数据地址寄存器
 #define MPU_I2CSLV4_DO_REG					0X33	//IIC从机4写数据寄存器
 #define MPU_I2CSLV4_CTRL_REG				0X34	//IIC从机4控制寄存器
 #define MPU_I2CSLV4_DI_REG					0X35	//IIC从机4读数据寄存器
 
 #define MPU_I2CMST_STA_REG					0X36	//IIC主机状态寄存器
-#define MPU_INTBP_CFG_REG						0X37	//中断/旁路设置寄存器
-#define MPU_INT_EN_REG							0X38	//中断使能寄存器
-#define MPU_INT_STA_REG							0X3A	//中断状态寄存器
+#define MPU_INTBP_CFG_REG					0X37	//中断/旁路设置寄存器
+#define MPU_INT_EN_REG						0X38	//中断使能寄存器
+#define MPU_INT_STA_REG						0X3A	//中断状态寄存器
 
 #define MPU_ACCEL_XOUTH_REG					0X3B	//加速度值,X轴高8位寄存器
 #define MPU_ACCEL_XOUTL_REG					0X3C	//加速度值,X轴低8位寄存器
@@ -70,8 +70,8 @@
 #define MPU_ACCEL_ZOUTH_REG					0X3F	//加速度值,Z轴高8位寄存器
 #define MPU_ACCEL_ZOUTL_REG					0X40	//加速度值,Z轴低8位寄存器
 
-#define MPU_TEMP_OUTH_REG						0X41	//温度值高八位寄存器
-#define MPU_TEMP_OUTL_REG						0X42	//温度值低8位寄存器
+#define MPU_TEMP_OUTH_REG					0X41	//温度值高八位寄存器
+#define MPU_TEMP_OUTL_REG					0X42	//温度值低8位寄存器
 
 #define MPU_GYRO_XOUTH_REG					0X43	//陀螺仪值,X轴高8位寄存器
 #define MPU_GYRO_XOUTL_REG					0X44	//陀螺仪值,X轴低8位寄存器
@@ -80,30 +80,30 @@
 #define MPU_GYRO_ZOUTH_REG					0X47	//陀螺仪值,Z轴高8位寄存器
 #define MPU_GYRO_ZOUTL_REG					0X48	//陀螺仪值,Z轴低8位寄存器
 
-#define MPU_EXT_SENS_DATA_00_REG		0x49
-#define MPU_EXT_SENS_DATA_01_REG		0x4A
-#define MPU_EXT_SENS_DATA_02_REG		0x4B
-#define MPU_EXT_SENS_DATA_03_REG		0x4C
-#define MPU_EXT_SENS_DATA_04_REG		0x4D
-#define MPU_EXT_SENS_DATA_05_REG		0x4E
-#define MPU_EXT_SENS_DATA_06_REG		0x4F
-#define MPU_EXT_SENS_DATA_07_REG		0x50
-#define MPU_EXT_SENS_DATA_08_REG		0x51
-#define MPU_EXT_SENS_DATA_09_REG		0x52
-#define MPU_EXT_SENS_DATA_10_REG		0x53
-#define MPU_EXT_SENS_DATA_11_REG		0x54
-#define MPU_EXT_SENS_DATA_12_REG		0x55
-#define MPU_EXT_SENS_DATA_13_REG		0x56
-#define MPU_EXT_SENS_DATA_14_REG		0x57
-#define MPU_EXT_SENS_DATA_15_REG		0x58
-#define MPU_EXT_SENS_DATA_16_REG		0x59
-#define MPU_EXT_SENS_DATA_17_REG		0x5A
-#define MPU_EXT_SENS_DATA_18_REG		0x5B
-#define MPU_EXT_SENS_DATA_19_REG		0x5C
-#define MPU_EXT_SENS_DATA_20_REG		0x5D
-#define MPU_EXT_SENS_DATA_21_REG		0x5E
-#define MPU_EXT_SENS_DATA_22_REG		0x5F
-#define MPU_EXT_SENS_DATA_23_REG		0x60
+#define MPU_EXT_SENS_DATA_00_REG		    0x49
+#define MPU_EXT_SENS_DATA_01_REG		    0x4A
+#define MPU_EXT_SENS_DATA_02_REG		    0x4B
+#define MPU_EXT_SENS_DATA_03_REG		    0x4C
+#define MPU_EXT_SENS_DATA_04_REG		    0x4D
+#define MPU_EXT_SENS_DATA_05_REG		    0x4E
+#define MPU_EXT_SENS_DATA_06_REG		    0x4F
+#define MPU_EXT_SENS_DATA_07_REG		    0x50
+#define MPU_EXT_SENS_DATA_08_REG		    0x51
+#define MPU_EXT_SENS_DATA_09_REG		    0x52
+#define MPU_EXT_SENS_DATA_10_REG		    0x53
+#define MPU_EXT_SENS_DATA_11_REG		    0x54
+#define MPU_EXT_SENS_DATA_12_REG		    0x55
+#define MPU_EXT_SENS_DATA_13_REG		    0x56
+#define MPU_EXT_SENS_DATA_14_REG		    0x57
+#define MPU_EXT_SENS_DATA_15_REG		    0x58
+#define MPU_EXT_SENS_DATA_16_REG		    0x59
+#define MPU_EXT_SENS_DATA_17_REG		    0x5A
+#define MPU_EXT_SENS_DATA_18_REG		    0x5B
+#define MPU_EXT_SENS_DATA_19_REG		    0x5C
+#define MPU_EXT_SENS_DATA_20_REG		    0x5D
+#define MPU_EXT_SENS_DATA_21_REG		    0x5E
+#define MPU_EXT_SENS_DATA_22_REG		    0x5F
+#define MPU_EXT_SENS_DATA_23_REG		    0x60
 
 #define MPU_I2CSLV0_DO_REG					0X63	//IIC从机0数据寄存器
 #define MPU_I2CSLV1_DO_REG					0X64	//IIC从机1数据寄存器
@@ -113,13 +113,13 @@
 #define MPU_I2CMST_DELAY_REG				0X67	//IIC主机延时管理寄存器
 #define MPU_SIGPATH_RST_REG					0X68	//信号通道复位寄存器
 #define MPU_MDETECT_CTRL_REG				0X69	//运动检测控制寄存器
-#define MPU_USER_CTRL_REG						0X6A	//用户控制寄存器
-#define MPU_PWR_MGMT1_REG						0X6B	//电源管理寄存器1
-#define MPU_PWR_MGMT2_REG						0X6C	//电源管理寄存器2 
-#define MPU_FIFO_CNTH_REG						0X72	//FIFO计数寄存器高八位
-#define MPU_FIFO_CNTL_REG						0X73	//FIFO计数寄存器低八位
-#define MPU_FIFO_RW_REG							0X74	//FIFO读写寄存器
-#define MPU_DEVICE_ID_REG						0X75	//器件ID寄存器
+#define MPU_USER_CTRL_REG					0X6A	//用户控制寄存器
+#define MPU_PWR_MGMT1_REG					0X6B	//电源管理寄存器1
+#define MPU_PWR_MGMT2_REG					0X6C	//电源管理寄存器2 
+#define MPU_FIFO_CNTH_REG					0X72	//FIFO计数寄存器高八位
+#define MPU_FIFO_CNTL_REG					0X73	//FIFO计数寄存器低八位
+#define MPU_FIFO_RW_REG						0X74	//FIFO读写寄存器
+#define MPU_WHO_AM_I_REG					0X75	//器件ID寄存器
 
 #define MPU_XA_OFFSET_H_REG					0X77
 #define MPU_XA_OFFSET_L_REG					0X78
@@ -129,9 +129,7 @@
 #define MPU_ZA_OFFSET_L_REG					0X7E
 
 
-
-
-
+//register bits
 #define MPU6500_TC_PWR_MODE_BIT     7
 #define MPU6500_TC_OFFSET_BIT       6
 #define MPU6500_TC_OFFSET_LENGTH    6

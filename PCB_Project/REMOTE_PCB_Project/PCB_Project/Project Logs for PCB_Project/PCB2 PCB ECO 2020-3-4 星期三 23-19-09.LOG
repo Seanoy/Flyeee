@@ -1,0 +1,10 @@
+Removed Pin From Net: NetName=NRF_CE Pin=U1-18
+Removed Pin From Net: NetName=NRF_IRQ Pin=U1-19
+Removed Pin From Net: NetName=KEY_H_1 Pin=U1-39
+Removed Pin From Net: NetName=KEY_H_2 Pin=U1-40
+Removed Pin From Net: NetName=KEY_B_1 Pin=U1-41
+Added Pin To Net: NetName=KEY_H_1 Pin=U1-27
+Added Pin To Net: NetName=KEY_H_2 Pin=U1-28
+Added Pin To Net: NetName=KEY_B_1 Pin=U1-29
+Added Pin To Net: NetName=NRF_CE Pin=U1-38
+Added Pin To Net: NetName=NRF_IRQ Pin=U1-39

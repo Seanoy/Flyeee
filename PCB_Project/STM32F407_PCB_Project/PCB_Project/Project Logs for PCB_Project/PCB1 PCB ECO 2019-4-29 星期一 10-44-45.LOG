@@ -1,0 +1,13 @@
+Removed Pin From Net: NetName=3.3V Pin=P13-1
+Removed Pin From Net: NetName=I2C_SCL Pin=P13-2
+Removed Pin From Net: NetName=I2C_SDA Pin=P13-3
+Removed Pin From Net: NetName=MPU_INT Pin=P13-4
+Removed Pin From Net: NetName=GND Pin=P13-5
+Removed Member From Class: ClassName=Sheet1 Member=P13
+Added Pin To Net: NetName=I2C_SCL Pin=R30-1
+Added Pin To Net: NetName=I2C_SDA Pin=R31-1
+Added Pin To Net: NetName=I2C_SCL Pin=U2-23
+Added Pin To Net: NetName=I2C_SDA Pin=U2-24
+Change Net Name : Old Net Name=I2C_SCL New Net Name=MPU_SCL
+Change Net Name : Old Net Name=I2C_SDA New Net Name=MPU_SDA
+Added Room: Name=Sheet1

@@ -70,7 +70,7 @@ void MOTOR_TIM_Init(void)
     TIM_OCInitStructure.TIM_OCPolarity = TIM_OCPolarity_High; 			//输出极性:TIM输出比较极性低
     TIM_OCInitStructure.TIM_OutputNState = TIM_OutputNState_Disable;
     TIM_OCInitStructure.TIM_OCIdleState=TIM_OCIdleState_Reset;			//空闲高电平	
-    TIM_OCInitStructure.TIM_Pulse = 100;
+    TIM_OCInitStructure.TIM_Pulse = 500;
 
     TIM_OC1Init(TIM9, &TIM_OCInitStructure);  										//TIM9_CH1
     TIM_OC1PreloadConfig(TIM9, TIM_OCPreload_Enable);  //使能TIM9在CCR1上的预装载寄存器
@@ -116,19 +116,6 @@ bool motorsTest(void)
 void motorsSetRatio(u32 id, u16 ithrust)
 {
 		u16 ratio=ithrust;
-
-//	#ifdef ENABLE_THRUST_BAT_COMPENSATED		
-//		if(isExitFlip == true)		/*500Hz*/
-//		{
-//			float thrust = ((float)ithrust / 65536.0f) * 60;
-//			float volts = -0.0006239f * thrust * thrust + 0.088f * thrust;
-//			float supply_voltage = pmGetBatteryVoltage();
-//			float percentage = volts / supply_voltage;
-//			percentage = percentage > 1.0f ? 1.0f : percentage;
-//			ratio = percentage * UINT16_MAX;
-//			motor_ratios[id] = ratio;
-//		}		
-//	#endif
 		
 		switch(id)
 		{
@@ -147,10 +134,3 @@ void motorsSetRatio(u32 id, u16 ithrust)
 			default: break;
 		}	
 }
-
-
-
-
-
-
-

@@ -17,8 +17,8 @@
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 //NRF24L01寄存器操作命令
-#define RD_REG        0x00  //读配置寄存器,低5位为寄存器地址
-#define WR_REG       0x20  //写配置寄存器,低5位为寄存器地址
+#define RD_REG          0x00  //读配置寄存器,低5位为寄存器地址
+#define WR_REG          0x20  //写配置寄存器,低5位为寄存器地址
 #define RD_RX_PLOAD     0x61  //读RX有效数据,1~32字节
 #define WR_TX_PLOAD     0xA0  //写TX有效数据,1~32字节
 #define FLUSH_TX        0xE1  //清除TX FIFO寄存器.发射模式下用
@@ -36,9 +36,9 @@
 #define RF_SETUP        0x06  //RF寄存器;bit3:传输速率(0:1Mbps,1:2Mbps);bit2:1,发射功率;bit0:低噪声放大器增益
 #define STATUS          0x07  //状态寄存器;bit0:TX FIFO满标志;bit3:1,接收数据通道号(最大:6);bit4,达到最多次重发
                               //bit5:数据发送完成中断;bit6:接收数据中断;
-#define MAX_TX  	0x10  //达到最大发送次数中断
-#define TX_OK   	0x20  //TX发送完成中断
-#define RX_OK   	0x40  //接收到数据中断
+#define MAX_TX  	    0x10  //达到最大发送次数中断
+#define TX_OK   	    0x20  //TX发送完成中断
+#define RX_OK   	    0x40  //接收到数据中断
 
 #define OBSERVE_TX      0x08  //发送检测寄存器,bit7:4,数据包丢失计数器;bit3:0,重发计数器
 #define CD              0x09  //载波检测寄存器,bit0,载波检测;
@@ -59,8 +59,8 @@
                               //bit4,TX FIFO空标志;bit5,TX FIFO满标志;bit6,1,循环发送上一数据包.0,不循环;
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 //24L01操作线
-#define NRF24L01_CE   PAout(4) //24L01片选信号
-#define NRF24L01_CSN  PCout(4) //SPI片选信号	   
+#define NRF24L01_CE   PCout(4) //24L01片选信号
+#define NRF24L01_CSN  PAout(4) //SPI片选信号	   
 #define NRF24L01_IRQ  PCin(5)  //IRQ主机数据输入
 //24L01发送接收数据宽度定义
 #define TX_ADR_WIDTH    5   //5字节的地址宽度

@@ -1,0 +1,21 @@
+Removed Pin From Net: NetName=PC13 Pin=P9-3
+Removed Pin From Net: NetName=PB12 Pin=P10-1
+Removed Pin From Net: NetName=PB13 Pin=P10-2
+Removed Pin From Net: NetName=PB14 Pin=P10-3
+Removed Pin From Net: NetName=PB15 Pin=P10-4
+Removed Pin From Net: NetName=MOTOR1 Pin=U1-35
+Removed Pin From Net: NetName=MOTOR2 Pin=U1-36
+Removed Pin From Net: NetName=MOTOR4 Pin=U1-60
+Removed Member From Class: ClassName=Sheet1 Member=P10
+Change Component Footprint: Designator=P9 Old Footprint=HDR1X11 New Footprint=HDR1X4
+Change Component Comment : Designator=P9 Old Comment=Header 11 New Comment=Header 4
+Change Component Designator: OldDesignator=P14 NewDesignator=P13
+Change Component Designator: OldDesignator=P15 NewDesignator=P14
+Added Pin To Net: NetName=PB12 Pin=P9-1
+Added Pin To Net: NetName=PB13 Pin=P9-2
+Added Pin To Net: NetName=PB14 Pin=P9-3
+Added Pin To Net: NetName=PB15 Pin=P9-4
+Added Pin To Net: NetName=MOTOR1 Pin=U1-4
+Added Pin To Net: NetName=MOTOR4 Pin=U1-24
+Added Pin To Net: NetName=MOTOR2 Pin=U1-67
+Added Room: Name=Sheet1

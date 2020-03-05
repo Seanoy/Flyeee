@@ -12,6 +12,7 @@
 #include "bsp_motor.h"
 #include "watchdog.h"
 #include "bsp_mpu9250.h"
+#include "bsp_24l01.h"
 
 #include "FreeRTOS.h"
 #include "FreeRTOSConfig.h"

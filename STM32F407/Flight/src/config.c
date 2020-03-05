@@ -203,16 +203,3 @@ void saveConfigAndNotify(void)
 	}
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -1,0 +1,13 @@
+Removed Pin From Net: NetName=SCL Pin=U1-13
+Removed Pin From Net: NetName=SDA Pin=U1-14
+Removed Pin From Net: NetName=VRX1 Pin=U1-25
+Removed Pin From Net: NetName=VRY1 Pin=U1-26
+Removed Pin From Net: NetName=VRX2 Pin=U1-27
+Removed Pin From Net: NetName=VRY2 Pin=U1-28
+Added Pin To Net: NetName=VRX1 Pin=U1-14
+Added Pin To Net: NetName=VRY1 Pin=U1-15
+Added Pin To Net: NetName=VRX2 Pin=U1-16
+Added Pin To Net: NetName=VRY2 Pin=U1-17
+Added Pin To Net: NetName=SCL Pin=U1-25
+Added Pin To Net: NetName=SDA Pin=U1-26
+Added Room: Name=Sheet2

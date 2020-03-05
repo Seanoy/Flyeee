@@ -1,0 +1,7 @@
+Added Pin To Net: NetName=BMP_SCL Pin=U1-1
+Added Pin To Net: NetName=BMP_SCL Pin=U5-5
+Added Net: Name=BMP_SCL
+Added Pin To Net: NetName=BMP_SDA Pin=U1-2
+Added Pin To Net: NetName=BMP_SDA Pin=U5-6
+Added Net: Name=BMP_SDA
+Added Room: Name=Sheet1

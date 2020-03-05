@@ -1,0 +1,11 @@
+Removed Pin From Net: NetName=LCD_RES Pin=P10-2
+Removed Pin From Net: NetName=SCL Pin=P13-2
+Removed Pin From Net: NetName=SDA Pin=P13-3
+Removed Pin From Net: NetName=LCD_RES Pin=U1-91
+Added Pin To Net: NetName=LCD_RES Pin=P10-1
+Added Pin To Net: NetName=INT Pin=P10-2
+Added Pin To Net: NetName=I2C_SCL Pin=P13-2
+Added Pin To Net: NetName=I2C_SDA Pin=P13-3
+Added Pin To Net: NetName=LCD_RES Pin=U1-90
+Added Pin To Net: NetName=INT Pin=U1-91
+Change Net Name : Old Net Name=INT New Net Name=MPU_INT

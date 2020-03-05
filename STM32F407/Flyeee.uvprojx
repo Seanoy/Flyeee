@@ -663,19 +663,14 @@
           <GroupName>Flight</GroupName>
           <Files>
             <File>
-              <FileName>pid.c</FileName>
+              <FileName>IMU.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\Flight\src\pid.c</FilePath>
+              <FilePath>.\Flight\src\IMU.c</FilePath>
             </File>
             <File>
-              <FileName>attitude_pid.c</FileName>
+              <FileName>flight_pid.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\Flight\src\attitude_pid.c</FilePath>
-            </File>
-            <File>
-              <FileName>config.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Flight\src\config.c</FilePath>
+              <FilePath>.\Flight\src\flight_pid.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -728,14 +723,14 @@
               <FilePath>.\Hardware\src\bsp_motor.c</FilePath>
             </File>
             <File>
-              <FileName>bsp_mpu9250.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Hardware\src\bsp_mpu9250.c</FilePath>
-            </File>
-            <File>
               <FileName>bsp_myiic.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Hardware\src\bsp_myiic.c</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_mpu9250.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Hardware\src\bsp_mpu9250.c</FilePath>
             </File>
             <File>
               <FileName>bsp_spi.c</FileName>

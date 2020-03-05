@@ -1,4 +1,6 @@
 #include "bsp_mpu9250.h"
+#include "task_config.h"
+
 /*
 static uint8_t devAddr;
 static uint8_t buffer[14];
@@ -47,26 +49,25 @@ u8 MPU9250_Init(void)
 	u8 res=0;
 	IIC_Init();     //初始化IIC总线
 	IIC_Write_One_Byte(MPU9250_ADDR,MPU_PWR_MGMT1_REG,0X80);//复位MPU9250
-//	delay_ms(100);  //延时100ms
+    vTaskDelay(pdMS_TO_TICKS(100));
+    
 	IIC_Write_One_Byte(MPU9250_ADDR,MPU_PWR_MGMT1_REG,0X00);//唤醒MPU9250
 	MPU_Set_Gyro_Fsr(3);					        	//陀螺仪传感器,±2000dps
 	MPU_Set_Accel_Fsr(0);					       	 	//加速度传感器,±2g
-//	IIC_Write_One_Byte(MPU9250_ADDR,MPU_ACCEL_CFG2_REG,MPU6500_ACCEL_DLPF_BW_41);
-	MPU_Set_Rate(1000);						       	 	//设置采样率1000Hz
+	MPU_Set_Rate(50);						       	 	//设置采样率1000Hz
 
 	IIC_Write_One_Byte(MPU9250_ADDR,MPU_INT_EN_REG,0X00);   //关闭所有中断
 	IIC_Write_One_Byte(MPU9250_ADDR,MPU_USER_CTRL_REG,0X00);//I2C主模式关闭
 	IIC_Write_One_Byte(MPU9250_ADDR,MPU_FIFO_EN_REG,0X00);	//关闭FIFO
 	IIC_Write_One_Byte(MPU9250_ADDR,MPU_INTBP_CFG_REG,0X82);//INT引脚低电平有效，开启bypass模式，可以直接读取磁力计
-	res=IIC_Read_One_Byte(MPU9250_ADDR,MPU_DEVICE_ID_REG);  //读取MPU9250的ID
+	res=IIC_Read_One_Byte(MPU9250_ADDR,MPU_WHO_AM_I_REG);  //读取MPU9250的ID
 //		printf("res:%x\r\n",res);
-	if(res==MPU6500_ID) //器件ID正确
+	if(res==MPU9250_ID) //器件ID正确
 	{
-			IIC_Write_One_Byte(MPU9250_ADDR,MPU_PWR_MGMT1_REG,0X01);  	//设置CLKSEL,PLL X轴为参考
-			IIC_Write_One_Byte(MPU9250_ADDR,MPU_PWR_MGMT2_REG,0X00);  	//加速度与陀螺仪都工作
-			MPU_Set_Rate(50);						       	//设置采样率为50Hz   
+        IIC_Write_One_Byte(MPU9250_ADDR,MPU_PWR_MGMT1_REG,0X01);  	//设置CLKSEL,PLL X轴为参考
+        IIC_Write_One_Byte(MPU9250_ADDR,MPU_PWR_MGMT2_REG,0X00);  	//加速度与陀螺仪都工作
+        MPU_Set_Rate(50);						       	//设置采样率为50Hz   
 	}else return 1;
-
 
 	return 0;
 }

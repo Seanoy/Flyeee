@@ -10,15 +10,15 @@ PidObject pidRateRoll;
 PidObject pidRatePitch;
 PidObject pidRateYaw;
 
-static inline int16_t pidOutLimit(float in)
-{
-	if (in > INT16_MAX)
-		return INT16_MAX;
-	else if (in < -INT16_MAX)
-		return -INT16_MAX;
-	else
-		return (int16_t)in;
-}
+//static inline int16_t pidOutLimit(float in)
+//{
+//	if (in > INT16_MAX)
+//		return INT16_MAX;
+//	else if (in < -INT16_MAX)
+//		return -INT16_MAX;
+//	else
+//		return (int16_t)in;
+//}
 
 void attitudeControlInit(float ratePidDt, float anglePidDt)
 {
@@ -37,16 +37,6 @@ void attitudeControlInit(float ratePidDt, float anglePidDt)
 	pidSetIntegralLimit(&pidRateYaw, PID_RATE_YAW_INTEGRATION_LIMIT);			/*yaw   角速度积分限幅设置*/
 	
 }	
-
-
-
-
-
-
-
-
-
-
 
 
 

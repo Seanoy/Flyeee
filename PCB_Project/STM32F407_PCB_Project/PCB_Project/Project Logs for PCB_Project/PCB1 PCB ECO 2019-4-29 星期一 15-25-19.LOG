@@ -1,0 +1,16 @@
+Removed Pin From Net: NetName=3.3V Pin=P7-1
+Removed Pin From Net: NetName=GND Pin=P7-2
+Removed Pin From Net: NetName=SPI_CSN Pin=P7-3
+Removed Pin From Net: NetName=NRF_CE Pin=P7-4
+Removed Pin From Net: NetName=SPI_MOSI Pin=P7-5
+Removed Pin From Net: NetName=SPI_SCK Pin=P7-6
+Removed Pin From Net: NetName=NRF_IRQ Pin=P7-7
+Removed Pin From Net: NetName=SPI_MISO Pin=P7-8
+Added Pin To Net: NetName=GND Pin=P7-1
+Added Pin To Net: NetName=3.3V Pin=P7-2
+Added Pin To Net: NetName=NRF_CE Pin=P7-3
+Added Pin To Net: NetName=SPI_CSN Pin=P7-4
+Added Pin To Net: NetName=SPI_SCK Pin=P7-5
+Added Pin To Net: NetName=SPI_MOSI Pin=P7-6
+Added Pin To Net: NetName=SPI_MISO Pin=P7-7
+Added Pin To Net: NetName=NRF_IRQ Pin=P7-8

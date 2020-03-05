@@ -11,45 +11,31 @@
 //主任务优先级
 #define START_TASK_PRIO     1
 //主任务堆栈大小    
-#define START_STK_SIZE      128  
+#define START_STK_SIZE      128
 
 //任务优先级1
-#define LED0_TASK_PRIO      2
+#define TASK_PRIO_1         2
 //任务堆栈大小1
-#define LED0_STK_SIZE       256  
+#define STK_SIZE_1          256
 
 //任务优先级2
-#define LED1_TASK_PRIO      3
+#define TASK_PRIO_2         3
 //任务堆栈大小2
-#define LED1_STK_SIZE       256
+#define STK_SIZE_2          256
 
 /************************            软件定时器定义            ****************************/
-
-
-
-
-
-
 
 /************************             消息队列定义            ****************************/
 
 
-
-
-
-
-
-
-
-
 //任务句柄
 extern TaskHandle_t StartTask_Handler;
-extern TaskHandle_t LED0Task_Handler;
-extern TaskHandle_t LED1Task_Handler;
+extern TaskHandle_t Task_Handler_1;
+extern TaskHandle_t Task_Handler_2;
 
 //任务函数
 void start_task(void *pvParameters);
-void led0_task(void *pvParameters);
+void get_attitude_task(void *pvParameters);
 void led1_task(void *pvParameters);
 
 
