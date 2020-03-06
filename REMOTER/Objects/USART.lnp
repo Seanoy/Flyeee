@@ -35,6 +35,10 @@
 ".\objects\bsp_24l01.o"
 ".\objects\bsp_spi.o"
 ".\objects\bsp_adc.o"
+".\objects\bsp_button.o"
+".\objects\bsp_oled.o"
+".\objects\bsp_iic.o"
+".\objects\oledfont.o"
 --library_type=microlib --strict --scatter ".\Objects\USART.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

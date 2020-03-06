@@ -20,7 +20,11 @@ void BSP_init(void)
     Joystick_DMA_Init();
     Joystick_ADC_Init();
     
-    
+    //Button Init
+    Button_Init();
+
+    //OLED Init
+    OLED_Init();
 }
 
 

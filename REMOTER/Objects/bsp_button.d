@@ -1,0 +1,16 @@
+.\objects\bsp_button.o: BSP\src\bsp_button.c
+.\objects\bsp_button.o: .\BSP\inc\bsp_button.h
+.\objects\bsp_button.o: .\CMSIS\stm32f10x.h
+.\objects\bsp_button.o: .\CMSIS\core_cm3.h
+.\objects\bsp_button.o: F:\keil\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\bsp_button.o: .\CMSIS\system_stm32f10x.h
+.\objects\bsp_button.o: .\user\stm32f10x_conf.h
+.\objects\bsp_button.o: .\FWlib\inc\stm32f10x_adc.h
+.\objects\bsp_button.o: .\CMSIS\stm32f10x.h
+.\objects\bsp_button.o: .\FWlib\inc\stm32f10x_dma.h
+.\objects\bsp_button.o: .\FWlib\inc\stm32f10x_exti.h
+.\objects\bsp_button.o: .\FWlib\inc\stm32f10x_gpio.h
+.\objects\bsp_button.o: .\FWlib\inc\stm32f10x_rcc.h
+.\objects\bsp_button.o: .\FWlib\inc\stm32f10x_spi.h
+.\objects\bsp_button.o: .\FWlib\inc\stm32f10x_usart.h
+.\objects\bsp_button.o: .\FWlib\inc\misc.h

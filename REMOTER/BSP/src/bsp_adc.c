@@ -10,8 +10,10 @@ J2
 X: ADC12_IN0 PA0
 Y: ADC12_IN1 PA1
 SW:PA2
-*/
-uint16_t ADC_value[20];
+*/ 
+uint16_t ADC_value[CHANNEL_NUM*SAMPLE_TIME];
+uint8_t joy_x1, joy_y1, joy_x2, joy_y2;
+signed char coordinate[2];//{x, y} 0~100
 
 void Joystick_DMA_Init(void)
 {
@@ -23,7 +25,7 @@ void Joystick_DMA_Init(void)
     DMA_InitStructure.DMA_PeripheralBaseAddr =  (u32)&ADC1->DR;  //DMA外设ADC基地址
     DMA_InitStructure.DMA_MemoryBaseAddr = (u32)&ADC_value;      //DMA内存基地址
     DMA_InitStructure.DMA_DIR = DMA_DIR_PeripheralSRC;  //内存作为数据传输的目的地
-    DMA_InitStructure.DMA_BufferSize = 20;  //此值为完整一轮DMA传输的次数
+    DMA_InitStructure.DMA_BufferSize = CHANNEL_NUM*SAMPLE_TIME;  //此值为完整一轮DMA传输的次数
     DMA_InitStructure.DMA_PeripheralInc = DMA_PeripheralInc_Disable;  //外设地址不变
     DMA_InitStructure.DMA_MemoryInc = DMA_MemoryInc_Enable;  //内存地址递增
     DMA_InitStructure.DMA_PeripheralDataSize = DMA_PeripheralDataSize_HalfWord; //外设数据位宽度16位，即DMA传输尺寸
@@ -33,14 +35,6 @@ void Joystick_DMA_Init(void)
     DMA_InitStructure.DMA_M2M = DMA_M2M_Disable;  //DMA通道x禁止内存到内存
     DMA_Init(DMA1_Channel1, &DMA_InitStructure);  //根据DMA_InitStruct中参数DMA通道
     DMA_Cmd(DMA1_Channel1, ENABLE);
-}
-
-void DMA1_Channel1_IRQHandler(void)
-{
-    if(DMA_GetITStatus(DMA1_IT_TC1)!=RESET)
-    {
-        DMA_ClearITPendingBit(DMA1_IT_TC1);
-    }
 }
 
 void Joystick_ADC_Init(void)
@@ -63,7 +57,7 @@ void Joystick_ADC_Init(void)
 	ADC_InitStructure.ADC_ContinuousConvMode = ENABLE;	//模数转换工作在连续转换模式
 	ADC_InitStructure.ADC_ExternalTrigConv = ADC_ExternalTrigConv_None;	//转换由软件而不是外部触发启动
 	ADC_InitStructure.ADC_DataAlign = ADC_DataAlign_Right;	//ADC数据右对齐
-	ADC_InitStructure.ADC_NbrOfChannel = 4;	//顺序进行规则转换的ADC通道的数目
+	ADC_InitStructure.ADC_NbrOfChannel = CHANNEL_NUM;	//顺序进行规则转换的ADC通道的数目
 	ADC_Init(ADC1, &ADC_InitStructure);	//根据ADC_InitStruct中指定的参数初始化外设ADCx的寄存器  
     
     ADC_RegularChannelConfig(ADC1, ADC_Channel_0, 1, ADC_SampleTime_71Cycles5);
@@ -81,10 +75,39 @@ void Joystick_ADC_Init(void)
     ADC_SoftwareStartConvCmd(ADC1, ENABLE);		//使能指定的ADC1的软件转换启动功能
 }
 
-void get_xy(u8 num)
+//handle raw adc value(get average value)
+void Handle_adc_value(void)
 {
-    
-    
-    
+    int sum1, sum2, sum3, sum4, i;
+    sum1 = sum2 = sum3 = sum4 = 0;
+    for(i = 0; i<SAMPLE_TIME; i++)
+    {
+        sum1 += ADC_value[i*CHANNEL_NUM];
+        sum2 += ADC_value[1+i*CHANNEL_NUM];
+        sum3 += ADC_value[2+i*CHANNEL_NUM];
+        sum4 += ADC_value[3+i*CHANNEL_NUM];
+    }
+    joy_x2 = sum1/SAMPLE_TIME;
+    joy_y2 = sum2/SAMPLE_TIME;
+    joy_x1 = sum3/SAMPLE_TIME;
+    joy_y1 = sum4/SAMPLE_TIME;    
 }
 
+//joystick1 handle direction -100~100
+//joystick2 handle accelerator -100~100
+void Handle_xy(uint16_t adc_x, uint16_t adc_y)
+{
+    signed short diff_x, diff_y;
+    diff_x = adc_x - ORIGIN_POINT;
+    diff_y = adc_y - ORIGIN_POINT;
+
+    if( ( ( adc_x>ORIGIN_POINT ) && ( diff_x>THRESHOLD_XY) ) || ( ( adc_x<ORIGIN_POINT ) && ( diff_x<-THRESHOLD_XY) ))
+        coordinate[0] = (float)diff_x/2048.0 *100;
+    else
+        coordinate[0]=0;
+
+    if( ( ( adc_y>ORIGIN_POINT ) && ( diff_y>THRESHOLD_XY) ) || ( ( adc_y<ORIGIN_POINT ) && ( diff_y<-THRESHOLD_XY) ))
+        coordinate[1] = (float)diff_y/2048.0 *100;
+    else
+        coordinate[1]=0;
+}

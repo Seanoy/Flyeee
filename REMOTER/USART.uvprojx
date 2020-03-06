@@ -583,6 +583,26 @@
               <FileType>1</FileType>
               <FilePath>.\BSP\src\bsp_adc.c</FilePath>
             </File>
+            <File>
+              <FileName>bsp_button.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\BSP\src\bsp_button.c</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_oled.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\BSP\src\bsp_oled.c</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_iic.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\BSP\src\bsp_iic.c</FilePath>
+            </File>
+            <File>
+              <FileName>oledfont.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\BSP\src\oledfont.c</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>

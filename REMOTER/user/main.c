@@ -1,4 +1,5 @@
 #include "bsp.h"
+void test(void);
 
 void twinkle()
 {
@@ -9,9 +10,8 @@ void twinkle()
 }
 	 
 int main(){		
-	u8 txbuf[33]="Can you go out on a date with me?";
+//	u8 txbuf[33]="Can you go out on a date with me?";
 	BSP_init();
-
 //	NRF24L01_CSN=0;
 //    if(NRF24L01_Check())//检测不到24L01
 //	{
@@ -21,10 +21,9 @@ int main(){
 //        printf("Device Check!\r\n");
 	
 //	TX_Mode();//接收模式
-	
+
 while(1)	
 {	
-	
 	printf("hello\r\n");
 	twinkle();
 	

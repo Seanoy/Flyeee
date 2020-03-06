@@ -21,3 +21,7 @@
 .\objects\main.o: .\BSP\inc\bsp_spi.h
 .\objects\main.o: .\BSP\inc\bsp_24l01.h
 .\objects\main.o: .\BSP\inc\bsp_adc.h
+.\objects\main.o: .\BSP\inc\bsp_button.h
+.\objects\main.o: .\BSP\inc\bsp_oled.h
+.\objects\main.o: .\BSP\inc\bsp_iic.h
+.\objects\main.o: .\BSP\inc\oledfont.h
