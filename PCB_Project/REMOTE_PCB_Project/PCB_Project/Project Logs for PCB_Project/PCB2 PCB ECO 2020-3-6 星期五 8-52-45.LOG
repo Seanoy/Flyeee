@@ -1,0 +1,13 @@
+Removed Pin From Net: NetName=NRF_CE Pin=U1-38
+Removed Pin From Net: NetName=NRF_IRQ Pin=U1-39
+Removed Pin From Net: NetName=SPI_CSN Pin=U1-42
+Removed Pin From Net: NetName=SPI_SCK Pin=U1-43
+Removed Pin From Net: NetName=SPI_MISO Pin=U1-45
+Removed Pin From Net: NetName=SPI_MOSI Pin=U1-46
+Added Pin To Net: NetName=SPI_SCK Pin=U1-15
+Added Pin To Net: NetName=SPI_MISO Pin=U1-16
+Added Pin To Net: NetName=SPI_MOSI Pin=U1-17
+Added Pin To Net: NetName=NRF_CE Pin=U1-18
+Added Pin To Net: NetName=NRF_IRQ Pin=U1-19
+Added Pin To Net: NetName=SPI_CSN Pin=U1-21
+Added Room: Name=Sheet2

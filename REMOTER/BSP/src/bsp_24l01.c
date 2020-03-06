@@ -1,37 +1,41 @@
 #include "bsp_24l01.h"
 #include "bsp_spi.h"
-#include <stdbool.h>
-//////////////////////////////////////////////////////////////////////////////////	 
-//本程序只供学习使用，未经作者许可，不得用于其它任何用途
-//Mini STM32开发板
-//NRF24L01 驱动函数	   
-//正点原子@ALIENTEK
-//技术论坛:www.openedv.com
-//修改日期:2010/6/16 
-//版本：V1.0
-//版权所有，盗版必究。
-//Copyright(C) 正点原子 2009-2019
-//All rights reserved
-////////////////////////////////////////////////////////////////////////////////// 	  
-	 
+#include <stdbool.h>  
+/*
+SCK PA5
+MISO PA6
+MOSI PA7
+
+CSN PB10
+CE PB0
+IRQ PB1
+*/
 //发送地址和接收地址相同即 自发自收
 const u8 TX_ADDRESS[TX_ADR_WIDTH]={0x88,0x88,0x88,0x88,0x88}; //发送地址
-const u8 RX_ADDRESS[TX_ADR_WIDTH]={0x88,0x88,0x88,0x88,0x88}; //接收地址
+const u8 RX_ADDRESS[TX_ADR_WIDTH]={0x66,0x66,0x66,0x66,0x66}; //接收地址
 							    
+//初始化24L01的IO口
 //初始化24L01的IO口
 void NRF24L01_Init(void)
 {
-	RCC->APB2ENR|=1<<2;    //使能PORTA口时钟 
-	RCC->APB2ENR|=1<<4;    //使能PORTC口时钟 
-	GPIOA->CRL&=0XFFF000FF;//PA4输出
-	GPIOA->CRL|=0X00033300; 
-	GPIOA->ODR|=7<<2;	   //PA2.3.4 输出1		 
-	GPIOC->CRL&=0XFF00FFFF;//PC4输出 PC5输出
-	GPIOC->CRL|=0X00830000; 
-	GPIOC->ODR|=3<<4;	   //上拉	 
-	SPIx_Init();    //初始化SPI
+	GPIO_InitTypeDef GPIO_InitStructure;
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB,ENABLE);
+
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
+	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+    
+    //CSN CE
+	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0 | GPIO_Pin_10;
+	GPIO_Init(GPIOB,&GPIO_InitStructure);
+
+    //IRQ
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU;
+	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_1;
+	GPIO_Init(GPIOB,&GPIO_InitStructure);
+    
+	NRF24L01_CSN=1;	//SPI片选取消
+	SPI1_Init();    //初始化SPI
 	NRF24L01_CE=0; 	//使能24L01
-	NRF24L01_CSN=1;	//SPI片选取消		  		 		  
 }
 //检测24L01是否存在
 //返回值:0，成功;1，失败	
@@ -39,7 +43,7 @@ u8 NRF24L01_Check(void)
 {
 	u8 buf[5]={0XA5,0XA5,0XA5,0XA5,0XA5};
 	u8 i;
-	SPIx_SetSpeed(SPI_SPEED_8); //spi速度为9Mhz（24L01的最大SPI时钟为10Mhz）   	 
+//	//SPI1_SetSpeed(SPI_SPEED_8); //spi速度为9Mhz（24L01的最大SPI时钟为10Mhz）   	 
 	NRF24L01_Write_Buf(WR_REG+TX_ADDR,buf,5);//写入5个字节的地址.	
 	NRF24L01_Read_Buf(TX_ADDR,buf,5); //读出写入的地址  
 	for(i=0;i<5;i++)if(buf[i]!=0XA5)break;	 							   
@@ -53,8 +57,8 @@ u8 NRF24L01_Write_Reg(u8 reg,u8 value)
 {
 	u8 status;	
    	NRF24L01_CSN=0;                 //使能SPI传输
-  	status =SPIx_ReadWriteByte(reg);//发送寄存器号 
-  	SPIx_ReadWriteByte(value);      //写入寄存器的值
+  	status =SPI1_ReadWriteByte(reg);//发送寄存器号 
+  	SPI1_ReadWriteByte(value);      //写入寄存器的值
   	NRF24L01_CSN=1;                 //禁止SPI传输	   
   	return(status);       			//返回状态值
 }
@@ -64,8 +68,8 @@ u8 NRF24L01_Read_Reg(u8 reg)
 {
 	u8 reg_val;	    
  	NRF24L01_CSN = 0;          //使能SPI传输		
-  	SPIx_ReadWriteByte(reg);   //发送寄存器号
-  	reg_val=SPIx_ReadWriteByte(0XFF);//读取寄存器内容
+  	SPI1_ReadWriteByte(reg);   //发送寄存器号
+  	reg_val=SPI1_ReadWriteByte(0XFF);//读取寄存器内容
   	NRF24L01_CSN = 1;          //禁止SPI传输		    
   	return(reg_val);           //返回状态值
 }	
@@ -78,8 +82,8 @@ u8 NRF24L01_Read_Buf(u8 reg,u8 *pBuf,u8 len)
 {
 	u8 status,u8_ctr;	       
   	NRF24L01_CSN = 0;           //使能SPI传输
-  	status=SPIx_ReadWriteByte(reg);//发送寄存器值(位置),并读取状态值   	   
- 	for(u8_ctr=0;u8_ctr<len;u8_ctr++)pBuf[u8_ctr]=SPIx_ReadWriteByte(0XFF);//读出数据
+  	status=SPI1_ReadWriteByte(reg);//发送寄存器值(位置),并读取状态值   	   
+ 	for(u8_ctr=0;u8_ctr<len;u8_ctr++)pBuf[u8_ctr]=SPI1_ReadWriteByte(0XFF);//读出数据
   	NRF24L01_CSN=1;       //关闭SPI传输
   	return status;        //返回读到的状态值
 }
@@ -92,8 +96,8 @@ u8 NRF24L01_Write_Buf(u8 reg, u8 *pBuf, u8 len)
 {
 	u8 status,u8_ctr;	    
  	NRF24L01_CSN = 0;          //使能SPI传输
-  	status = SPIx_ReadWriteByte(reg);//发送寄存器值(位置),并读取状态值
-  	for(u8_ctr=0; u8_ctr<len; u8_ctr++)SPIx_ReadWriteByte(*pBuf++); //写入数据	 
+  	status = SPI1_ReadWriteByte(reg);//发送寄存器值(位置),并读取状态值
+  	for(u8_ctr=0; u8_ctr<len; u8_ctr++)SPI1_ReadWriteByte(*pBuf++); //写入数据	 
   	NRF24L01_CSN = 1;       //关闭SPI传输
   	return status;          //返回读到的状态值
 }				   
@@ -103,7 +107,7 @@ u8 NRF24L01_Write_Buf(u8 reg, u8 *pBuf, u8 len)
 u8 NRF24L01_TxPacket(u8 *txbuf)
 {
 	u8 sta;
- 	SPIx_SetSpeed(SPI_SPEED_8);//spi速度为9Mhz（24L01的最大SPI时钟为10Mhz）   
+ 	//SPI1_SetSpeed(SPI_SPEED_8);//spi速度为9Mhz（24L01的最大SPI时钟为10Mhz）   
 	NRF24L01_CE=0;
   	NRF24L01_Write_Buf(WR_TX_PLOAD,txbuf,TX_PLOAD_WIDTH);//写数据到TX BUF  32个字节
  	NRF24L01_CE=1;//启动发送	   
@@ -127,7 +131,7 @@ u8 NRF24L01_TxPacket(u8 *txbuf)
 u8 NRF24L01_RxPacket(u8 *rxbuf)
 {
 	u8 sta;		    							   
-	SPIx_SetSpeed(SPI_SPEED_8); //spi速度为9Mhz（24L01的最大SPI时钟为10Mhz）   
+	//SPI1_SetSpeed(SPI_SPEED_8); //spi速度为9Mhz（24L01的最大SPI时钟为10Mhz）   
 	sta=NRF24L01_Read_Reg(STATUS);  //读取状态寄存器的值    	 
 	NRF24L01_Write_Reg(WR_REG+STATUS,sta); //清除TX_DS或MAX_RT中断标志
 	if(sta&RX_OK)//接收到数据

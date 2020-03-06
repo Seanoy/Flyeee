@@ -6,10 +6,13 @@
 .\objects\bsp_24l01.o: F:\keil\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\bsp_24l01.o: .\CMSIS\system_stm32f10x.h
 .\objects\bsp_24l01.o: .\user\stm32f10x_conf.h
-.\objects\bsp_24l01.o: .\FWlib\inc\stm32f10x_exti.h
+.\objects\bsp_24l01.o: .\FWlib\inc\stm32f10x_adc.h
 .\objects\bsp_24l01.o: .\CMSIS\stm32f10x.h
+.\objects\bsp_24l01.o: .\FWlib\inc\stm32f10x_dma.h
+.\objects\bsp_24l01.o: .\FWlib\inc\stm32f10x_exti.h
 .\objects\bsp_24l01.o: .\FWlib\inc\stm32f10x_gpio.h
 .\objects\bsp_24l01.o: .\FWlib\inc\stm32f10x_rcc.h
+.\objects\bsp_24l01.o: .\FWlib\inc\stm32f10x_spi.h
 .\objects\bsp_24l01.o: .\FWlib\inc\stm32f10x_usart.h
 .\objects\bsp_24l01.o: .\FWlib\inc\misc.h
 .\objects\bsp_24l01.o: .\BSP\inc\bsp_spi.h

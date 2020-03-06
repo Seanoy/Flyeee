@@ -6,9 +6,12 @@
 .\objects\bsp_spi.o: F:\keil\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\bsp_spi.o: .\CMSIS\system_stm32f10x.h
 .\objects\bsp_spi.o: .\user\stm32f10x_conf.h
-.\objects\bsp_spi.o: .\FWlib\inc\stm32f10x_exti.h
+.\objects\bsp_spi.o: .\FWlib\inc\stm32f10x_adc.h
 .\objects\bsp_spi.o: .\CMSIS\stm32f10x.h
+.\objects\bsp_spi.o: .\FWlib\inc\stm32f10x_dma.h
+.\objects\bsp_spi.o: .\FWlib\inc\stm32f10x_exti.h
 .\objects\bsp_spi.o: .\FWlib\inc\stm32f10x_gpio.h
 .\objects\bsp_spi.o: .\FWlib\inc\stm32f10x_rcc.h
+.\objects\bsp_spi.o: .\FWlib\inc\stm32f10x_spi.h
 .\objects\bsp_spi.o: .\FWlib\inc\stm32f10x_usart.h
 .\objects\bsp_spi.o: .\FWlib\inc\misc.h

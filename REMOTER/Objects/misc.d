@@ -5,9 +5,12 @@
 .\objects\misc.o: F:\keil\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\misc.o: .\CMSIS\system_stm32f10x.h
 .\objects\misc.o: .\user\stm32f10x_conf.h
-.\objects\misc.o: .\FWlib\inc\stm32f10x_exti.h
+.\objects\misc.o: .\FWlib\inc\stm32f10x_adc.h
 .\objects\misc.o: .\CMSIS\stm32f10x.h
+.\objects\misc.o: .\FWlib\inc\stm32f10x_dma.h
+.\objects\misc.o: .\FWlib\inc\stm32f10x_exti.h
 .\objects\misc.o: .\FWlib\inc\stm32f10x_gpio.h
 .\objects\misc.o: .\FWlib\inc\stm32f10x_rcc.h
+.\objects\misc.o: .\FWlib\inc\stm32f10x_spi.h
 .\objects\misc.o: .\FWlib\inc\stm32f10x_usart.h
 .\objects\misc.o: .\FWlib\inc\misc.h

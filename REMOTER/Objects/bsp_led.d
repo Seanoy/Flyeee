@@ -5,9 +5,12 @@
 .\objects\bsp_led.o: F:\keil\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\bsp_led.o: .\CMSIS\system_stm32f10x.h
 .\objects\bsp_led.o: .\user\stm32f10x_conf.h
-.\objects\bsp_led.o: .\FWlib\inc\stm32f10x_exti.h
+.\objects\bsp_led.o: .\FWlib\inc\stm32f10x_adc.h
 .\objects\bsp_led.o: .\CMSIS\stm32f10x.h
+.\objects\bsp_led.o: .\FWlib\inc\stm32f10x_dma.h
+.\objects\bsp_led.o: .\FWlib\inc\stm32f10x_exti.h
 .\objects\bsp_led.o: .\FWlib\inc\stm32f10x_gpio.h
 .\objects\bsp_led.o: .\FWlib\inc\stm32f10x_rcc.h
+.\objects\bsp_led.o: .\FWlib\inc\stm32f10x_spi.h
 .\objects\bsp_led.o: .\FWlib\inc\stm32f10x_usart.h
 .\objects\bsp_led.o: .\FWlib\inc\misc.h
