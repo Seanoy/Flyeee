@@ -49,7 +49,7 @@ u8 MPU9250_Init(void)
 	u8 res=0;
 	IIC_Init();     //初始化IIC总线
 	IIC_Write_One_Byte(MPU9250_ADDR,MPU_PWR_MGMT1_REG,0X80);//复位MPU9250
-    vTaskDelay(pdMS_TO_TICKS(100));
+    vTaskDelay(pdMS_TO_TICKS(1000));
     
 	IIC_Write_One_Byte(MPU9250_ADDR,MPU_PWR_MGMT1_REG,0X00);//唤醒MPU9250
 	MPU_Set_Gyro_Fsr(3);					        	//陀螺仪传感器,±2000dps

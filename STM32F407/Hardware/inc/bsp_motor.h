@@ -3,7 +3,6 @@
 
 #include <stm32f4xx.h>
 #include <stdbool.h>
-//
 
 
 #define TIM_CLOCK_HZ 				168000000

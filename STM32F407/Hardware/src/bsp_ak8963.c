@@ -1,7 +1,5 @@
 #include "bsp_ak8963.h"
 
-
-
 u8 AK8963_Init(void)
 {   
 	u8 res=0;
@@ -16,9 +14,6 @@ u8 AK8963_Init(void)
 	}
 	else return 1;
 }
-
-
-
 
 //得到磁力计值(原始值)
 //mx,my,mz:磁力计x,y,z轴的原始读数(带符号)
@@ -35,7 +30,7 @@ u8 MPU_Get_Magnetometer(mag_struct *mag_s)
 		mag_s->mz=((u16)buf[5]<<8)|buf[4];
 	} 	
     IIC_Write_One_Byte(AK8963_ADDR,AK8963_CNTL1,0X11); //AK8963每次读完以后都需要重新设置为单次测量模式
-    return res;;
+    return res;
 }
 
 

@@ -115,22 +115,20 @@ bool motorsTest(void)
 /*设置电机PWM占空比*/
 void motorsSetRatio(u32 id, u16 ithrust)
 {
-		u16 ratio=ithrust;
-		
-		switch(id)
-		{
-			case 0:		/*MOTOR_M1*/
-				TIM_SetCompare1(TIM1,500);
-				break;
-			case 1:		/*MOTOR_M2*/
-				TIM_SetCompare1(TIM4,500);
-				break;
-			case 2:		/*MOTOR_M3*/
-				TIM_SetCompare1(TIM9,500);
-				break;
-			case 3:		/*MOTOR_M4*/	
-				TIM_SetCompare2(TIM5,500);
-				break;
-			default: break;
-		}	
+    switch(id)
+    {
+        case 0:		/*MOTOR_M1*/
+            TIM_SetCompare1(TIM1,500);
+            break;
+        case 1:		/*MOTOR_M2*/
+            TIM_SetCompare1(TIM4,500);
+            break;
+        case 2:		/*MOTOR_M3*/
+            TIM_SetCompare1(TIM9,500);
+            break;
+        case 3:		/*MOTOR_M4*/	
+            TIM_SetCompare2(TIM5,500);
+            break;
+        default: break;
+    }
 }
