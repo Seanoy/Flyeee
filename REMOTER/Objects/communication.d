@@ -1,0 +1,17 @@
+.\objects\communication.o: user\communication.c
+.\objects\communication.o: user\communication.h
+.\objects\communication.o: .\CMSIS\stm32f10x.h
+.\objects\communication.o: .\CMSIS\core_cm3.h
+.\objects\communication.o: F:\keil\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\communication.o: .\CMSIS\system_stm32f10x.h
+.\objects\communication.o: .\user\stm32f10x_conf.h
+.\objects\communication.o: .\FWlib\inc\stm32f10x_adc.h
+.\objects\communication.o: .\CMSIS\stm32f10x.h
+.\objects\communication.o: .\FWlib\inc\stm32f10x_dma.h
+.\objects\communication.o: .\FWlib\inc\stm32f10x_exti.h
+.\objects\communication.o: .\FWlib\inc\stm32f10x_gpio.h
+.\objects\communication.o: .\FWlib\inc\stm32f10x_rcc.h
+.\objects\communication.o: .\FWlib\inc\stm32f10x_spi.h
+.\objects\communication.o: .\FWlib\inc\stm32f10x_usart.h
+.\objects\communication.o: .\FWlib\inc\misc.h
+.\objects\communication.o: F:\keil\ARM\ARMCC\Bin\..\include\string.h

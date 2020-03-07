@@ -97,23 +97,23 @@ void cal_range(uint16_t num, signed char  *buffer)
 {
     signed short diff;
 
-    if(num>0 && num<1948)
+    if(num>0 && num<1848)
     {
         if(num<200)
             *buffer = -100;
         else
         {
-            diff = num - 1948;
+            diff = num - 1848;
             *buffer = (float)diff/1748.0 *100;
         }
     }
-    else if(num>2148 && num<4096)
+    else if(num>2248 && num<4096)
     {
         if(num>3896)
             *buffer = 100;
         else
         {
-            diff = num - 2148;
+            diff = num - 2248;
             *buffer = (float)diff/1748.0 *100;
         }
     }

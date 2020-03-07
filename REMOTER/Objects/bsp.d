@@ -26,3 +26,4 @@
 .\objects\bsp.o: .\BSP\inc\bsp_iic.h
 .\objects\bsp.o: .\BSP\inc\oledfont.h
 .\objects\bsp.o: F:\keil\ARM\ARMCC\Bin\..\include\string.h
+.\objects\bsp.o: .\user\communication.h

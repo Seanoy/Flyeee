@@ -5,9 +5,6 @@
 #define SAMPLE_TIME     5
 #define CHANNEL_NUM     4
 
-#define ORIGIN_POINT    2048
-#define THRESHOLD_WIDTH 200
-
 extern signed char coordinate[4];//{x, y} 0~100
 extern uint32_t adc_x1, adc_y1, adc_x2, adc_y2;
 

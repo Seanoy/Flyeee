@@ -10,6 +10,9 @@ void twinkle()
 	 
 int main(){		
 //	u8 txbuf[33]="Can you go out on a date with me?";
+    signed char aa[]={0x12, 0x34, 0x56, 0x78};
+    signed char bb[]={0x11, 0x22, 0x33};
+
 	BSP_init();
 //	NRF24L01_CSN=0;
 //    if(NRF24L01_Check())//检测不到24L01
@@ -20,6 +23,8 @@ int main(){
 //        printf("Device Check!\r\n");
 	
 //	TX_Mode();//接收模式
+    Fill_Data(0x01,aa,&txdata);
+    Fill_Data(0x02,bb,&txdata);
 
     while(1)	
     {	

@@ -17,14 +17,14 @@ void OLED_Display_XY(signed char x, signed char y, uint8_t joystick)
     else 
         sprintf((char*)buffer,"X:%d   ",x);
 
-    OLED_ShowString(0+joystick*48,1,buffer,16);
+    OLED_ShowString(0+joystick*60,2,buffer,16);
     
     memset(buffer,0,20);
     if(y<0)
         sprintf((char*)buffer,"Y:-%d   ",(-y));
     else
         sprintf((char*)buffer,"Y:%d   ",y);
-    OLED_ShowString(0+joystick*48,4,buffer,16);
+    OLED_ShowString(0+joystick*60,5,buffer,16);
 }
 
 /**********************************************

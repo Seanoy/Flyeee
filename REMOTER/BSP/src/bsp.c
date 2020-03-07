@@ -14,6 +14,7 @@ void BSP_init(void)
 	delay_init();
     
     //Communication Init
+    Comm_Init();
 	NRF24L01_Init();
     
     //Joystick Init
@@ -25,6 +26,8 @@ void BSP_init(void)
 
     //OLED Init
     OLED_Init();
+    
+
 }
 
 

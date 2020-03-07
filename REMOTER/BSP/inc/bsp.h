@@ -15,6 +15,7 @@
 #include "bsp_oled.h"
 #include "bsp_iic.h"
 
+#include "communication.h"
 
 void BSP_init(void);
 
