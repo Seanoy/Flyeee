@@ -1,21 +1,15 @@
 #ifndef __BSP_24L01_H
-#define __BSP_24L01_H	 		  
-#include "bsp_sys.h"   
-//////////////////////////////////////////////////////////////////////////////////	 
-//本程序只供学习使用，未经作者许可，不得用于其它任何用途
-//Mini STM32开发板
-//NRF24L01 驱动函数	   
-//正点原子@ALIENTEK
-//技术论坛:www.openedv.com
-//修改日期:2010/6/16 
-//版本：V1.0
-//版权所有，盗版必究。
-//Copyright(C) 正点原子 2009-2019
-//All rights reserved
-////////////////////////////////////////////////////////////////////////////////// 	  
+#define __BSP_24L01_H
 
+#include "bsp_sys.h"
+#include "bsp_spi.h"
+#include <stdbool.h>
+#include "bsp_systick.h"
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////
+#define TRY_TIME        100
+
+#define TIMEOUT         0X01
+
 //NRF24L01寄存器操作命令
 #define RD_REG          0x00  //读配置寄存器,低5位为寄存器地址
 #define WR_REG          0x20  //写配置寄存器,低5位为寄存器地址
@@ -83,4 +77,8 @@ u8 NRF24L01_Write_Reg(u8 reg, u8 value);//写寄存器
 u8 NRF24L01_Check(void);//检查24L01是否存在
 u8 NRF24L01_TxPacket(u8 *txbuf);//发送一个包的数据
 u8 NRF24L01_RxPacket(u8 *rxbuf);//接收一个包的数据
+
+uint8_t NRF24L01_Tx_Data(u8 *txbuf);
+
+
 #endif

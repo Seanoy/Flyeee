@@ -24,7 +24,7 @@
 void OLED_Init(void);
 void OLED_Display_XY(signed char x, signed char y, uint8_t joystick);
 void OLED_Test(void);
-void Handle_XY(void);
+void OLED_Show_XY(void);
 
 //OLED¿ØÖÆÓÃº¯Êý
 void OLED_WR_Byte(unsigned dat,unsigned cmd);  

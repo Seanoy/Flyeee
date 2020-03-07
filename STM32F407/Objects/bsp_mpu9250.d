@@ -47,7 +47,8 @@
 .\objects\bsp_mpu9250.o: .\Hardware\inc\bsp_led.h
 .\objects\bsp_mpu9250.o: .\Hardware\inc\bsp_ak8963.h
 .\objects\bsp_mpu9250.o: .\Hardware\inc\bsp_motor.h
-.\objects\bsp_mpu9250.o: .\Hardware\inc\watchdog.h
+.\objects\bsp_mpu9250.o: .\Hardware\inc\bsp_watchdog.h
+.\objects\bsp_mpu9250.o: .\Hardware\inc\bsp_timer.h
 .\objects\bsp_mpu9250.o: .\Hardware\inc\bsp_24l01.h
 .\objects\bsp_mpu9250.o: .\ThirdParty\FreeRTOSV10.2.1\include\FreeRTOS.h
 .\objects\bsp_mpu9250.o: F:\keil\ARM\ARMCC\Bin\..\include\stddef.h

@@ -1,10 +1,7 @@
 #include "bsp_oled.h"
 
-void Handle_XY(void)
+void OLED_Show_XY(void)
 {
-    Handle_adc_value();
-    Handle_coordinate(adc_x1, adc_y1, 0);
-    Handle_coordinate(adc_x2, adc_y2, 1);
     OLED_Display_XY(coordinate[0],coordinate[1],0);
     OLED_Display_XY(coordinate[2],coordinate[3],1);
 }

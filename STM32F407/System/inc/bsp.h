@@ -11,9 +11,11 @@
 #include "bsp_ak8963.h"
 #include "bsp_myiic.h"
 #include "bsp_motor.h"
-#include "watchdog.h"
+#include "bsp_watchdog.h"
+#include "bsp_timer.h"
 #include "bsp_mpu9250.h"
 #include "bsp_24l01.h"
+
 
 #include "FreeRTOS.h"
 #include "FreeRTOSConfig.h"

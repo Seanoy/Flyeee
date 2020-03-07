@@ -14,5 +14,6 @@ void Joystick_ADC_Init(void);
 void Handle_adc_value(void);//use timer processes it regularly
 void Handle_coordinate(uint16_t adc_x, uint16_t adc_y, uint8_t joystick);
 void Handle_XY(void);
+void Handle_Transform(void);
 
 #endif

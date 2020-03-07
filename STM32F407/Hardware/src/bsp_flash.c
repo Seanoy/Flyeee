@@ -1,4 +1,4 @@
-#include "stmflash.h"
+#include "bsp_flash.h"
 
 //读取指定地址的半字(16位数据) 
 //faddr:读地址 

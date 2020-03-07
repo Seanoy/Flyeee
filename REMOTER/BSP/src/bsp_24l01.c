@@ -1,6 +1,5 @@
 #include "bsp_24l01.h"
-#include "bsp_spi.h"
-#include <stdbool.h>  
+
 /*
 SCK PA5
 MISO PA6
@@ -97,7 +96,8 @@ u8 NRF24L01_Write_Buf(u8 reg, u8 *pBuf, u8 len)
 	u8 status,u8_ctr;	    
  	NRF24L01_CSN = 0;          //使能SPI传输
   	status = SPI1_ReadWriteByte(reg);//发送寄存器值(位置),并读取状态值
-  	for(u8_ctr=0; u8_ctr<len; u8_ctr++)SPI1_ReadWriteByte(*pBuf++); //写入数据	 
+  	for(u8_ctr=0; u8_ctr<len; u8_ctr++)
+        SPI1_ReadWriteByte(*pBuf++); //写入数据	 
   	NRF24L01_CSN = 1;       //关闭SPI传输
   	return status;          //返回读到的状态值
 }				   
@@ -107,11 +107,17 @@ u8 NRF24L01_Write_Buf(u8 reg, u8 *pBuf, u8 len)
 u8 NRF24L01_TxPacket(u8 *txbuf)
 {
 	u8 sta;
+    u8 try_time=0;
  	//SPI1_SetSpeed(SPI_SPEED_8);//spi速度为9Mhz（24L01的最大SPI时钟为10Mhz）   
 	NRF24L01_CE=0;
   	NRF24L01_Write_Buf(WR_TX_PLOAD,txbuf,TX_PLOAD_WIDTH);//写数据到TX BUF  32个字节
  	NRF24L01_CE=1;//启动发送	   
-	while(NRF24L01_IRQ!=0);//等待发送完成
+	while(NRF24L01_IRQ!=0)//等待发送完成
+    {
+        if(++try_time>TRY_TIME)
+            break;//timeout
+        delay_us(100);
+    }
 	sta=NRF24L01_Read_Reg(STATUS);  //读取状态寄存器的值	   
 	NRF24L01_Write_Reg(WR_REG+STATUS,sta); //清除TX_DS或MAX_RT中断标志
 	if(sta&MAX_TX)//达到最大重发次数
@@ -178,4 +184,14 @@ void TX_Mode(void)
 	NRF24L01_CE=1;//CE为高,10us后启动发送
 }		  
 
-
+uint8_t NRF24L01_Tx_Data(u8 *txbuf)
+{
+    char try_time = 0;//50ms超时
+	while(NRF24L01_TxPacket(txbuf) == TX_OK)//发送成功
+	{
+        delay_us(500);
+        if(++try_time > TRY_TIME)
+            return TIMEOUT;
+	}
+    return TX_OK;
+}

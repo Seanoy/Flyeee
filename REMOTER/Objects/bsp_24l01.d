@@ -17,3 +17,4 @@
 .\objects\bsp_24l01.o: .\FWlib\inc\misc.h
 .\objects\bsp_24l01.o: .\BSP\inc\bsp_spi.h
 .\objects\bsp_24l01.o: F:\keil\ARM\ARMCC\Bin\..\include\stdbool.h
+.\objects\bsp_24l01.o: .\BSP\inc\bsp_systick.h

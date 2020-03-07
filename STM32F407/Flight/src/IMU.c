@@ -1,4 +1,4 @@
-#include "IMU.h"
+#include "imu.h"
 
 S_FLOAT_ANGLE Q_ANGLE;
 float   halfT=0.002;;                    //采样时间的一半，我们的应该是2ms

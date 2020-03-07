@@ -20,6 +20,7 @@
 .\objects\main.o: .\BSP\inc\bsp_led.h
 .\objects\main.o: .\BSP\inc\bsp_spi.h
 .\objects\main.o: .\BSP\inc\bsp_24l01.h
+.\objects\main.o: F:\keil\ARM\ARMCC\Bin\..\include\stdbool.h
 .\objects\main.o: .\BSP\inc\bsp_adc.h
 .\objects\main.o: .\BSP\inc\bsp_button.h
 .\objects\main.o: .\BSP\inc\bsp_oled.h

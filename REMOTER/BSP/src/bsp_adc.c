@@ -125,3 +125,10 @@ void Handle_coordinate(uint16_t adc_x, uint16_t adc_y, uint8_t joystick)
     cal_range(adc_x,coordinate+joystick*2);
     cal_range(adc_y,coordinate+1+joystick*2);
 }
+
+void Handle_Transform(void)
+{
+    Handle_adc_value();
+    Handle_coordinate(adc_x1, adc_y1, 0);
+    Handle_coordinate(adc_x2, adc_y2, 1);
+}

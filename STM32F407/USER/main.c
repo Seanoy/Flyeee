@@ -73,7 +73,7 @@ void get_attitude_task(void *pvParameters)
 //LED1任务函数
 void led1_task(void *pvParameters)
 {	
-    u8 rxbuf[33] = {0};
+//    u8 rxbuf[33] = {0};
     while(1)
     {
 //        if(NRF24L01_RxPacket(rxbuf)==0)//接收成功

@@ -663,14 +663,19 @@
           <GroupName>Flight</GroupName>
           <Files>
             <File>
-              <FileName>IMU.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Flight\src\IMU.c</FilePath>
-            </File>
-            <File>
               <FileName>flight_pid.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Flight\src\flight_pid.c</FilePath>
+            </File>
+            <File>
+              <FileName>kalman_filter.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Flight\src\kalman_filter.c</FilePath>
+            </File>
+            <File>
+              <FileName>imu.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Flight\src\imu.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -738,14 +743,19 @@
               <FilePath>.\Hardware\src\bsp_spi.c</FilePath>
             </File>
             <File>
-              <FileName>stmflash.c</FileName>
+              <FileName>bsp_timer.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\Hardware\src\stmflash.c</FilePath>
+              <FilePath>.\Hardware\src\bsp_timer.c</FilePath>
             </File>
             <File>
-              <FileName>watchdog.c</FileName>
+              <FileName>bsp_watchdog.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\Hardware\src\watchdog.c</FilePath>
+              <FilePath>.\Hardware\src\bsp_watchdog.c</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_flash.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Hardware\src\bsp_flash.c</FilePath>
             </File>
           </Files>
         </Group>

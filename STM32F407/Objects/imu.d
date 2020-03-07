@@ -1,5 +1,5 @@
-.\objects\imu.o: Flight\src\IMU.c
-.\objects\imu.o: .\Flight\inc\IMU.h
+.\objects\imu.o: Flight\src\imu.c
+.\objects\imu.o: .\Flight\inc\imu.h
 .\objects\imu.o: .\System\inc\bsp.h
 .\objects\imu.o: .\CORE\stm32f4xx.h
 .\objects\imu.o: .\CORE\core_cm4.h
@@ -47,7 +47,8 @@
 .\objects\imu.o: F:\keil\ARM\ARMCC\Bin\..\include\stdbool.h
 .\objects\imu.o: .\Hardware\inc\bsp_ak8963.h
 .\objects\imu.o: .\Hardware\inc\bsp_motor.h
-.\objects\imu.o: .\Hardware\inc\watchdog.h
+.\objects\imu.o: .\Hardware\inc\bsp_watchdog.h
+.\objects\imu.o: .\Hardware\inc\bsp_timer.h
 .\objects\imu.o: .\Hardware\inc\bsp_24l01.h
 .\objects\imu.o: .\ThirdParty\FreeRTOSV10.2.1\include\FreeRTOS.h
 .\objects\imu.o: F:\keil\ARM\ARMCC\Bin\..\include\stddef.h

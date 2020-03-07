@@ -47,7 +47,8 @@
 .\objects\main.o: F:\keil\ARM\ARMCC\Bin\..\include\stdbool.h
 .\objects\main.o: .\Hardware\inc\bsp_ak8963.h
 .\objects\main.o: .\Hardware\inc\bsp_motor.h
-.\objects\main.o: .\Hardware\inc\watchdog.h
+.\objects\main.o: .\Hardware\inc\bsp_watchdog.h
+.\objects\main.o: .\Hardware\inc\bsp_timer.h
 .\objects\main.o: .\Hardware\inc\bsp_24l01.h
 .\objects\main.o: .\ThirdParty\FreeRTOSV10.2.1\include\FreeRTOS.h
 .\objects\main.o: F:\keil\ARM\ARMCC\Bin\..\include\stddef.h

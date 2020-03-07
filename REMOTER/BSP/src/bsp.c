@@ -16,7 +16,13 @@ void BSP_init(void)
     //Communication Init
     Comm_Init();
 	NRF24L01_Init();
-    
+//    NRF24L01_CSN=0;
+    if(NRF24L01_Check())
+		printf("Device Error!\r\n");//检测不到24L01
+	else
+        printf("Device Pass!\r\n");
+	TX_Mode();//发送模式
+
     //Joystick Init
     Joystick_DMA_Init();
     Joystick_ADC_Init();
