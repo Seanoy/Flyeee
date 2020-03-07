@@ -5,6 +5,8 @@
 #include "bsp_iic.h"
 #include "oledfont.h"
 #include "bsp_systick.h"
+#include <string.h>
+#include "bsp_adc.h"
 
 #define OLED_MODE 0
 #define SIZE 8
@@ -20,6 +22,9 @@
 #define OLED_DATA 1	//写数据
 
 void OLED_Init(void);
+void OLED_Display_XY(signed char x, signed char y, uint8_t joystick);
+void OLED_Test(void);
+void Handle_XY(void);
 
 //OLED控制用函数
 void OLED_WR_Byte(unsigned dat,unsigned cmd);  

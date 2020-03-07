@@ -6,12 +6,16 @@
 #define CHANNEL_NUM     4
 
 #define ORIGIN_POINT    2048
-#define THRESHOLD_XY    248
+#define THRESHOLD_WIDTH 200
+
+extern signed char coordinate[4];//{x, y} 0~100
+extern uint32_t adc_x1, adc_y1, adc_x2, adc_y2;
 
 void Joystick_DMA_Init(void);
 void Joystick_ADC_Init(void);
 
 void Handle_adc_value(void);//use timer processes it regularly
-void Handle_xy(uint16_t adc_x, uint16_t adc_y);
+void Handle_coordinate(uint16_t adc_x, uint16_t adc_y, uint8_t joystick);
+void Handle_XY(void);
 
 #endif

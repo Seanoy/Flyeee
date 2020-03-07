@@ -25,3 +25,4 @@
 .\objects\bsp.o: .\BSP\inc\bsp_oled.h
 .\objects\bsp.o: .\BSP\inc\bsp_iic.h
 .\objects\bsp.o: .\BSP\inc\oledfont.h
+.\objects\bsp.o: F:\keil\ARM\ARMCC\Bin\..\include\string.h

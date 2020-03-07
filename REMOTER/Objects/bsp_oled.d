@@ -19,3 +19,5 @@
 .\objects\bsp_oled.o: F:\keil\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\bsp_oled.o: .\BSP\inc\oledfont.h
 .\objects\bsp_oled.o: .\BSP\inc\bsp_systick.h
+.\objects\bsp_oled.o: F:\keil\ARM\ARMCC\Bin\..\include\string.h
+.\objects\bsp_oled.o: .\BSP\inc\bsp_adc.h

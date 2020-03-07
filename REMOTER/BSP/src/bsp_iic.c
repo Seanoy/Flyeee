@@ -3,7 +3,7 @@
 
 void iic_delay(void)
 {
-    __nop();__nop();__nop();__nop();
+    __nop();__nop();__nop();__nop();__nop();__nop();
 }
 
 //≥ı ºªØIIC

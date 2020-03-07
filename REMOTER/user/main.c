@@ -1,5 +1,4 @@
 #include "bsp.h"
-void test(void);
 
 void twinkle()
 {
@@ -22,10 +21,12 @@ int main(){
 	
 //	TX_Mode();//接收模式
 
-while(1)	
-{	
-	printf("hello\r\n");
-	twinkle();
+    while(1)	
+    {	
+        Handle_XY();
+        
+//	printf("hello\r\n");
+        twinkle();
 	
 //	if(NRF24L01_TxPacket(txbuf) == TX_OK)//发送成功
 //	{
@@ -33,6 +34,5 @@ while(1)
 //	}
 //    delay_ms(1000);			//间隔1s发送一次
 
-}	
-
+    }
 }

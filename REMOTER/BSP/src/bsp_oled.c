@@ -1,5 +1,32 @@
 #include "bsp_oled.h"
 
+void Handle_XY(void)
+{
+    Handle_adc_value();
+    Handle_coordinate(adc_x1, adc_y1, 0);
+    Handle_coordinate(adc_x2, adc_y2, 1);
+    OLED_Display_XY(coordinate[0],coordinate[1],0);
+    OLED_Display_XY(coordinate[2],coordinate[3],1);
+}
+
+void OLED_Display_XY(signed char x, signed char y, uint8_t joystick)
+{
+    uint8_t buffer[20]={0};
+    if(x<0)
+        sprintf((char*)buffer,"X:-%d   ",(-x));
+    else 
+        sprintf((char*)buffer,"X:%d   ",x);
+
+    OLED_ShowString(0+joystick*48,1,buffer,16);
+    
+    memset(buffer,0,20);
+    if(y<0)
+        sprintf((char*)buffer,"Y:-%d   ",(-y));
+    else
+        sprintf((char*)buffer,"Y:%d   ",y);
+    OLED_ShowString(0+joystick*48,4,buffer,16);
+}
+
 /**********************************************
 // IIC Write Command
 **********************************************/
@@ -55,7 +82,8 @@ void fill_picture(unsigned char fill_Data)
 
 //坐标设置
 void OLED_Set_Pos(unsigned char x, unsigned char y) 
-{ 	OLED_WR_Byte(0xb0+y,OLED_CMD);
+{ 	
+    OLED_WR_Byte(0xb0+y,OLED_CMD);
 	OLED_WR_Byte(((x&0xf0)>>4)|0x10,OLED_CMD);
 	OLED_WR_Byte((x&0x0f),OLED_CMD); 
 }
@@ -159,15 +187,20 @@ void OLED_ShowNum(u8 x,u8 y,u32 num,u8 len,u8 size2)
 	 	OLED_ShowChar(x+(size2/2)*t,y,temp+'0',size2); 
 	}
 } 
-//显示一个字符号串
+//显示字符串
 void OLED_ShowString(u8 x,u8 y,u8 *chr,u8 Char_Size)
 {
 	unsigned char j=0;
 	while (chr[j]!='\0')
-	{		OLED_ShowChar(x,y,chr[j],Char_Size);
-			x+=8;
-		if(x>120){x=0;y+=2;}
-			j++;
+	{		
+        OLED_ShowChar(x,y,chr[j],Char_Size);
+        x+=8;
+		if(x>120)
+        {
+            x=0;
+            y+=2;
+        }
+        j++;
 	}
 }
 //显示汉字
@@ -176,16 +209,16 @@ void OLED_ShowCHinese(u8 x,u8 y,u8 no)
 	u8 t,adder=0;
 	OLED_Set_Pos(x,y);	
     for(t=0;t<16;t++)
-		{
-				OLED_WR_Byte(Hzk[2*no][t],OLED_DATA);
-				adder+=1;
-     }	
-		OLED_Set_Pos(x,y+1);	
+    {
+        OLED_WR_Byte(Hzk[2*no][t],OLED_DATA);
+        adder+=1;
+    }	
+    OLED_Set_Pos(x,y+1);	
     for(t=0;t<16;t++)
-			{	
-				OLED_WR_Byte(Hzk[2*no+1][t],OLED_DATA);
-				adder+=1;
-      }					
+    {	
+        OLED_WR_Byte(Hzk[2*no+1][t],OLED_DATA);
+        adder+=1;
+    }					
 }
 /***********功能描述：显示显示BMP图片128×64起始点坐标(x,y),x的范围0～127，y为页的范围0～7*****************/
 void OLED_DrawBMP(unsigned char x0, unsigned char y0,unsigned char x1, unsigned char y1,unsigned char BMP[])
@@ -249,7 +282,7 @@ void OLED_Init(void)
     OLED_Clear(); 
 }
 
-void test(void)
+void OLED_Test(void)
 {
     char t=' ';
     OLED_Clear(); 
@@ -273,7 +306,7 @@ void test(void)
     OLED_ShowCHinese(108,0,6);//技
     OLED_ShowString(6,3,"0.96' OLED TEST",16);
     //OLED_ShowString(8,2,"ZHONGJINGYUAN");  
- //	OLED_ShowString(20,4,"2014/05/01");  
+    //OLED_ShowString(20,4,"2014/05/01");  
     OLED_ShowString(0,6,"ASCII:",16);  
     OLED_ShowString(63,6,"CODE:",16);  
     OLED_ShowChar(48,6,t,16);//显示ASCII字符	   

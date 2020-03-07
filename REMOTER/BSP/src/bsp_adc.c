@@ -12,8 +12,8 @@ Y: ADC12_IN1 PA1
 SW:PA2
 */ 
 uint16_t ADC_value[CHANNEL_NUM*SAMPLE_TIME];
-uint8_t joy_x1, joy_y1, joy_x2, joy_y2;
-signed char coordinate[2];//{x, y} 0~100
+uint32_t adc_x1, adc_y1, adc_x2, adc_y2;
+signed char coordinate[4];//{x, y} 0~100
 
 void Joystick_DMA_Init(void)
 {
@@ -87,27 +87,41 @@ void Handle_adc_value(void)
         sum3 += ADC_value[2+i*CHANNEL_NUM];
         sum4 += ADC_value[3+i*CHANNEL_NUM];
     }
-    joy_x2 = sum1/SAMPLE_TIME;
-    joy_y2 = sum2/SAMPLE_TIME;
-    joy_x1 = sum3/SAMPLE_TIME;
-    joy_y1 = sum4/SAMPLE_TIME;    
+    adc_x2 = sum1/SAMPLE_TIME;
+    adc_y2 = sum2/SAMPLE_TIME;
+    adc_x1 = sum3/SAMPLE_TIME;
+    adc_y1 = sum4/SAMPLE_TIME;    
 }
 
+void cal_range(uint16_t num, signed char  *buffer)
+{
+    signed short diff;
+
+    if(num>0 && num<1948)
+    {
+        if(num<200)
+            *buffer = -100;
+        else
+        {
+            diff = num - 1948;
+            *buffer = (float)diff/1748.0 *100;
+        }
+    }
+    else if(num>2148 && num<4096)
+    {
+        if(num>3896)
+            *buffer = 100;
+        else
+        {
+            diff = num - 2148;
+            *buffer = (float)diff/1748.0 *100;
+        }
+    }
+}
 //joystick1 handle direction -100~100
 //joystick2 handle accelerator -100~100
-void Handle_xy(uint16_t adc_x, uint16_t adc_y)
+void Handle_coordinate(uint16_t adc_x, uint16_t adc_y, uint8_t joystick)
 {
-    signed short diff_x, diff_y;
-    diff_x = adc_x - ORIGIN_POINT;
-    diff_y = adc_y - ORIGIN_POINT;
-
-    if( ( ( adc_x>ORIGIN_POINT ) && ( diff_x>THRESHOLD_XY) ) || ( ( adc_x<ORIGIN_POINT ) && ( diff_x<-THRESHOLD_XY) ))
-        coordinate[0] = (float)diff_x/2048.0 *100;
-    else
-        coordinate[0]=0;
-
-    if( ( ( adc_y>ORIGIN_POINT ) && ( diff_y>THRESHOLD_XY) ) || ( ( adc_y<ORIGIN_POINT ) && ( diff_y<-THRESHOLD_XY) ))
-        coordinate[1] = (float)diff_y/2048.0 *100;
-    else
-        coordinate[1]=0;
+    cal_range(adc_x,coordinate+joystick*2);
+    cal_range(adc_y,coordinate+1+joystick*2);
 }
