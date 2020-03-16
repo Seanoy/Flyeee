@@ -1,12 +1,4 @@
 #include "communication.h"
-#define DATA_LENGTH 4
-
-typedef struct{
-    uint8_t head;
-    uint8_t cmd;
-    signed char data[DATA_LENGTH];
-    uint8_t checksum;
-}nrf_data_t;
 
 nrf_data_t nrf_rxdata;
 
@@ -18,7 +10,7 @@ void Communication_Init(void)
     nrf_rxdata.checksum=0xFF;
 }
 
-u8 Cal_Checksum(struct data_frame frame)
+u8 Cal_Checksum( nrf_data_t frame)
 {
     return ~(frame.cmd + frame.data[0] + frame.data[1] + frame.data[2] + frame.data[3]);
 }

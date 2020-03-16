@@ -11,12 +11,12 @@ typedef struct {
     uint8_t cmd;
     signed char data[DATA_LENGTH];
     uint8_t checksum;
-}nrf_data ;
+}nrf_data_t;
 
-extern nrf_data nrf_txdata;
+extern nrf_data_t nrf_txdata;
 
 void Communication_Init(void);
-void Fill_Data(uint8_t cmd, signed char *buffer, nrf_data *frame);
+void Fill_Data(uint8_t cmd, signed char *buffer, nrf_data_t *frame);
 //void Convert_Struct(struct data_frame *frame, uint8_t *buffer);
 
 #endif

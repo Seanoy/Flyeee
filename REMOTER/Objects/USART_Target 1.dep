@@ -45,7 +45,7 @@ I (.\BSP\inc\bsp_oled.h)(0x5E630112)
 I (.\BSP\inc\bsp_iic.h)(0x5E621DCA)
 I (.\BSP\inc\oledfont.h)(0x5E6229AA)
 I (F:\keil\ARM\ARMCC\include\string.h)(0x5D9AD218)
-I (.\user\communication.h)(0x5E6F3839)
+I (.\user\communication.h)(0x5E6F3980)
 F (.\user\stm32f10x_it.c)(0x5BF8EEAD)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I .\CMSIS -I .\FWlib\inc -I .\ -I .\user -I .\BSP\inc-I.\RTE\_Target_1-IF:\keil\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-IF:\keil\ARM\CMSIS\Include-D__UVISION_VERSION="529" -DSTM32F10X_MD -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o .\objects\stm32f10x_it.o --omf_browse .\objects\stm32f10x_it.crf --depend .\objects\stm32f10x_it.d)
 I (user\stm32f10x_it.h)(0x56F15262)
 I (.\CMSIS\stm32f10x.h)(0x5739E270)
@@ -76,8 +76,8 @@ I (.\FWlib\inc\stm32f10x_spi.h)(0x56F15262)
 I (.\FWlib\inc\stm32f10x_usart.h)(0x56F15262)
 I (.\FWlib\inc\misc.h)(0x56F15262)
 I (F:\keil\ARM\ARMCC\include\stdio.h)(0x5D9AD21A)
-F (.\user\communication.c)(0x5E6F383A)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I .\CMSIS -I .\FWlib\inc -I .\ -I .\user -I .\BSP\inc-I.\RTE\_Target_1-IF:\keil\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-IF:\keil\ARM\CMSIS\Include-D__UVISION_VERSION="529" -DSTM32F10X_MD -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o .\objects\communication.o --omf_browse .\objects\communication.crf --depend .\objects\communication.d)
-I (user\communication.h)(0x5E6F3839)
+F (.\user\communication.c)(0x5E6F398B)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I .\CMSIS -I .\FWlib\inc -I .\ -I .\user -I .\BSP\inc-I.\RTE\_Target_1-IF:\keil\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-IF:\keil\ARM\CMSIS\Include-D__UVISION_VERSION="529" -DSTM32F10X_MD -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o .\objects\communication.o --omf_browse .\objects\communication.crf --depend .\objects\communication.d)
+I (user\communication.h)(0x5E6F3980)
 I (.\CMSIS\stm32f10x.h)(0x5739E270)
 I (.\CMSIS\core_cm3.h)(0x56F15262)
 I (F:\keil\ARM\ARMCC\include\stdint.h)(0x5D9AD218)
@@ -458,7 +458,7 @@ I (.\BSP\inc\bsp_oled.h)(0x5E630112)
 I (.\BSP\inc\bsp_iic.h)(0x5E621DCA)
 I (.\BSP\inc\oledfont.h)(0x5E6229AA)
 I (F:\keil\ARM\ARMCC\include\string.h)(0x5D9AD218)
-I (.\user\communication.h)(0x5E6F3839)
+I (.\user\communication.h)(0x5E6F3980)
 F (.\BSP\src\bsp_sys.c)(0x5C24ADC8)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I .\CMSIS -I .\FWlib\inc -I .\ -I .\user -I .\BSP\inc-I.\RTE\_Target_1-IF:\keil\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-IF:\keil\ARM\CMSIS\Include-D__UVISION_VERSION="529" -DSTM32F10X_MD -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o .\objects\bsp_sys.o --omf_browse .\objects\bsp_sys.crf --depend .\objects\bsp_sys.d)
 I (.\BSP\inc\bsp_sys.h)(0x5CAFF659)
 I (.\CMSIS\stm32f10x.h)(0x5739E270)

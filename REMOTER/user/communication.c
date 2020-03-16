@@ -1,6 +1,6 @@
 #include "communication.h"
 
-nrf_data nrf_txdata;
+nrf_data_t nrf_txdata;
 
 void Communication_Init(void)
 {
@@ -10,18 +10,18 @@ void Communication_Init(void)
     nrf_txdata.checksum=0xFF;
 }
 
-static void Cal_Checksum(nrf_data *frame)
+static void Cal_Checksum(nrf_data_t *frame)
 {
     frame->checksum = ~(frame->cmd + frame->data[0] + frame->data[1] + frame->data[2] + frame->data[3]);
 }
 
-static void Flush_Data(nrf_data *frame)
+static void Flush_Data(nrf_data_t *frame)
 {
-    memset(frame, 0, sizeof(nrf_data));
+    memset(frame, 0, sizeof(nrf_data_t));
     frame->head = 0xFE;//≤π≥‰Õ∑≤ø
 }
 
-void Fill_Data(uint8_t cmd, signed char *buffer,nrf_data *frame)
+void Fill_Data(uint8_t cmd, signed char *buffer,nrf_data_t *frame)
 {
     uint8_t i;
     Flush_Data(frame);//clear data
