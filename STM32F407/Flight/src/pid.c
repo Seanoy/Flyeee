@@ -1,121 +1,109 @@
 #include "pid.h"
 
-//PID初始化
-void pidInit(PidObject* pid, const float desire, const pidInit_t pidParam, const float dt)
+//init pid object struct
+void pidInit(pidObject_t *pid, const float desire, const pidInit_t pidParam, const float dt)
 {
-	pid->error = 0;
-	pid->prevError = 0;
-	pid->integral = 0;
-	pid->derivative = 0;
-	pid->desire = desire;
-	pid->kp = pidParam.kp;
-	pid->ki = pidParam.ki;
-	pid->kd = pidParam.kd;
-	pid->iLimit = DEFAULT_PID_INTEGRAL_LIMIT;
-	pid->outputLimit = DEFAULT_PID_OUTPUT_LIMIT;
-	pid->dt = dt;
+    pid->prevError  = 0;
+    pid->error      = 0;
+    pid->integral   = 0;
+    pid->derivative = 0;
+    pid->iLimit     = DEFAULT_PID_INTEGRAL_LIMIT;
+    pid->outLimit   = DEFAULT_PID_OUTPUT_LIMIT;
+    pid->desire     = desire;
+    pid->kp         = pidParam.kp;
+    pid->ki         = pidParam.ki;
+    pid->kd         = pidParam.kd;
+    pid->dt         = dt;
 }
 
-//PID更新参数
-float pidUpdate(PidObject* pid, const float error)
+//update pid object by error value
+//use position pid
+float pidUpdate(pidObject_t *pid, const float error)
 {
-	float output;
-
-	pid->error = error;   
-	pid->integral += pid->error * pid->dt;
-	
-	//积分限幅
-	if (pid->integral > pid->iLimit)
-	{
-		pid->integral = pid->iLimit;
-	}
-	else if (pid->integral < -pid->iLimit)
-	{
-		pid->integral = -pid->iLimit;
-	}
-
-	pid->derivative = (pid->error - pid->prevError) / pid->dt;
-
-	pid->outP = pid->kp * pid->error;
-	pid->outI = pid->ki * pid->integral;
-	pid->outD = pid->kd * pid->derivative;
-
-	output = pid->outP + pid->outI + pid->outD;
-	
-	//输出限幅
-	if (pid->outputLimit != 0)
-	{
-		if (output > pid->outputLimit)
-			output = pid->outputLimit;
-		else if (output < -pid->outputLimit)
-			output = -pid->outputLimit;
-	}
-	
-	pid->prevError = pid->error;
-
-	pid->out = output;
-	return output;
+    float output;//total output value
+    
+    pid->error = error;
+    pid->integral += pid->error * pid->dt;//calculate integral value
+    
+    //integration limit
+    if(pid->integral > pid->iLimit)
+        pid->integral = pid->iLimit;
+    else if(pid->integral < -pid->iLimit)
+        pid->integral = -pid->iLimit;
+    
+    //difference of error and prevError
+    pid->derivative = (pid->error - pid->prevError) * pid->dt;
+    
+    //calculate all parts output value
+    pid->outP = pid->kp * pid->error;
+    pid->outI = pid->ki * pid->integral;
+    pid->outD = pid->kd * pid->derivative;
+    
+    output = pid->outP + pid->outI + pid->outD;
+    
+    //output limit
+    if(pid->outLimit != 0)
+    {
+        if(output > pid->outLimit)
+            output = pid->outLimit;
+        else if(output < -pid->outLimit)
+            output = -pid->outLimit;
+    }
+    
+    pid->prevError = error;
+    pid->out = output;
+    return output;
 }
 
-//设置积分限幅值
-void pidSetIntegralLimit(PidObject* pid, float ilimit)
+void pidSetIntegralLimit(pidObject_t* pid, const float ilimit) 
 {
-	pid->iLimit = ilimit;
+    pid->iLimit = ilimit;
 }
 
-//设置输出限幅值
-void pidSetOutputLimit(PidObject* pid, const float limit) 
+void pidSetError(pidObject_t* pid, const float error) 
 {
-	pid->outputLimit = limit;
-}
-	
-//设置偏差值
-void pidSetError(PidObject* pid, const float error)
-{
-	pid->error = error;
+    pid->error = error;
 }
 
-//设置给定值
-void pidSetDesired(PidObject* pid, const float desire)
+void pidSetOutputLimit(pidObject_t* pid, const float outLimit) 
 {
-	pid->desire = desire;
+    pid->outLimit = outLimit;
 }
 
-//获得给定值
-float pidGetDesired(PidObject* pid)
+void pidSetDesire(pidObject_t* pid, const float desire) 
 {
-	return pid->desire;
+    pid->desire = desire;
 }
 
-//设置比例值
-void pidSetKp(PidObject* pid, const float kp)
+float pidGetDesire(pidObject_t* pid) 
 {
-	pid->kp = kp;
+    return pid->desire;
 }
 
-//设置积分值
-void pidSetKi(PidObject* pid, const float ki)
+void pidSetKp(pidObject_t* pid, const float kp) 
 {
-	pid->ki = ki;
+    pid->kp = kp;
 }
 
-//设置微分值
-void pidSetKd(PidObject* pid, const float kd)
+void pidSetKi(pidObject_t* pid, const float ki) 
 {
-	pid->kd = kd;
+    pid->ki = ki;
 }
 
-//设置时间增量
-void pidSetDt(PidObject* pid, const float dt) 
+void pidSetKd(pidObject_t* pid, const float kd) 
+{
+    pid->kd = kd;
+}
+
+void pidSetDt(pidObject_t* pid, const float dt) 
 {
     pid->dt = dt;
 }
 
-//重设PID参数
-void pidReset(PidObject* pid)
+void pidReset(pidObject_t* pid) 
 {
-	pid->error = 0;
-	pid->prevError = 0;
-	pid->integral = 0;
+	pid->error      = 0;
+	pid->prevError  = 0;
+	pid->integral   = 0;
 	pid->derivative = 0;
 }

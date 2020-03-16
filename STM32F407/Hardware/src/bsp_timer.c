@@ -1,6 +1,6 @@
 #include "bsp_timer.h"
 
-void Watchdog_TIMER_Init(u16 arr, u16 psc)
+void IWDG_FEED_TIMER_Init(u16 arr, u16 psc)
 {
     TIM_TimeBaseInitTypeDef TIM_TimeBaseInitStructure;
     NVIC_InitTypeDef NVIC_InitStructure;

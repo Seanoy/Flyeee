@@ -216,7 +216,7 @@ u8 Sys_Clock_Set(u32 plln,u32 pllm,u32 pllp,u32 pllq)
 //pllm:主PLL和音频PLL分频系数(PLL之前的分频),取值范围:2~63.
 //pllp:系统时钟的主PLL分频系数(PLL之后的分频),取值范围:2,4,6,8.(仅限这4个值!)
 //pllq:USB/SDIO/随机数产生器等的主PLL分频系数(PLL之后的分频),取值范围:2~15.
-void Stm32_Clock_Init(u32 plln,u32 pllm,u32 pllp,u32 pllq)
+void STM32_Clock_Init(u32 plln,u32 pllm,u32 pllp,u32 pllq)
 {  
 	RCC->CR|=0x00000001;		//设置HISON,开启内部高速RC振荡
 	RCC->CFGR=0x00000000;		//CFGR清零 

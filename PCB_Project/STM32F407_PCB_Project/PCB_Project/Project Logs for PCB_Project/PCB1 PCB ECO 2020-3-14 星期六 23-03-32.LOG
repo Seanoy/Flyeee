@@ -1,0 +1,12 @@
+Added Pin To Net: NetName=5V Pin=P14-1
+Added Pin To Net: NetName=5V Pin=R24-1
+Added Member To Class: ClassName=Sheet1 Member=Component C6 Cap
+Added Member To Class: ClassName=Sheet1 Member=Component C8 Cap
+Added Member To Class: ClassName=Sheet1 Member=Component D7 бл
+Added Member To Class: ClassName=Sheet1 Member=Component D8 ╨Л
+Added Member To Class: ClassName=Sheet1 Member=Component P14 Mirco-USB
+Added Member To Class: ClassName=Sheet1 Member=Component R24 Res2
+Added Member To Class: ClassName=Sheet1 Member=Component R26 Res2
+Added Member To Class: ClassName=Sheet1 Member=Component R27 Res2
+Added Member To Class: ClassName=Sheet1 Member=Component R32 Res2
+Added Member To Class: ClassName=Sheet1 Member=Component U4 TP4056

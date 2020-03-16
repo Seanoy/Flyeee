@@ -14,7 +14,7 @@ static u16 ratioToCCRx(u16 val)
 	return ((val) >> (32 - MOTORS_PWM_BITS) & ((1 << MOTORS_PWM_BITS) - 1));
 }
 
-void MOTOR_TIM_Init(void)
+void MOTOR_Init(void)
 {
     GPIO_InitTypeDef GPIO_InitStructure;
     TIM_TimeBaseInitTypeDef TIM_TimeBaseInitStructure;

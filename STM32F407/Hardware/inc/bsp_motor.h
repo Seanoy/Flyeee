@@ -21,7 +21,7 @@
 #define MOTORS_TEST_DELAY_TIME_MS 500
 
 
-void MOTOR_TIM_Init(void);
+void MOTOR_Init(void);
 bool motorsTest(void);		/*电机测试*/
 void motorsSetRatio(u32 id, u16 ithrust);	/*设置电机占空比*/
 

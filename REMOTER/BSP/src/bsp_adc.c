@@ -117,6 +117,10 @@ void cal_range(uint16_t num, signed char  *buffer)
             *buffer = (float)diff/1748.0 *100;
         }
     }
+    else
+    {
+        *buffer = 0;
+    }
 }
 //joystick1 handle direction -100~100
 //joystick2 handle accelerator -100~100

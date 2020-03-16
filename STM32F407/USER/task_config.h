@@ -2,8 +2,7 @@
 #define __TASK_CONFIG
 
 #include "bsp.h"
-#include <stdlib.h>
-#include <string.h>
+
 #define LED0 PCout(13)
 #define LED1 PCout(14)
 

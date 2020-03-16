@@ -14,3 +14,4 @@
 .\objects\bsp_led.o: .\FWlib\inc\stm32f10x_spi.h
 .\objects\bsp_led.o: .\FWlib\inc\stm32f10x_usart.h
 .\objects\bsp_led.o: .\FWlib\inc\misc.h
+.\objects\bsp_led.o: .\BSP\inc\bsp_sys.h

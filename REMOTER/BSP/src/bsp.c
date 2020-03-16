@@ -14,14 +14,14 @@ void BSP_init(void)
 	delay_init();
     
     //Communication Init
-    Comm_Init();
+    Communication_Init();
 	NRF24L01_Init();
-//    NRF24L01_CSN=0;
+    
     if(NRF24L01_Check())
 		printf("Device Error!\r\n");//检测不到24L01
 	else
-        printf("Device Pass!\r\n");
-	TX_Mode();//发送模式
+        printf("Device Pass!\r\n");//检测到24L01
+	TX_Mode();//发送模式 遥控器
 
     //Joystick Init
     Joystick_DMA_Init();
@@ -29,11 +29,13 @@ void BSP_init(void)
     
     //Button Init
     Button_Init();
-
+    
+    //IIC Init
+    IIC_Init();
+    delay_ms(100);
+    
     //OLED Init
     OLED_Init();
-    
-
 }
 
 

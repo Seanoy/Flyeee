@@ -37,8 +37,4 @@
 .\objects\bsp_bmp180.o: .\FWlib\inc\stm32f4xx_fsmc.h
 .\objects\bsp_bmp180.o: .\Hardware\inc\bsp_myiic.h
 .\objects\bsp_bmp180.o: .\System\inc\bsp_sys.h
-.\objects\bsp_bmp180.o: .\Hardware\inc\bsp_mpu9250.h
-.\objects\bsp_bmp180.o: F:\keil\ARM\ARMCC\Bin\..\include\stdio.h
-.\objects\bsp_bmp180.o: .\Hardware\inc\bsp_myiic.h
-.\objects\bsp_bmp180.o: F:\keil\ARM\ARMCC\Bin\..\include\stdbool.h
 .\objects\bsp_bmp180.o: F:\keil\ARM\ARMCC\Bin\..\include\math.h

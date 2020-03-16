@@ -15,9 +15,10 @@ int main(){
     {
         Handle_Transform();//transform joystick data
         OLED_Show_XY();//OLED display joystick xy axis value
-        Fill_Data(0x01, coordinate, &txdata);//fill data to struct data_frame
-//        NRF24L01_Tx_Data((u8 *)&txdata);
-        
-        twinkle();
+        Fill_Data(0x01, coordinate, &nrf_txdata);//fill data to struct data_frame
+        if(NRF24L01_Tx_Data((u8 *)&nrf_txdata) == TX_OK)
+        {
+            LED1=~LED1;
+        }
     }
 }

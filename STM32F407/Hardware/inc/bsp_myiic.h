@@ -1,10 +1,6 @@
 #ifndef __BSP_MYIIC_H
 #define __BSP_MYIIC_H
 #include "bsp_sys.h" 
-
-//
-#include "bsp_mpu9250.h"
-#include <stdio.h>
    	   		   
 //IO方向设置
 #define SDA_IN()  {GPIOB->MODER&=~(3<<(7*2));GPIOB->MODER|=0<<7*2;}	//PB9输入模式

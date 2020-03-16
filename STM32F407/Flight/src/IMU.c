@@ -1,9 +1,8 @@
 #include "imu.h"
 
-S_FLOAT_ANGLE Q_ANGLE;
-float   halfT=0.002;;                    //采样时间的一半，我们的应该是2ms
+float halfT=0.002;;                    //采样时间的一半，我们的应该是2ms
 
-void IMUupdate(float gx, float gy, float gz, float ax, float ay, float az)
+void IMUupdate(float gx, float gy, float gz, float ax, float ay, float az, struct float_angle *angle)
 {
   static float q0 = 1.0f, q1 = 0.0f, q2 = 0.0f, q3 = 0.0f;   
 //  static float exInt = 0.0f, eyInt = 0.0f, ezInt = 0.0f;
@@ -50,7 +49,9 @@ void IMUupdate(float gx, float gy, float gz, float ax, float ay, float az)
 //axyz是测量得到的重力向量，vxyz是陀螺积分后的姿态来推算出的重力向量，它们都是机体坐标参照系上的重力向量。
 //那它们之间的误差向量，就是陀螺积分后的姿态和加计测出来的姿态之间的误差。
 //向量间的误差，可以用向量叉积（也叫向量外积、叉乘）来表示，exyz就是两个重力向量的叉积。
-//这个叉积向量仍旧是位于机体坐标系上的，而陀螺积分误差也是在机体坐标系，而且叉积的大小与陀螺积分误差成正比，正好拿来纠正陀螺。（你可以自己拿东西想象一下）由于陀螺是对机体直接积分，所以对陀螺的纠正量会直接体现在对机体坐标系的纠正。
+//这个叉积向量仍旧是位于机体坐标系上的，而陀螺积分误差也是在机体坐标系，而且叉积的大小与陀螺积分误差成正比，
+//正好拿来纠正陀螺。（你可以自己拿东西想象一下）由于陀螺是对机体直接积分，
+//所以对陀螺的纠正量会直接体现在对机体坐标系的纠正。
 
 /*  
   exInt = exInt + ex * Ki ;					//计算和应用积分反馈			 
@@ -97,13 +98,13 @@ void IMUupdate(float gx, float gy, float gz, float ax, float ay, float az)
   q3 = q3 / norm;
 
   //转换为欧拉角
-  Q_ANGLE.Pitch  = asin(-2 * q1 * q3 + 2 * q0* q2)* 57.3; 					// pitch
-  Q_ANGLE.Roll = atan2(2 * q2 * q3 + 2 * q0 * q1, -2 * q1 * q1 - 2 * q2* q2 + 1)* 57.3; 	// roll
-  Q_ANGLE.Yaw = -atan2(2 * q1 * q2 + 2 * q0 * q3, -2 * q2*q2 - 2 * q3 * q3 + 1)* 57.3; // yaw
+  angle->Pitch  = asin(-2 * q1 * q3 + 2 * q0* q2)* 57.3; 					// pitch
+  angle->Roll = atan2(2 * q2 * q3 + 2 * q0 * q1, -2 * q1 * q1 - 2 * q2* q2 + 1)* 57.3; 	// roll
+  angle->Yaw = -atan2(2 * q1 * q2 + 2 * q0 * q3, -2 * q2*q2 - 2 * q3 * q3 + 1)* 57.3; // yaw
 }
 
 
-void AGMIMUupdate(float gx, float gy, float gz, float ax, float ay, float az,float mx, float my, float mz)
+void AGMIMUupdate(float gx, float gy, float gz, float ax, float ay, float az,float mx, float my, float mz, struct float_angle *angle)
 {
   float norm;
   float hx, hy, hz, bx, bz;
@@ -183,7 +184,7 @@ void AGMIMUupdate(float gx, float gy, float gz, float ax, float ay, float az,flo
   q3 = q3 / norm;
 
   //转换为欧拉角
-  Q_ANGLE.Pitch  = asin(-2 * q1 * q3 + 2 * q0* q2)* 57.3; 					// pitch
-  Q_ANGLE.Roll = atan2(2 * q2 * q3 + 2 * q0 * q1, -2 * q1 * q1 - 2 * q2* q2 + 1)* 57.3; 	// roll
-  Q_ANGLE.Yaw = -atan2(2 * q1 * q2 + 2 * q0 * q3, -2 * q2*q2 - 2 * q3 * q3 + 1)* 57.3; // yaw
+  angle->Pitch  = asin(-2 * q1 * q3 + 2 * q0* q2)* 57.3; 					// pitch
+  angle->Roll = atan2(2 * q2 * q3 + 2 * q0 * q1, -2 * q1 * q1 - 2 * q2* q2 + 1)* 57.3; 	// roll
+  angle->Yaw = -atan2(2 * q1 * q2 + 2 * q0 * q3, -2 * q2*q2 - 2 * q3 * q3 + 1)* 57.3; // yaw
 }

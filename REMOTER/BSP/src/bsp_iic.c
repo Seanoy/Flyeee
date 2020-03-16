@@ -13,7 +13,7 @@ void IIC_Init(void)
 
     RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB, ENABLE);//使能GPIOB时钟
 
-    //GPIOB8,B9初始化设置
+    //GPIOB12,PB13初始化设置
     GPIO_InitStructure.GPIO_Pin = GPIO_Pin_12 | GPIO_Pin_13;
     GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;//普通输出模式
     GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;

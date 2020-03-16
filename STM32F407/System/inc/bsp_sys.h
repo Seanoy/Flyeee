@@ -132,7 +132,7 @@
 #define PIN15				1<<15 
 ////////////////////////////////////////////////////////////////////////////////// 
 u8 Sys_Clock_Set(u32 plln,u32 pllm,u32 pllp,u32 pllq);		//系统时钟设置
-void Stm32_Clock_Init(u32 plln,u32 pllm,u32 pllp,u32 pllq); //时钟初始化  
+void STM32_Clock_Init(u32 plln,u32 pllm,u32 pllp,u32 pllq); //时钟初始化  
 void Sys_Soft_Reset(void);      							//系统软复位
 void Sys_Standby(void);         							//待机模式 	
 void MY_NVIC_SetVectorTable(u32 NVIC_VectTab, u32 Offset);	//设置偏移地址

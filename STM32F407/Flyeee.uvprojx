@@ -643,9 +643,9 @@
               <FilePath>.\USER\stm32f4xx_it.c</FilePath>
             </File>
             <File>
-              <FileName>CirculeBuffer.c</FileName>
+              <FileName>circulebuffer.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\CirculeBuffer.c</FilePath>
+              <FilePath>.\USER\circulebuffer.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -653,9 +653,9 @@
           <GroupName>Communication</GroupName>
           <Files>
             <File>
-              <FileName>msg_process.c</FileName>
+              <FileName>communication.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\Communication\src\msg_process.c</FilePath>
+              <FilePath>.\Communication\src\communication.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -663,9 +663,9 @@
           <GroupName>Flight</GroupName>
           <Files>
             <File>
-              <FileName>flight_pid.c</FileName>
+              <FileName>imu.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\Flight\src\flight_pid.c</FilePath>
+              <FilePath>.\Flight\src\imu.c</FilePath>
             </File>
             <File>
               <FileName>kalman_filter.c</FileName>
@@ -673,9 +673,29 @@
               <FilePath>.\Flight\src\kalman_filter.c</FilePath>
             </File>
             <File>
-              <FileName>imu.c</FileName>
+              <FileName>pid.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\Flight\src\imu.c</FilePath>
+              <FilePath>.\Flight\src\pid.c</FilePath>
+            </File>
+            <File>
+              <FileName>position_pid.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Flight\src\position_pid.c</FilePath>
+            </File>
+            <File>
+              <FileName>state_control.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Flight\src\state_control.c</FilePath>
+            </File>
+            <File>
+              <FileName>attitude_pid.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Flight\src\attitude_pid.c</FilePath>
+            </File>
+            <File>
+              <FileName>config_param.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Flight\src\config_param.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -713,6 +733,11 @@
               <FilePath>.\Hardware\src\bsp_ak8963.c</FilePath>
             </File>
             <File>
+              <FileName>bsp_mpu6500.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Hardware\src\bsp_mpu6500.c</FilePath>
+            </File>
+            <File>
               <FileName>bsp_bmp180.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Hardware\src\bsp_bmp180.c</FilePath>
@@ -731,11 +756,6 @@
               <FileName>bsp_myiic.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Hardware\src\bsp_myiic.c</FilePath>
-            </File>
-            <File>
-              <FileName>bsp_mpu9250.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Hardware\src\bsp_mpu9250.c</FilePath>
             </File>
             <File>
               <FileName>bsp_spi.c</FileName>

@@ -1,42 +1,59 @@
 #ifndef __PID_H
 #define __PID_H
-#include <stdbool.h>
-#include "config.h"
-#define DEFAULT_PID_INTEGRAL_LIMIT 		500.0 //默认pid的积分限幅
-#define DEFAULT_PID_OUTPUT_LIMIT      0.0	  //默认pid输出限幅，0为不限幅
 
+#include "bsp_ak8963.h"
+#include "sensor_type.h"
+
+#define DEFAULT_PID_INTEGRAL_LIMIT  500.0//default integral limit
+#define DEFAULT_PID_OUTPUT_LIMIT 0.0//default do not limit pid output
+
+//PID struct
+typedef struct 
+{
+    float desire;       //desire value
+    float error;        //error value
+    float prevError;    //previous error
+    float integral;     //integral value
+    float derivative;   //derivative value
+    float kp;           //p coefficient
+    float ki;           //i coefficient
+    float kd;           //d coefficient
+    float iLimit;       //limit integral
+    float outLimit;     //output limit value
+    float outP;         //P output value
+    float outI;         //I output value
+    float outD;         //D output value
+    float dt;           //delta time
+    float out;          //total output value
+}pidObject_t;
+
+//PID Init structure
 typedef struct
 {
-	float desire;			//设定值
-	float error;			//偏差值
-	float prevError;	//前一次偏差值
-	float integral;		//积分值
-	float derivative;	//导数
-	float kp;					//比例
-	float ki;					//积分
-	float kd;					//微分
-	float outP;				//比例输出
-	float outI;				//积分输出
-	float outD;				//微分输出
-	float iLimit;			//积分限幅值
-	float outputLimit;//输出限幅值
-	float dt;					//时间增量
-	float out;				//输出值
-}PidObject;
+    float kp;           //p coefficient
+    float ki;           //i coefficient
+    float kd;           //d coefficient
+}pidInit_t;
 
-/*pid结构体初始化*/
-void pidInit(PidObject* pid, const float desired, const pidInit_t pidParam, const float dt);
-void pidSetIntegralLimit(PidObject* pid, const float limit);/*pid积分限幅设置*/
-void pidSetOutputLimit(PidObject* pid, const float limit);
-void pidSetDesired(PidObject* pid, const float desired);	/*pid设置期望值*/
-float pidUpdate(PidObject* pid, const float error);			/*pid更新*/
-float pidGetDesired(PidObject* pid);	/*pid获取期望值*/
-bool pidIsActive(PidObject* pid);		/*pid状态*/
-void pidReset(PidObject* pid);			/*pid结构体复位*/
-void pidSetError(PidObject* pid, const float error);/*pid偏差设置*/
-void pidSetKp(PidObject* pid, const float kp);		/*pid Kp设置*/
-void pidSetKi(PidObject* pid, const float ki);		/*pid Ki设置*/
-void pidSetKd(PidObject* pid, const float kd);		/*pid Kd设置*/
-void pidSetDt(PidObject* pid, const float dt);		/*pid dt设置*/
+//PID position structure
+typedef struct
+{
+    pidInit_t roll;
+    pidInit_t pitch;
+    pidInit_t yaw;
+}pidParam_t;
+
+void pidInit(pidObject_t *pid, const float desire, const pidInit_t pidParam, const float dt);
+float pidUpdate(pidObject_t *pid, const float error);
+void pidSetIntegralLimit(pidObject_t* pid, const float ilimit); 
+void pidSetError(pidObject_t* pid, const float error); 
+void pidSetOutputLimit(pidObject_t* pid, const float outLimit); 
+void pidSetDesire(pidObject_t* pid, const float desire); 
+float pidGetDesire(pidObject_t* pid); 
+void pidSetKp(pidObject_t* pid, const float kp); 
+void pidSetKi(pidObject_t* pid, const float ki); 
+void pidSetKd(pidObject_t* pid, const float kd); 
+void pidSetDt(pidObject_t* pid, const float dt); 
+void pidReset(pidObject_t* pid); 
 
 #endif

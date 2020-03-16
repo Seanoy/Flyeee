@@ -38,6 +38,4 @@
 .\objects\bsp_ak8963.o: F:\keil\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\bsp_ak8963.o: .\System\inc\bsp_sys.h
 .\objects\bsp_ak8963.o: .\Hardware\inc\bsp_myiic.h
-.\objects\bsp_ak8963.o: .\Hardware\inc\bsp_mpu9250.h
-.\objects\bsp_ak8963.o: .\Hardware\inc\bsp_myiic.h
-.\objects\bsp_ak8963.o: F:\keil\ARM\ARMCC\Bin\..\include\stdbool.h
+.\objects\bsp_ak8963.o: .\Flight\inc\sensor_type.h

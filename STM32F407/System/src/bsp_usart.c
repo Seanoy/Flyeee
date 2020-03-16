@@ -29,7 +29,7 @@ int fputc(int ch, FILE *f)
 //初始化IO 串口1
 //pclk2:PCLK2时钟频率(Mhz)
 //bound:波特率 
-void uart_init(u32 pclk2,u32 bound)
+void UART_Init(u32 pclk2,u32 bound)
 {  	 
 	float temp;
 	u16 mantissa;

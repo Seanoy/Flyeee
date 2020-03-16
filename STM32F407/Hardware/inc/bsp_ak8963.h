@@ -5,7 +5,7 @@
 #include <stdio.h>
 #include "bsp_sys.h" 	
 #include "bsp_myiic.h"
-
+#include "sensor_type.h"
 
 //MPU9250内部封装了一个AK8963磁力计,地址和ID如下:
 #define AK8963_ADDR						0X0C	//AK8963的I2C地址
@@ -64,15 +64,8 @@
 #define AK8963_ST_Z_MAX           (s16)(-800)
 
 #define MAG_GAUSS_PER_LSB		(float)(666.7f)
-	
-typedef struct 
-{
-    short mx;
-    short my;
-    short mz;
-}mag_struct;
-
-u8 MPU_Get_Magnetometer(mag_struct *mag_s);
-
+    
+u8 AK8963_Init(void);
+u8 MPU_Get_Magnetometer(axis3f_t *mag_s);
 
 #endif

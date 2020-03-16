@@ -191,7 +191,10 @@ uint8_t NRF24L01_Tx_Data(u8 *txbuf)
 	{
         delay_us(500);
         if(++try_time > TRY_TIME)
+        {
+            //输出发送超时信息
             return TIMEOUT;
+        }
 	}
     return TX_OK;
 }

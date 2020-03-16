@@ -1,32 +1,27 @@
 #include "communication.h"
 
-struct data_frame{
-    uint8_t head;
-    uint8_t cmd;
-    signed char data[DATA_LENGTH];
-    uint8_t checksum;
-}txdata;
+nrf_data nrf_txdata;
 
-void Comm_Init(void)
+void Communication_Init(void)
 {
-    txdata.head = 0xFE;
-    txdata.cmd = 0x00;
-    memset(&txdata.data, (signed char)0, sizeof(txdata.data)*sizeof(signed char));
-    txdata.checksum=0xFF;
+    nrf_txdata.head = 0xFE;
+    nrf_txdata.cmd = 0x00;
+    memset(&nrf_txdata.data, (signed char)0, sizeof(nrf_txdata.data)*sizeof(signed char));
+    nrf_txdata.checksum=0xFF;
 }
 
-static void Cal_Checksum(struct data_frame *frame)
+static void Cal_Checksum(nrf_data *frame)
 {
     frame->checksum = ~(frame->cmd + frame->data[0] + frame->data[1] + frame->data[2] + frame->data[3]);
 }
 
-static void Flush_Data(struct data_frame *frame)
+static void Flush_Data(nrf_data *frame)
 {
-    memset(frame, 0, sizeof(struct data_frame));
+    memset(frame, 0, sizeof(nrf_data));
     frame->head = 0xFE;//≤π≥‰Õ∑≤ø
 }
 
-void Fill_Data(uint8_t cmd, signed char *buffer,struct data_frame *frame)
+void Fill_Data(uint8_t cmd, signed char *buffer,nrf_data *frame)
 {
     uint8_t i;
     Flush_Data(frame);//clear data
