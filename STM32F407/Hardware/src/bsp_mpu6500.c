@@ -60,7 +60,7 @@ bool MPU_EvaluateSelfTest(float low, float high, float value, char* string)
 /** Do a MPU6500 self test.
  * @return True if self test passed, false otherwise
  */
-bool MPU_SelfTest()
+bool MPU_SelfTest(void)
 {
   uint8_t rawData[6] = {0, 0, 0, 0, 0, 0};
   uint8_t saveReg[5];
@@ -193,34 +193,35 @@ bool MPU_SelfTest()
 //    其他,错误代码
 u8 MPU9250_Init(void)
 {
+    u8 who_am_i=0xff;
 	IIC_Init();     //初始化IIC总线
-    vTaskDelay(pdMS_TO_TICKS(10));
-	IIC_Write_One_Byte(MPU9250_ADDR,MPU_PWR_MGMT1_REG,0X80);//复位MPU9250
-    vTaskDelay(pdMS_TO_TICKS(20));
-//    MPU_SelfTest();
-	IIC_Write_One_Byte(MPU9250_ADDR,MPU_PWR_MGMT1_REG,0X00);//唤醒MPU9250
-    vTaskDelay(pdMS_TO_TICKS(10));
-//	IIC_Write_One_Byte(MPU9250_ADDR,MPU_PWR_MGMT1_REG,0X04);//
-    IIC_Write_One_Byte(MPU9250_ADDR,MPU_PWR_MGMT1_REG,0X06);//开启温度 设置CLKSEL,PLL X轴为参考
-    vTaskDelay(pdMS_TO_TICKS(10));
-	IIC_Write_One_Byte(MPU9250_ADDR,MPU_INT_EN_REG,0X00);   //关闭所有中断
-	IIC_Write_One_Byte(MPU9250_ADDR,MPU_USER_CTRL_REG,0X00);//I2C主模式关闭
-	IIC_Write_One_Byte(MPU9250_ADDR,MPU_INTBP_CFG_REG,0X82);//INT引脚低电平有效，开启bypass模式，可以直接读取磁力计
-
-	IIC_Write_One_Byte(MPU9250_ADDR,MPU_GYRO_CFG_REG,3);    //陀螺仪传感器,±2000dps
-	IIC_Write_One_Byte(MPU9250_ADDR,MPU_ACCEL_CFG_REG,3);   //加速度传感器,±2g
+    vTaskDelay(10);
+	IIC_WriteBit(MPU9250_ADDR,MPU_PWR_MGMT1_REG, MPU6500_PWR1_DEVICE_RESET_BIT,ENABLE);//复位MPU9250    
+    vTaskDelay(20);
     
+    who_am_i = IIC_Read_One_Byte(MPU9250_ADDR, MPU_WHO_AM_I_REG);
+    if(who_am_i == 0x38 || who_am_i == 0x39)
+        printf("MPU9250 I2C Connection [OK].\r\n");
+    else
+        printf("MPU9250 I2C Connection [FAIL].\r\n");
+    IIC_WriteBit(MPU9250_ADDR,MPU_PWR_MGMT1_REG, MPU6500_PWR1_SLEEP_BIT,DISABLE);//唤醒MPU9250
+    vTaskDelay(10);
+    IIC_WriteNBit(MPU9250_ADDR, MPU_PWR_MGMT1_REG, MPU6500_PWR1_CLKSEL_BIT, MPU6500_PWR1_CLKSEL_LENGTH, MPU6500_CLOCK_PLL_XGYRO);//设置X轴陀螺作为时钟	
+    vTaskDelay(10);
+    IIC_WriteBit(MPU9250_ADDR,MPU_PWR_MGMT1_REG, MPU6500_PWR1_TEMP_DIS_BIT, !ENABLE);//使能温度传感器
+	IIC_Write_One_Byte(MPU9250_ADDR,MPU_INT_EN_REG,0X00);   //关闭所有中断
+    IIC_WriteBit(MPU9250_ADDR,MPU_INTBP_CFG_REG, MPU6500_INTCFG_I2C_BYPASS_EN_BIT, DISABLE);// 关闭旁路模式
+//	IIC_Write_One_Byte(MPU9250_ADDR,MPU_USER_CTRL_REG,0X00);//I2C主模式关闭
+//	IIC_Write_One_Byte(MPU9250_ADDR,MPU_INTBP_CFG_REG,0X82);//INT引脚低电平有效，开启bypass模式，可以直接读取磁力计
+    IIC_WriteNBit(MPU9250_ADDR, MPU_GYRO_CFG_REG, MPU6500_GCONFIG_FS_SEL_BIT, MPU6500_GCONFIG_FS_SEL_LENGTH, SENSORS_GYRO_FS_CFG);//陀螺仪传感器,±2000dps
+	IIC_WriteNBit(MPU9250_ADDR,MPU_ACCEL_CFG_REG,MPU6500_ACONFIG_AFS_SEL_BIT, MPU6500_ACONFIG_AFS_SEL_LENGTH, SENSORS_ACCEL_FS_CFG);//加速度传感器,±16g
+    IIC_WriteNBit(MPU9250_ADDR,MPU_ACCEL_CFG2_REG, MPU6500_ACONFIG2_DLPF_BIT, MPU6500_ACONFIG2_DLPF_LENGTH, MPU6500_ACCEL_DLPF_BW_41);//设置加速度计低通滤波器
 	IIC_Write_One_Byte(MPU9250_ADDR,MPU_SAMPLE_RATE_REG,0); //设置采样率1000Hz
-	IIC_Write_One_Byte(MPU9250_ADDR,MPU_CFG_REG,0x04);      //设置低通滤波器
+	IIC_WriteNBit(MPU9250_ADDR,MPU_CFG_REG,MPU6500_CFG_DLPF_CFG_BIT, MPU6500_CFG_DLPF_CFG_LENGTH, MPU6500_DLPF_BW_98);//设置陀螺仪低通滤波器
 
-//	res=IIC_Read_One_Byte(MPU9250_ADDR,MPU_WHO_AM_I_REG);  //读取MPU9250的ID
-//		printf("res:%x\r\n",res);
-//	if(res==MPU9250_ID) //器件ID正确
-//	{
-        IIC_Write_One_Byte(MPU9250_ADDR,MPU_PWR_MGMT2_REG,0X00);  	//加速度与陀螺仪都工作
-//        MPU_Set_Rate(50);						       	//设置采样率为50Hz   
-//	}else return 1;
+//    IIC_Write_One_Byte(MPU9250_ADDR,MPU_PWR_MGMT2_REG,0X00);  	//加速度与陀螺仪都工作
 
+    MPU_SelfTest();
 	return 0;
 }
 

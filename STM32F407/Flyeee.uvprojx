@@ -647,6 +647,11 @@
               <FileType>1</FileType>
               <FilePath>.\USER\circulebuffer.c</FilePath>
             </File>
+            <File>
+              <FileName>sensors.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\USER\sensors.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -696,6 +701,11 @@
               <FileName>config_param.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Flight\src\config_param.c</FilePath>
+            </File>
+            <File>
+              <FileName>filter.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Flight\src\filter.c</FilePath>
             </File>
           </Files>
         </Group>

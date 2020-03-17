@@ -2,7 +2,7 @@
 #define __STABILIZER_TYPE_H
 
 #include "bsp_sys.h"
-#include "sensor_type.h"
+#include "sensors.h"
 #include "position_pid.h"
 #include "attitude_pid.h"
 #include <stdbool.h>

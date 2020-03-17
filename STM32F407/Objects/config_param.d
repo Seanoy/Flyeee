@@ -40,4 +40,4 @@
 .\objects\config_param.o: .\Hardware\inc\bsp_ak8963.h
 .\objects\config_param.o: F:\keil\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\config_param.o: .\Hardware\inc\bsp_myiic.h
-.\objects\config_param.o: .\Flight\inc\sensor_type.h
+.\objects\config_param.o: .\USER\sensors.h

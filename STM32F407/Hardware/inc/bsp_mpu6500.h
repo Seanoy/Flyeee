@@ -5,7 +5,7 @@
 #include <stdio.h>
 #include "bsp_sys.h" 	
 #include "bsp_myiic.h"
-#include "sensor_type.h"
+#include "sensors.h"
 #include "stdbool.h"
 
 //如果AD0脚(9脚)接地,IIC地址为0X68(不包含最低位).
@@ -402,6 +402,25 @@
 #define MPU6500_ST_ACCEL_LOW     (-14.0)  // %
 #define MPU6500_ST_ACCEL_HIGH    14.0  // %
 
+#define SENSORS_GYRO_FS_CFG       MPU6500_GYRO_FS_2000
+#define SENSORS_DEG_PER_LSB_CFG   MPU6500_DEG_PER_LSB_2000
+
+#define SENSORS_ACCEL_FS_CFG      MPU6500_ACCEL_FS_16	
+#define SENSORS_G_PER_LSB_CFG     MPU6500_G_PER_LSB_16
+
+#define SENSORS_NBR_OF_BIAS_SAMPLES		1024	/* 计算方差的采样样本个数 */
+#define GYRO_VARIANCE_BASE				4000	/* 陀螺仪零偏方差阈值 */
+#define SENSORS_ACC_SCALE_SAMPLES  		200		/* 加速计采样个数 */
+
+// MPU9250主机模式读取数据 缓冲区长度
+#define SENSORS_MPU6500_BUFF_LEN    14
+#define SENSORS_MAG_BUFF_LEN       	8
+#define SENSORS_BARO_STATUS_LEN		1
+#define SENSORS_BARO_DATA_LEN		6
+#define SENSORS_BARO_BUFF_LEN       (SENSORS_BARO_STATUS_LEN + SENSORS_BARO_DATA_LEN)
+
+
+
 typedef struct 
 {
     short gx;
@@ -427,6 +446,7 @@ u8 MPU_Set_Rate(u16 rate);
 short MPU_Get_Temperature(void);
 u8 MPU_Get_Gyroscope(axis3f_t *gyro_s);
 u8 MPU_Get_Accelerometer(axis3f_t *acc_s);
+bool MPU_SelfTest(void);
 
 void mpu6050_send_data(short aacx,short aacy,short aacz,short gyrox,short gyroy,short gyroz);
 void usart1_report_imu(short aacx,short aacy,short aacz,short gyrox,short gyroy,short gyroz,short roll,short pitch,short yaw);

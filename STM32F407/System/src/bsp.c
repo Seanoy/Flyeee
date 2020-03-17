@@ -16,16 +16,18 @@ void BSP_Init(void)
 //	IIC_Slave_List();
     //magnitude sensor init
     AK8963_Init();
+    //filter init
+    Filter_Init();
 	//motors init
 	MOTOR_Init();
     //nfr24l01 init
     Communication_Init();
     NRF24L01_Init();
 	NRF24L01_CSN=0; //SPI chip select		  		 		  
-    if(NRF24L01_Check())//cannot check 24L01
-		printf("Device Error!\r\n");
-    else
-        printf("Device Init Success!\r\n");
+//    if(NRF24L01_Check())//cannot check 24L01
+//		printf("Device Error!\r\n");
+//    else
+//        printf("Device Init Success!\r\n");
 	RX_Mode();//receive mode
     
 }

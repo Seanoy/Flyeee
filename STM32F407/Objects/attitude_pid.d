@@ -40,7 +40,7 @@
 .\objects\attitude_pid.o: F:\keil\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\attitude_pid.o: .\System\inc\bsp_sys.h
 .\objects\attitude_pid.o: .\Hardware\inc\bsp_myiic.h
-.\objects\attitude_pid.o: .\Flight\inc\sensor_type.h
+.\objects\attitude_pid.o: .\USER\sensors.h
 .\objects\attitude_pid.o: F:\keil\ARM\ARMCC\Bin\..\include\math.h
 .\objects\attitude_pid.o: .\Flight\inc\config_param.h
 .\objects\attitude_pid.o: .\Flight\inc\stabilizer_type.h

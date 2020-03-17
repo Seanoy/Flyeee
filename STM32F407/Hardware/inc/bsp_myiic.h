@@ -26,6 +26,8 @@ u8 IIC_Write_One_Byte(u8 devaddr,u8 reg,u8 data);	//写一个字节
 u8 IIC_Read_One_Byte(u8 devaddr,u8 reg);					//读一个字节
 u8 IIC_Write_NByte(u8 addr,u8 reg,u8 len,u8 *buf);//连续写多个字节
 u8 IIC_Read_NByte(u8 addr,u8 reg,u8 len,u8 *buf);	//连续读多个字节
+void IIC_WriteBit(u8 addr, u8 reg, u8 bitNum, u8 enable);
+void IIC_WriteNBit(uint8_t devAddress, uint8_t memAddress, uint8_t bitStart, uint8_t length, uint8_t data);
 
 //IIC工具函数
 void IIC_Slave_List(void); 						 //列出IIC上所有从机地址

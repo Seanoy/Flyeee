@@ -46,7 +46,7 @@
 .\objects\imu.o: .\Hardware\inc\bsp_led.h
 .\objects\imu.o: .\Hardware\inc\bsp_mpu6500.h
 .\objects\imu.o: .\Hardware\inc\bsp_myiic.h
-.\objects\imu.o: .\Flight\inc\sensor_type.h
+.\objects\imu.o: .\USER\sensors.h
 .\objects\imu.o: F:\keil\ARM\ARMCC\Bin\..\include\stdbool.h
 .\objects\imu.o: .\Hardware\inc\bsp_ak8963.h
 .\objects\imu.o: .\Hardware\inc\bsp_motor.h
@@ -81,3 +81,4 @@
 .\objects\imu.o: .\Flight\inc\command.h
 .\objects\imu.o: .\Flight\inc\kalman_filter.h
 .\objects\imu.o: .\Flight\inc\imu.h
+.\objects\imu.o: .\Flight\inc\filter.h

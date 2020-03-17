@@ -4,7 +4,7 @@
 #include "pid.h"
 #include <math.h>
 #include "config_param.h"
-#include "sensor_type.h"
+#include "sensors.h"
 #include "stabilizer_type.h"
 
 

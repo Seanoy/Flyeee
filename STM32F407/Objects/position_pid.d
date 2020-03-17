@@ -40,7 +40,7 @@
 .\objects\position_pid.o: F:\keil\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\position_pid.o: .\System\inc\bsp_sys.h
 .\objects\position_pid.o: .\Hardware\inc\bsp_myiic.h
-.\objects\position_pid.o: .\Flight\inc\sensor_type.h
+.\objects\position_pid.o: .\USER\sensors.h
 .\objects\position_pid.o: .\Flight\inc\maths.h
 .\objects\position_pid.o: .\Flight\inc\config_param.h
 .\objects\position_pid.o: .\Flight\inc\attitude_pid.h

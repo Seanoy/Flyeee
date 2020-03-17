@@ -34,8 +34,8 @@ extern TaskHandle_t Task_Handler_2;
 
 //ÈÎÎñº¯Êı
 void start_task(void *pvParameters);
-void get_attitude_task(void *pvParameters);
-void led1_task(void *pvParameters);
+void attitude_task(void *pvParameters);
+void nrf_task(void *pvParameters);
 
 
 #endif

@@ -36,3 +36,4 @@
 .\objects\bsp_myiic.o: .\FWlib\inc\stm32f4xx_dac.h
 .\objects\bsp_myiic.o: .\FWlib\inc\stm32f4xx_dcmi.h
 .\objects\bsp_myiic.o: .\FWlib\inc\stm32f4xx_fsmc.h
+.\objects\bsp_myiic.o: F:\keil\ARM\ARMCC\Bin\..\include\stdio.h

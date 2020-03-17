@@ -1,11 +1,8 @@
 #include "bsp_myiic.h"
-
-void delay_us(u16 us)
+#include <stdio.h>
+void delay(void)
 {
-    while(us--)
-    {
-        __nop();__nop();__nop();__nop();__nop();__nop();
-    }
+    __nop();__nop();__nop();__nop();__nop();__nop();
 }
 
 //初始化IIC
@@ -32,9 +29,9 @@ void IIC_Start(void)
 	SDA_OUT();     //sda线输出
 	IIC_SDA=1;	  	  
 	IIC_SCL=1;
-	delay_us(4);
+	delay();
  	IIC_SDA=0;//START:when CLK is high,DATA change form high to low 
-	delay_us(4);
+	delay();
 	IIC_SCL=0;//钳住I2C总线，准备发送或接收数据 
 }	 
 
@@ -44,10 +41,10 @@ void IIC_Stop(void)
 	SDA_OUT();//sda线输出
 	IIC_SCL=0;
 	IIC_SDA=0;//STOP:when CLK is high DATA change form low to high
- 	delay_us(4);
+ 	delay();
 	IIC_SCL=1; 
 	IIC_SDA=1;//发送I2C总线结束信号
-	delay_us(4);							   	
+	delay();							   	
 }
 
 //等待应答信号到来
@@ -57,8 +54,8 @@ u8 IIC_Wait_Ack(void)
 {
 	u8 ucErrTime=0;
 	SDA_IN();      //SDA设置为输入  
-	IIC_SDA=1;delay_us(1);	   
-	IIC_SCL=1;delay_us(1);	 
+	IIC_SDA=1;delay();	   
+	IIC_SCL=1;delay();	 
 	while(READ_SDA)
 	{
 		ucErrTime++;
@@ -78,9 +75,9 @@ void IIC_Ack(void)
 	IIC_SCL=0;
 	SDA_OUT();
 	IIC_SDA=0;
-	delay_us(2);
+	delay();
 	IIC_SCL=1;
-	delay_us(2);
+	delay();
 	IIC_SCL=0;
 }
 
@@ -90,9 +87,9 @@ void IIC_NAck(void)
 	IIC_SCL=0;
 	SDA_OUT();
 	IIC_SDA=1;
-	delay_us(2);
+	delay();
 	IIC_SCL=1;
-	delay_us(2);
+	delay();
 	IIC_SCL=0;
 }		
 
@@ -109,11 +106,11 @@ void IIC_Send_Byte(u8 txd)
     {              
         IIC_SDA=(txd&0x80)>>7;
         txd<<=1; 	  
-		delay_us(2);   //对TEA5767这三个延时都是必须的
+		delay();   //对TEA5767这三个延时都是必须的
 		IIC_SCL=1;
-		delay_us(2); 
+		delay(); 
 		IIC_SCL=0;	
-		delay_us(2);
+		delay();
     }	 
 } 	
 
@@ -125,11 +122,11 @@ u8 IIC_Read_Byte(unsigned char ack)
     for(i=0;i<8;i++ )
 	{
         IIC_SCL=0; 
-        delay_us(2);
+        delay();
 		IIC_SCL=1;
         receive<<=1;
         if(READ_SDA)receive++;   
-		delay_us(1); 
+		delay(); 
     }					 
     if (!ack)
         IIC_NAck();//发送nACK
@@ -210,7 +207,7 @@ u8 IIC_Read_NByte(u8 addr,u8 reg,u8 len,u8 *buf)
 //data:数据
 //返回值:0,正常
 //    其他,错误代码
-u8 IIC_Write_One_Byte(u8 addr,u8 reg,u8 data)
+u8 IIC_Write_One_Byte(u8 addr, u8 reg, u8 data)
 {
     IIC_Start();
     IIC_Send_Byte((addr<<1)|0); //发送器件地址+写命令
@@ -234,7 +231,7 @@ u8 IIC_Write_One_Byte(u8 addr,u8 reg,u8 data)
 //IIC读一个字节 
 //reg:寄存器地址 
 //返回值:读到的数据
-u8 IIC_Read_One_Byte(u8 addr,u8 reg)
+u8 IIC_Read_One_Byte(u8 addr, u8 reg)
 {
     u8 res;
     IIC_Start();
@@ -250,6 +247,28 @@ u8 IIC_Read_One_Byte(u8 addr,u8 reg)
     return res;  
 }
 
+//I2C写一位
+void IIC_WriteBit(u8 addr, u8 reg, u8 bitNum, u8 enable)
+{
+    u8 byte;
+    byte = IIC_Read_One_Byte(addr, reg);
+    byte = (enable != 0) ? (byte | (1 << bitNum)) : (byte & ~(1 << bitNum)) ;
+    IIC_Write_One_Byte(addr, reg, byte);
+}
+
+//I2C写多位
+void IIC_WriteNBit(uint8_t devAddress, uint8_t memAddress, uint8_t bitStart, uint8_t length, uint8_t data)
+{
+	uint8_t byte;
+
+	byte = IIC_Read_One_Byte(devAddress, memAddress);
+    uint8_t mask = ((1 << length) - 1) << (bitStart - length + 1);
+    data <<= (bitStart - length + 1); // shift data into correct position
+    data &= mask; // zero all non-important bits in data
+    byte &= ~(mask); // zero all important bits in existing byte
+    byte |= data; // combine data with existing byte
+    IIC_Write_One_Byte(devAddress, memAddress, byte);
+}
 
 //列出IIC总线上所有从机地址
 void IIC_Slave_List(void)
@@ -261,7 +280,7 @@ void IIC_Slave_List(void)
     IIC_Send_Byte((i<<1)|0);
 		res = IIC_Wait_Ack();          //等待应答
 		if(res == 0)
-			printf("IIC_ADDR = %#x\r\n",i);
+			printf("IIC_ADDR = #%x\r\n",i);
 		IIC_Stop();
 	}printf("\r\n");
 }

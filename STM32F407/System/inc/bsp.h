@@ -39,7 +39,8 @@
 #include "position_pid.h"
 #include "kalman_filter.h"
 #include "imu.h"
-#include "sensor_type.h"
+#include "sensors.h"
+#include "filter.h"
 
 void BSP_Init(void);
 

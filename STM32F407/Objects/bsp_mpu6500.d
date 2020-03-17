@@ -38,7 +38,7 @@
 .\objects\bsp_mpu6500.o: F:\keil\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\bsp_mpu6500.o: .\System\inc\bsp_sys.h
 .\objects\bsp_mpu6500.o: .\Hardware\inc\bsp_myiic.h
-.\objects\bsp_mpu6500.o: .\Flight\inc\sensor_type.h
+.\objects\bsp_mpu6500.o: .\USER\sensors.h
 .\objects\bsp_mpu6500.o: F:\keil\ARM\ARMCC\Bin\..\include\stdbool.h
 .\objects\bsp_mpu6500.o: .\USER\task_config.h
 .\objects\bsp_mpu6500.o: .\System\inc\bsp.h
@@ -81,3 +81,4 @@
 .\objects\bsp_mpu6500.o: .\Flight\inc\command.h
 .\objects\bsp_mpu6500.o: .\Flight\inc\kalman_filter.h
 .\objects\bsp_mpu6500.o: .\Flight\inc\imu.h
+.\objects\bsp_mpu6500.o: .\Flight\inc\filter.h

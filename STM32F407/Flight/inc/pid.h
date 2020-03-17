@@ -2,7 +2,7 @@
 #define __PID_H
 
 #include "bsp_ak8963.h"
-#include "sensor_type.h"
+#include "sensors.h"
 
 #define DEFAULT_PID_INTEGRAL_LIMIT  500.0//default integral limit
 #define DEFAULT_PID_OUTPUT_LIMIT 0.0//default do not limit pid output
