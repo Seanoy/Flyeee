@@ -53,6 +53,7 @@
 .\objects\imu.o: .\Hardware\inc\bsp_watchdog.h
 .\objects\imu.o: .\Hardware\inc\bsp_timer.h
 .\objects\imu.o: .\Hardware\inc\bsp_24l01.h
+.\objects\imu.o: .\Hardware\inc\bsp_bmp180.h
 .\objects\imu.o: .\Communication\inc\communication.h
 .\objects\imu.o: .\System\inc\bsp.h
 .\objects\imu.o: .\ThirdParty\FreeRTOSV10.2.1\include\FreeRTOS.h

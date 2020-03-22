@@ -1,5 +1,5 @@
 #include "bsp_BMP180.h"
-
+#include <stdio.h>
 //存储BMP180数据的结构
 BMP180_Data BMP180;
 
@@ -8,30 +8,37 @@ void BMP_Init(void)
 {
 //	初始化 获取校正值 BMP_ReadCalibrationData();
 //读取数据
-//		ID=BMP_ReadOneByte(0xd0); 
-//		BMP_UncompemstatedToTrue();
-//		printf("ID = %d\t  temp = %d.%dC\t   Pressure = %ldPa\t   Altitude = %.5fm\r\n",ID,BMP180.Temp/10,BMP180.Temp%10,BMP180.p,BMP180.altitude);
+    u8 res;
+    res = BMP_ReadOneByte(0xd0); 
+    if(res == BMP180_ID)
+    {
+        printf("BMP180 I2C Connection [OK].\r\n");
+//    BMP_UncompemstatedToTrue();
+//    printf("ID = %d\t  temp = %ld.%ldC\t   Pressure = %ldPa\t   Altitude = %.5fm\r\n",res,BMP180.Temp/10,BMP180.Temp%10,BMP180.p,BMP180.altitude);
 
+    }
+    else
+        printf("BMP180 I2C Connection [FAIL].\r\n");
 }
 
 
 //写一个数据到BMP180
 void BMP_WriteOneByte(uint8_t WriteAddr,uint8_t DataToWrite)
 {
-	IIC_Write_One_Byte(WriteAddr,BMP180_ADDR,DataToWrite);
+	IIC2_Write_One_Byte(WriteAddr,BMP180_ADDR,DataToWrite);
 }
 
 //从BMP180读一个字节数据
 uint8_t BMP_ReadOneByte(uint8_t ReadAddr)
 {
-return IIC_Read_One_Byte(BMP180_ADDR,ReadAddr);	
+return IIC2_Read_One_Byte(BMP180_ADDR,ReadAddr);	
 }
 
 //从BMP180读一个16位的数据
 short BMP_ReadTwoByte(uint8_t ReadAddr)
 {
 	u8 buf[2]; 
-	IIC_Read_NByte(BMP180_ADDR,ReadAddr,2,buf);
+	IIC2_Read_NByte(BMP180_ADDR,ReadAddr,2,buf);
 	return ((u16)buf[1]<<8)|buf[0];  
 }
 

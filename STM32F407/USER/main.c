@@ -61,7 +61,14 @@ void start_task(void *pvParameters)
 //获取姿态任务函数 
 void attitude_task(void *pvParameters)
 {
+    //imu init
     MPU9250_Init();
+    //magnitude sensor init
+    AK8963_Init();
+    //barometric sensor init
+    BMP_Init();
+    //filter init
+    Filter_Init();
     
     while(1)
     {

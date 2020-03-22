@@ -53,6 +53,7 @@
 .\objects\bsp_mpu6500.o: .\Hardware\inc\bsp_watchdog.h
 .\objects\bsp_mpu6500.o: .\Hardware\inc\bsp_timer.h
 .\objects\bsp_mpu6500.o: .\Hardware\inc\bsp_24l01.h
+.\objects\bsp_mpu6500.o: .\Hardware\inc\bsp_bmp180.h
 .\objects\bsp_mpu6500.o: .\Communication\inc\communication.h
 .\objects\bsp_mpu6500.o: .\System\inc\bsp.h
 .\objects\bsp_mpu6500.o: .\ThirdParty\FreeRTOSV10.2.1\include\FreeRTOS.h

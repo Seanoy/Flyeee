@@ -13,23 +13,15 @@ void BSP_Init(void)
 	LED_Init();
     //mpu9250 iic init
     IIC_Init();     //初始化IIC总线
-//	IIC_Slave_List();
-    //magnitude sensor init
-    AK8963_Init();
-    //filter init
-    Filter_Init();
+	IIC1_Slave_List();
+	IIC2_Slave_List();
+
 	//motors init
 	MOTOR_Init();
     //nfr24l01 init
     Communication_Init();
     NRF24L01_Init();
-	NRF24L01_CSN=0; //SPI chip select		  		 		  
-//    if(NRF24L01_Check())//cannot check 24L01
-//		printf("Device Error!\r\n");
-//    else
-//        printf("Device Init Success!\r\n");
-	RX_Mode();//receive mode
-    
+
 }
 
 

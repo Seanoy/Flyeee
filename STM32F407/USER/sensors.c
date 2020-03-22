@@ -245,10 +245,14 @@ void processAccGyroMeasurements(const uint8_t *buffer)
 //获取初始数据
 void processSensordata(void)
 {
-    IIC_Read_NByte(MPU9250_ADDR,MPU_ACCEL_XOUTH_REG,14,rawDataBuf);
+    IIC1_Read_NByte(MPU9250_ADDR,MPU_ACCEL_XOUTH_REG,14,rawDataBuf);
     processAccGyroMeasurements(&(rawDataBuf[0]));//获取并处理陀螺仪和加速度计数据
-    IIC_Read_NByte(AK8963_ADDR,AK8963_XOUT_L,6,rawDataBuf+14);
+    IIC1_Read_NByte(AK8963_ADDR,AK8963_XOUT_L,6,rawDataBuf+14);
     processMagnetometerMeasurements(&(rawDataBuf[14]));//获取并处理磁力计数据
     mpu6050_send_data(accRaw.x,accRaw.y, accRaw.z, gyroRaw.x, gyroRaw.y, gyroRaw.z);//用自定义帧发送加速度和陀螺仪原始数据
+//        IMUupdate(attitude.gyro.x, attitude.gyro.y, attitude.gyro.z, attitude.acc.x, attitude.acc.y, attitude.acc.z, &attitude.Q_ANGLE);
+//        mpu6050_send_data(attitude.acc.x,attitude.acc.y, attitude.acc.z, attitude.gyro.x, attitude.gyro.y, attitude.gyro.z);//用自定义帧发送加速度和陀螺仪原始数据
+//        usart1_report_imu(attitude.acc.x,attitude.acc.y, attitude.acc.z, attitude.gyro.x, attitude.gyro.y, attitude.gyro.z,(int)(attitude.Q_ANGLE.Pitch*100),(int)(attitude.Q_ANGLE.Roll*100),(int)(attitude.Q_ANGLE.Yaw*10));
+        
 }
 

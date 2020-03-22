@@ -20,6 +20,7 @@
 #include "bsp_timer.h"
 #include "bsp_mpu6500.h"
 #include "bsp_24l01.h"
+#include "bsp_bmp180.h"
 
 #include "communication.h"
 

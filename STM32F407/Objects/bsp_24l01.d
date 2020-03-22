@@ -37,3 +37,4 @@
 .\objects\bsp_24l01.o: .\FWlib\inc\stm32f4xx_dcmi.h
 .\objects\bsp_24l01.o: .\FWlib\inc\stm32f4xx_fsmc.h
 .\objects\bsp_24l01.o: .\Hardware\inc\bsp_spi.h
+.\objects\bsp_24l01.o: F:\keil\ARM\ARMCC\Bin\..\include\stdio.h

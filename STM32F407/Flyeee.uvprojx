@@ -733,6 +733,11 @@
           <GroupName>Hardware</GroupName>
           <Files>
             <File>
+              <FileName>bsp_myiic.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Hardware\src\bsp_myiic.c</FilePath>
+            </File>
+            <File>
               <FileName>bsp_24l01.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Hardware\src\bsp_24l01.c</FilePath>
@@ -761,11 +766,6 @@
               <FileName>bsp_motor.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Hardware\src\bsp_motor.c</FilePath>
-            </File>
-            <File>
-              <FileName>bsp_myiic.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Hardware\src\bsp_myiic.c</FilePath>
             </File>
             <File>
               <FileName>bsp_spi.c</FileName>

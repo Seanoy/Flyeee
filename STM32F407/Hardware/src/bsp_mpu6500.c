@@ -72,27 +72,27 @@ bool MPU_SelfTest(void)
   int i;
 
   // Save old configuration
-  saveReg[0] = IIC_Read_One_Byte(MPU9250_ADDR, MPU_SAMPLE_RATE_REG);
-  saveReg[1] = IIC_Read_One_Byte(MPU9250_ADDR, MPU_CFG_REG);
-  saveReg[2] = IIC_Read_One_Byte(MPU9250_ADDR, MPU_GYRO_CFG_REG);
-  saveReg[3] = IIC_Read_One_Byte(MPU9250_ADDR, MPU_ACCEL_CFG2_REG);
-  saveReg[4] = IIC_Read_One_Byte(MPU9250_ADDR, MPU_ACCEL_CFG_REG);
+  saveReg[0] = IIC1_Read_One_Byte(MPU9250_ADDR, MPU_SAMPLE_RATE_REG);
+  saveReg[1] = IIC1_Read_One_Byte(MPU9250_ADDR, MPU_CFG_REG);
+  saveReg[2] = IIC1_Read_One_Byte(MPU9250_ADDR, MPU_GYRO_CFG_REG);
+  saveReg[3] = IIC1_Read_One_Byte(MPU9250_ADDR, MPU_ACCEL_CFG2_REG);
+  saveReg[4] = IIC1_Read_One_Byte(MPU9250_ADDR, MPU_ACCEL_CFG_REG);
   // Write test configuration
-  IIC_Write_One_Byte(MPU9250_ADDR, MPU_SAMPLE_RATE_REG, 0x00); // Set gyro sample rate to 1 kHz
-  IIC_Write_One_Byte(MPU9250_ADDR, MPU_CFG_REG, 0x02); // Set gyro sample rate to 1 kHz and DLPF to 92 Hz
-  IIC_Write_One_Byte(MPU9250_ADDR, MPU_GYRO_CFG_REG, 1<<FS); // Set full scale range for the gyro to 250 dps
-  IIC_Write_One_Byte(MPU9250_ADDR, MPU_ACCEL_CFG2_REG, 0x02); // Set accelerometer rate to 1 kHz and bandwidth to 92 Hz
-  IIC_Write_One_Byte(MPU9250_ADDR, MPU_ACCEL_CFG_REG, 1<<FS); // Set full scale range for the accelerometer to 2 g
+  IIC1_Write_One_Byte(MPU9250_ADDR, MPU_SAMPLE_RATE_REG, 0x00); // Set gyro sample rate to 1 kHz
+  IIC1_Write_One_Byte(MPU9250_ADDR, MPU_CFG_REG, 0x02); // Set gyro sample rate to 1 kHz and DLPF to 92 Hz
+  IIC1_Write_One_Byte(MPU9250_ADDR, MPU_GYRO_CFG_REG, 1<<FS); // Set full scale range for the gyro to 250 dps
+  IIC1_Write_One_Byte(MPU9250_ADDR, MPU_ACCEL_CFG2_REG, 0x02); // Set accelerometer rate to 1 kHz and bandwidth to 92 Hz
+  IIC1_Write_One_Byte(MPU9250_ADDR, MPU_ACCEL_CFG_REG, 1<<FS); // Set full scale range for the accelerometer to 2 g
 
   for(i = 0; i < 200; i++)
   {
     // get average current values of gyro and acclerometer
-    IIC_Read_NByte(MPU9250_ADDR, MPU_ACCEL_XOUTH_REG, 6, &rawData[0]); // Read the six raw data registers into data array
+    IIC1_Read_NByte(MPU9250_ADDR, MPU_ACCEL_XOUTH_REG, 6, &rawData[0]); // Read the six raw data registers into data array
     aAvg[0] += (int16_t)(((int16_t)rawData[0] << 8) | rawData[1]) ; // Turn the MSB and LSB into a signed 16-bit value
     aAvg[1] += (int16_t)(((int16_t)rawData[2] << 8) | rawData[3]) ;
     aAvg[2] += (int16_t)(((int16_t)rawData[4] << 8) | rawData[5]) ;
 
-    IIC_Read_NByte(MPU9250_ADDR, MPU_GYRO_XOUTH_REG, 6, &rawData[0]); // Read the six raw data registers sequentially into data array
+    IIC1_Read_NByte(MPU9250_ADDR, MPU_GYRO_XOUTH_REG, 6, &rawData[0]); // Read the six raw data registers sequentially into data array
     gAvg[0] += (int16_t)((int16_t)rawData[0] << 8) | rawData[1]; // Turn the MSB and LSB into a signed 16-bit value
     gAvg[1] += (int16_t)((int16_t)rawData[2] << 8) | rawData[3];
     gAvg[2] += (int16_t)((int16_t)rawData[4] << 8) | rawData[5];
@@ -105,19 +105,19 @@ bool MPU_SelfTest(void)
   }
 
   // Configure the accelerometer for self-test
-  IIC_Write_One_Byte(MPU9250_ADDR, MPU_ACCEL_CFG_REG, 0xE0); // Enable self test on all three axes and set accelerometer range to +/- 2 g
-  IIC_Write_One_Byte(MPU9250_ADDR, MPU_GYRO_CFG_REG, 0xE0); // Enable self test on all three axes and set gyro range to +/- 250 degrees/s
+  IIC1_Write_One_Byte(MPU9250_ADDR, MPU_ACCEL_CFG_REG, 0xE0); // Enable self test on all three axes and set accelerometer range to +/- 2 g
+  IIC1_Write_One_Byte(MPU9250_ADDR, MPU_GYRO_CFG_REG, 0xE0); // Enable self test on all three axes and set gyro range to +/- 250 degrees/s
   vTaskDelay(25); // Delay a while to let the device stabilize
 
   for(i = 0; i < 200; i++)
   {
     // get average self-test values of gyro and acclerometer
-    IIC_Read_NByte(MPU9250_ADDR, MPU_ACCEL_XOUTH_REG, 6, &rawData[0]); // Read the six raw data registers into data array
+    IIC1_Read_NByte(MPU9250_ADDR, MPU_ACCEL_XOUTH_REG, 6, &rawData[0]); // Read the six raw data registers into data array
     aSTAvg[0] += (int16_t)(((int16_t)rawData[0] << 8) | rawData[1]) ; // Turn the MSB and LSB into a signed 16-bit value
     aSTAvg[1] += (int16_t)(((int16_t)rawData[2] << 8) | rawData[3]) ;
     aSTAvg[2] += (int16_t)(((int16_t)rawData[4] << 8) | rawData[5]) ;
 
-    IIC_Read_NByte(MPU9250_ADDR, MPU_GYRO_XOUTH_REG, 6, &rawData[0]); // Read the six raw data registers sequentially into data array
+    IIC1_Read_NByte(MPU9250_ADDR, MPU_GYRO_XOUTH_REG, 6, &rawData[0]); // Read the six raw data registers sequentially into data array
     gSTAvg[0] += (int16_t)(((int16_t)rawData[0] << 8) | rawData[1]) ; // Turn the MSB and LSB into a signed 16-bit value
     gSTAvg[1] += (int16_t)(((int16_t)rawData[2] << 8) | rawData[3]) ;
     gSTAvg[2] += (int16_t)(((int16_t)rawData[4] << 8) | rawData[5]) ;
@@ -130,17 +130,17 @@ bool MPU_SelfTest(void)
   }
 
    // Configure the gyro and accelerometer for normal operation
-   IIC_Write_One_Byte(MPU9250_ADDR, MPU_ACCEL_CFG_REG, 0x00);
-   IIC_Write_One_Byte(MPU9250_ADDR, MPU_GYRO_CFG_REG, 0x00);
+   IIC1_Write_One_Byte(MPU9250_ADDR, MPU_ACCEL_CFG_REG, 0x00);
+   IIC1_Write_One_Byte(MPU9250_ADDR, MPU_GYRO_CFG_REG, 0x00);
    vTaskDelay(25); // Delay a while to let the device stabilize
 
    // Retrieve accelerometer and gyro factory Self-Test Code from USR_Reg
-   selfTest[0] = IIC_Read_One_Byte(MPU9250_ADDR, MPU_SELF_TEST_X_ACCEL_REG); // X-axis accel self-test results
-   selfTest[1] = IIC_Read_One_Byte(MPU9250_ADDR, MPU_SELF_TEST_Y_ACCEL_REG); // Y-axis accel self-test results
-   selfTest[2] = IIC_Read_One_Byte(MPU9250_ADDR, MPU_SELF_TEST_Z_ACCEL_REG); // Z-axis accel self-test results
-   selfTest[3] = IIC_Read_One_Byte(MPU9250_ADDR, MPU_SELF_TEST_X_GYRO_REG); // X-axis gyro self-test results
-   selfTest[4] = IIC_Read_One_Byte(MPU9250_ADDR, MPU_SELF_TEST_Y_GYRO_REG); // Y-axis gyro self-test results
-   selfTest[5] = IIC_Read_One_Byte(MPU9250_ADDR, MPU_SELF_TEST_Z_GYRO_REG); // Z-axis gyro self-test results
+   selfTest[0] = IIC1_Read_One_Byte(MPU9250_ADDR, MPU_SELF_TEST_X_ACCEL_REG); // X-axis accel self-test results
+   selfTest[1] = IIC1_Read_One_Byte(MPU9250_ADDR, MPU_SELF_TEST_Y_ACCEL_REG); // Y-axis accel self-test results
+   selfTest[2] = IIC1_Read_One_Byte(MPU9250_ADDR, MPU_SELF_TEST_Z_ACCEL_REG); // Z-axis accel self-test results
+   selfTest[3] = IIC1_Read_One_Byte(MPU9250_ADDR, MPU_SELF_TEST_X_GYRO_REG); // X-axis gyro self-test results
+   selfTest[4] = IIC1_Read_One_Byte(MPU9250_ADDR, MPU_SELF_TEST_Y_GYRO_REG); // Y-axis gyro self-test results
+   selfTest[5] = IIC1_Read_One_Byte(MPU9250_ADDR, MPU_SELF_TEST_Z_GYRO_REG); // Z-axis gyro self-test results
 
    for (i = 0; i < 6; i++)
    {
@@ -165,11 +165,11 @@ bool MPU_SelfTest(void)
   }
 
   // Restore old configuration
-  IIC_Write_One_Byte(MPU9250_ADDR, MPU_SAMPLE_RATE_REG, saveReg[0]);
-  IIC_Write_One_Byte(MPU9250_ADDR, MPU_CFG_REG, saveReg[1]);
-  IIC_Write_One_Byte(MPU9250_ADDR, MPU_GYRO_CFG_REG, saveReg[2]);
-  IIC_Write_One_Byte(MPU9250_ADDR, MPU_ACCEL_CFG2_REG, saveReg[3]);
-  IIC_Write_One_Byte(MPU9250_ADDR, MPU_ACCEL_CFG_REG, saveReg[4]);
+  IIC1_Write_One_Byte(MPU9250_ADDR, MPU_SAMPLE_RATE_REG, saveReg[0]);
+  IIC1_Write_One_Byte(MPU9250_ADDR, MPU_CFG_REG, saveReg[1]);
+  IIC1_Write_One_Byte(MPU9250_ADDR, MPU_GYRO_CFG_REG, saveReg[2]);
+  IIC1_Write_One_Byte(MPU9250_ADDR, MPU_ACCEL_CFG2_REG, saveReg[3]);
+  IIC1_Write_One_Byte(MPU9250_ADDR, MPU_ACCEL_CFG_REG, saveReg[4]);
 
    // Check result
   if (MPU_EvaluateSelfTest(MPU6500_ST_GYRO_LOW, MPU6500_ST_GYRO_HIGH, gDiff[0], "gyro X") &&
@@ -194,35 +194,37 @@ bool MPU_SelfTest(void)
 u8 MPU9250_Init(void)
 {
     u8 who_am_i=0xff;
-	IIC_Init();     //初始化IIC总线
-    vTaskDelay(10);
-	IIC_WriteBit(MPU9250_ADDR,MPU_PWR_MGMT1_REG, MPU6500_PWR1_DEVICE_RESET_BIT,ENABLE);//复位MPU9250    
+//	IIC_Init();     //初始化IIC总线
+//    vTaskDelay(10);
+	IIC1_WriteBit(MPU9250_ADDR,MPU_PWR_MGMT1_REG, MPU6500_PWR1_DEVICE_RESET_BIT,ENABLE);//复位MPU9250    
     vTaskDelay(20);
     
-    who_am_i = IIC_Read_One_Byte(MPU9250_ADDR, MPU_WHO_AM_I_REG);
-    if(who_am_i == 0x38 || who_am_i == 0x39)
+    who_am_i = IIC1_Read_One_Byte(MPU9250_ADDR, MPU_WHO_AM_I_REG);
+    if(who_am_i == MPU9250_ID)
+    {
         printf("MPU9250 I2C Connection [OK].\r\n");
+        IIC1_WriteBit(MPU9250_ADDR,MPU_PWR_MGMT1_REG, MPU6500_PWR1_SLEEP_BIT,DISABLE);//唤醒MPU9250
+        vTaskDelay(10);
+        IIC1_WriteNBit(MPU9250_ADDR, MPU_PWR_MGMT1_REG, MPU6500_PWR1_CLKSEL_BIT, MPU6500_PWR1_CLKSEL_LENGTH, MPU6500_CLOCK_PLL_XGYRO);//设置X轴陀螺作为时钟	
+        vTaskDelay(10);
+        IIC1_WriteBit(MPU9250_ADDR,MPU_PWR_MGMT1_REG, MPU6500_PWR1_TEMP_DIS_BIT, !ENABLE);//使能温度传感器
+        IIC1_Write_One_Byte(MPU9250_ADDR,MPU_INT_EN_REG,0X00);   //关闭所有中断
+        IIC1_WriteBit(MPU9250_ADDR,MPU_INTBP_CFG_REG, MPU6500_INTCFG_I2C_BYPASS_EN_BIT, ENABLE);//INT引脚低电平有效，开启bypass模式，可以直接读取磁力计
+        IIC1_Write_One_Byte(MPU9250_ADDR,MPU_USER_CTRL_REG,0X00);//I2C主模式关闭
+        IIC1_WriteNBit(MPU9250_ADDR, MPU_GYRO_CFG_REG, MPU6500_GCONFIG_FS_SEL_BIT, MPU6500_GCONFIG_FS_SEL_LENGTH, SENSORS_GYRO_FS_CFG);//陀螺仪传感器,±2000dps
+        IIC1_WriteNBit(MPU9250_ADDR,MPU_ACCEL_CFG_REG,MPU6500_ACONFIG_AFS_SEL_BIT, MPU6500_ACONFIG_AFS_SEL_LENGTH, SENSORS_ACCEL_FS_CFG);//加速度传感器,±16g
+        IIC1_WriteNBit(MPU9250_ADDR,MPU_ACCEL_CFG2_REG, MPU6500_ACONFIG2_DLPF_BIT, MPU6500_ACONFIG2_DLPF_LENGTH, MPU6500_ACCEL_DLPF_BW_41);//设置加速度计低通滤波器
+        IIC1_Write_One_Byte(MPU9250_ADDR,MPU_SAMPLE_RATE_REG,0); //设置采样率1000Hz
+        IIC1_WriteNBit(MPU9250_ADDR,MPU_CFG_REG,MPU6500_CFG_DLPF_CFG_BIT, MPU6500_CFG_DLPF_CFG_LENGTH, MPU6500_DLPF_BW_98);//设置陀螺仪低通滤波器
+
+        MPU_SelfTest();
+        return 0;
+    }
     else
+    {
         printf("MPU9250 I2C Connection [FAIL].\r\n");
-    IIC_WriteBit(MPU9250_ADDR,MPU_PWR_MGMT1_REG, MPU6500_PWR1_SLEEP_BIT,DISABLE);//唤醒MPU9250
-    vTaskDelay(10);
-    IIC_WriteNBit(MPU9250_ADDR, MPU_PWR_MGMT1_REG, MPU6500_PWR1_CLKSEL_BIT, MPU6500_PWR1_CLKSEL_LENGTH, MPU6500_CLOCK_PLL_XGYRO);//设置X轴陀螺作为时钟	
-    vTaskDelay(10);
-    IIC_WriteBit(MPU9250_ADDR,MPU_PWR_MGMT1_REG, MPU6500_PWR1_TEMP_DIS_BIT, !ENABLE);//使能温度传感器
-	IIC_Write_One_Byte(MPU9250_ADDR,MPU_INT_EN_REG,0X00);   //关闭所有中断
-    IIC_WriteBit(MPU9250_ADDR,MPU_INTBP_CFG_REG, MPU6500_INTCFG_I2C_BYPASS_EN_BIT, DISABLE);// 关闭旁路模式
-//	IIC_Write_One_Byte(MPU9250_ADDR,MPU_USER_CTRL_REG,0X00);//I2C主模式关闭
-//	IIC_Write_One_Byte(MPU9250_ADDR,MPU_INTBP_CFG_REG,0X82);//INT引脚低电平有效，开启bypass模式，可以直接读取磁力计
-    IIC_WriteNBit(MPU9250_ADDR, MPU_GYRO_CFG_REG, MPU6500_GCONFIG_FS_SEL_BIT, MPU6500_GCONFIG_FS_SEL_LENGTH, SENSORS_GYRO_FS_CFG);//陀螺仪传感器,±2000dps
-	IIC_WriteNBit(MPU9250_ADDR,MPU_ACCEL_CFG_REG,MPU6500_ACONFIG_AFS_SEL_BIT, MPU6500_ACONFIG_AFS_SEL_LENGTH, SENSORS_ACCEL_FS_CFG);//加速度传感器,±16g
-    IIC_WriteNBit(MPU9250_ADDR,MPU_ACCEL_CFG2_REG, MPU6500_ACONFIG2_DLPF_BIT, MPU6500_ACONFIG2_DLPF_LENGTH, MPU6500_ACCEL_DLPF_BW_41);//设置加速度计低通滤波器
-	IIC_Write_One_Byte(MPU9250_ADDR,MPU_SAMPLE_RATE_REG,0); //设置采样率1000Hz
-	IIC_WriteNBit(MPU9250_ADDR,MPU_CFG_REG,MPU6500_CFG_DLPF_CFG_BIT, MPU6500_CFG_DLPF_CFG_LENGTH, MPU6500_DLPF_BW_98);//设置陀螺仪低通滤波器
-
-//    IIC_Write_One_Byte(MPU9250_ADDR,MPU_PWR_MGMT2_REG,0X00);  	//加速度与陀螺仪都工作
-
-    MPU_SelfTest();
-	return 0;
+        return 1;
+    }
 }
 
 //设置MPU9250加速度传感器满量程范围
@@ -231,7 +233,7 @@ u8 MPU9250_Init(void)
 //    其他,设置失败 
 u8 MPU_Set_Accel_Fsr(u8 fsr)
 {
-	return IIC_Write_One_Byte(MPU9250_ADDR,MPU_ACCEL_CFG_REG,fsr<<3);//设置加速度传感器满量程范围  
+	return IIC1_Write_One_Byte(MPU9250_ADDR,MPU_ACCEL_CFG_REG,fsr<<3);//设置加速度传感器满量程范围  
 }
 
 //设置MPU9250的数字低通滤波器
@@ -247,7 +249,7 @@ u8 MPU_Set_LPF(u16 lpf)
 	else if(lpf>=20)data=4;
 	else if(lpf>=10)data=5;
 	else data=6; 
-	return IIC_Write_One_Byte(MPU9250_ADDR,MPU_CFG_REG,data);//设置数字低通滤波器  
+	return IIC1_Write_One_Byte(MPU9250_ADDR,MPU_CFG_REG,data);//设置数字低通滤波器  
 }
 
 //得到温度值
@@ -257,7 +259,7 @@ short MPU_Get_Temperature(void)
     u8 buf[2]; 
     short raw;
 	float temp;
-	IIC_Read_NByte(MPU9250_ADDR,MPU_TEMP_OUTH_REG,2,buf); 
+	IIC1_Read_NByte(MPU9250_ADDR,MPU_TEMP_OUTH_REG,2,buf); 
     raw=((u16)buf[0]<<8)|buf[1];  
     temp=21+((double)raw)/333.87;  
     return temp*100;;
@@ -269,7 +271,7 @@ short MPU_Get_Temperature(void)
 u8 MPU_Get_Gyroscope(axis3f_t *gyro_s)
 {
     u8 buf[6],res; 
-	res=IIC_Read_NByte(MPU9250_ADDR,MPU_GYRO_XOUTH_REG,6,buf);
+	res=IIC1_Read_NByte(MPU9250_ADDR,MPU_GYRO_XOUTH_REG,6,buf);
 	if(res==0)
 	{
 		gyro_s->x=((u16)buf[0]<<8)|buf[1];  
@@ -285,7 +287,7 @@ u8 MPU_Get_Gyroscope(axis3f_t *gyro_s)
 u8 MPU_Get_Accelerometer(axis3f_t *acc_s)
 {
     u8 buf[6],res;  
-	res=IIC_Read_NByte(MPU9250_ADDR,MPU_ACCEL_XOUTH_REG,6,buf);
+	res=IIC1_Read_NByte(MPU9250_ADDR,MPU_ACCEL_XOUTH_REG,6,buf);
 	if(res==0)
 	{
 		acc_s->x=((u16)buf[0]<<8)|buf[1];  

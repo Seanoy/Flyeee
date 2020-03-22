@@ -38,3 +38,4 @@
 .\objects\bsp_bmp180.o: .\Hardware\inc\bsp_myiic.h
 .\objects\bsp_bmp180.o: .\System\inc\bsp_sys.h
 .\objects\bsp_bmp180.o: F:\keil\ARM\ARMCC\Bin\..\include\math.h
+.\objects\bsp_bmp180.o: F:\keil\ARM\ARMCC\Bin\..\include\stdio.h

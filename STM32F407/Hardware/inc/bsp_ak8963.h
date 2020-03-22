@@ -12,23 +12,23 @@
 #define AK8963_ID                       0X48	//AK8963的器件ID
 
 //AK8963的内部寄存器
-#define AK8963_WIA								0x00	//AK8963的器件ID寄存器地址
-#define AK8963_RA_INFO        0x01
-#define AK8963_RA_ST1         0x02
+#define AK8963_WIA						0x00	//AK8963的器件ID寄存器地址
+#define AK8963_RA_INFO                  0x01
+#define AK8963_RA_ST1                   0x02
 
-#define AK8963_XOUT_L						0X03	
-#define AK8963_XOUT_H						0X04
-#define AK8963_YOUT_L						0X05
-#define AK8963_YOUT_H						0X06
-#define AK8963_ZOUT_L						0X07
-#define AK8963_ZOUT_H						0X08
+#define AK8963_XOUT_L					0X03	
+#define AK8963_XOUT_H					0X04
+#define AK8963_YOUT_L					0X05
+#define AK8963_YOUT_H					0X06
+#define AK8963_ZOUT_L					0X07
+#define AK8963_ZOUT_H					0X08
 
-#define AK8963_CNTL1         		0X0A    
-#define AK8963_CNTL2         		0X0B
+#define AK8963_CNTL1         	0X0A    
+#define AK8963_CNTL2         	0X0B
 #define AK8963_RA_ASTC        	0x0C
 #define AK8963_RA_TS1         	0x0D // SHIPMENT TEST, DO NOT USE
 #define AK8963_RA_TS2         	0x0E // SHIPMENT TEST, DO NOT USE
-#define AK8963_RA_I2CDIS     		0x0F
+#define AK8963_RA_I2CDIS     	0x0F
 #define AK8963_RA_ASAX        	0x10
 #define AK8963_RA_ASAY        	0x11
 #define AK8963_RA_ASAZ        	0x12

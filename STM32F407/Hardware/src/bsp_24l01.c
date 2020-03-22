@@ -1,5 +1,6 @@
 #include "bsp_24l01.h"
 #include "bsp_spi.h"
+#include <stdio.h>
 //////////////////////////////////////////////////////////////////////////////////	 
 //本程序只供学习使用，未经作者许可，不得用于其它任何用途
 //Mini STM32开发板
@@ -53,6 +54,14 @@ void NRF24L01_Init(void)
 	SPI1_Init();    //初始化SPI
     
 	NRF24L01_CE=0; 	//使能24L01
+
+    if(!NRF24L01_Check())//cannot check 24L01
+    {
+        printf("NRF24L01 SPI Connection [OK].\r\n");
+        RX_Mode();//receive mode
+    }
+    else
+        printf("NRF24L01 SPI Connection [FAIL].\r\n");
 }
 //检测24L01是否存在
 //返回值:0，成功;1，失败	
