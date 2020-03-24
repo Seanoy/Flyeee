@@ -56,6 +56,7 @@
 .\objects\bsp_ak8963.o: .\Hardware\inc\bsp_bmp180.h
 .\objects\bsp_ak8963.o: .\Communication\inc\communication.h
 .\objects\bsp_ak8963.o: .\System\inc\bsp.h
+.\objects\bsp_ak8963.o: .\Communication\inc\niming.h
 .\objects\bsp_ak8963.o: .\ThirdParty\FreeRTOSV10.2.1\include\FreeRTOS.h
 .\objects\bsp_ak8963.o: F:\keil\ARM\ARMCC\Bin\..\include\stddef.h
 .\objects\bsp_ak8963.o: .\ThirdParty\FreeRTOSV10.2.1\include\FreeRTOSConfig.h

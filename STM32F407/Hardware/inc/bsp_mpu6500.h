@@ -439,16 +439,10 @@ typedef struct
 extern u16 temperature;
 
 u8 MPU9250_Init(void);
-u8 MPU_Set_Gyro_Fsr(u8 fsr);
-u8 MPU_Set_Accel_Fsr(u8 fsr);
-u8 MPU_Set_Rate(u16 rate);
 
 short MPU_Get_Temperature(void);
 u8 MPU_Get_Gyroscope(axis3f_t *gyro_s);
 u8 MPU_Get_Accelerometer(axis3f_t *acc_s);
 bool MPU_SelfTest(void);
-
-void mpu6050_send_data(short aacx,short aacy,short aacz,short gyrox,short gyroy,short gyroz);
-void usart1_report_imu(short aacx,short aacy,short aacz,short gyrox,short gyroy,short gyroz,short roll,short pitch,short yaw);
 
 #endif

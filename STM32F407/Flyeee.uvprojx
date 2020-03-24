@@ -662,6 +662,11 @@
               <FileType>1</FileType>
               <FilePath>.\Communication\src\communication.c</FilePath>
             </File>
+            <File>
+              <FileName>niming.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Communication\src\niming.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

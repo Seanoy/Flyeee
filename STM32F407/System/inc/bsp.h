@@ -23,6 +23,7 @@
 #include "bsp_bmp180.h"
 
 #include "communication.h"
+#include "niming.h"
 
 //freertos
 #include "FreeRTOS.h"

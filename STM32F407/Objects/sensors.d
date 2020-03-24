@@ -56,6 +56,7 @@
 .\objects\sensors.o: .\Hardware\inc\bsp_bmp180.h
 .\objects\sensors.o: .\Communication\inc\communication.h
 .\objects\sensors.o: .\System\inc\bsp.h
+.\objects\sensors.o: .\Communication\inc\niming.h
 .\objects\sensors.o: .\ThirdParty\FreeRTOSV10.2.1\include\FreeRTOS.h
 .\objects\sensors.o: F:\keil\ARM\ARMCC\Bin\..\include\stddef.h
 .\objects\sensors.o: .\ThirdParty\FreeRTOSV10.2.1\include\FreeRTOSConfig.h

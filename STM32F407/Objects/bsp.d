@@ -55,6 +55,7 @@
 .\objects\bsp.o: .\Hardware\inc\bsp_bmp180.h
 .\objects\bsp.o: .\Communication\inc\communication.h
 .\objects\bsp.o: .\System\inc\bsp.h
+.\objects\bsp.o: .\Communication\inc\niming.h
 .\objects\bsp.o: .\ThirdParty\FreeRTOSV10.2.1\include\FreeRTOS.h
 .\objects\bsp.o: F:\keil\ARM\ARMCC\Bin\..\include\stddef.h
 .\objects\bsp.o: .\ThirdParty\FreeRTOSV10.2.1\include\FreeRTOSConfig.h

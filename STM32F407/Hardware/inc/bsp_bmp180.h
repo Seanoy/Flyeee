@@ -6,20 +6,20 @@
 #include <math.h>
 
 
-#define BMP180_ADDR					0xEE			//BMP180从机地址
+#define BMP180_ADDR				                0x77			//BMP180从机地址
 
 //两字节
-#define BMP180_AC1_REG			0xAA
-#define BMP180_AC2_REG			0xAC
-#define BMP180_AC3_REG			0xAE
-#define BMP180_AC4_REG			0xB0
-#define BMP180_AC5_REG			0xB2
-#define BMP180_AC6_REG			0xB4
-#define BMP180_B1_REG				0xB6
-#define BMP180_B2_REG				0xB8
-#define BMP180_MB_REG				0xBA
-#define BMP180_MC_REG				0xBC
-#define BMP180_MD_REG				0xBE
+#define BMP180_AC1_REG				            0xAA
+#define BMP180_AC2_REG				            0xAC
+#define BMP180_AC3_REG				            0xAE
+#define BMP180_AC4_REG				            0xB0
+#define BMP180_AC5_REG				            0xB2
+#define BMP180_AC6_REG				            0xB4
+#define BMP180_B1_REG				            0xB6
+#define BMP180_B2_REG				            0xB8
+#define BMP180_MB_REG				            0xBA
+#define BMP180_MC_REG				            0xBC
+#define BMP180_MD_REG				            0xBE
 
 //全局存储
 #define BMP180_OUT_XLSB_REG						0xF8			//default:0 		readonly
@@ -27,7 +27,7 @@
 #define BMP180_OUT_MSB_REG						0xF6			//default:0x80	readonly
 #define BMP180_CTRL_MEAS_REG					0xF4			//default:0			readwrite	ctrl_meas -> F4h (oss<1:0> 2bits) (sco 1bit) (measurement control 5 bits) 
 #define BMP180_SOFT_RESET_REG					0xE0			//default:0			readwrite
-#define BMP180_ID											0x55			//BMP180的ID值	readonly
+#define BMP180_ID								0x55			//BMP180的ID值	readonly
 //calib21 downto calib0 BFh downto AAh   readonly
 
 

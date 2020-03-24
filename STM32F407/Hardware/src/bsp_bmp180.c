@@ -9,7 +9,7 @@ void BMP_Init(void)
 //	初始化 获取校正值 BMP_ReadCalibrationData();
 //读取数据
     u8 res;
-    res = BMP_ReadOneByte(0xd0); 
+    res = BMP_ReadOneByte(0xD0); 
     if(res == BMP180_ID)
     {
         printf("BMP180 I2C Connection [OK].\r\n");
@@ -31,7 +31,7 @@ void BMP_WriteOneByte(uint8_t WriteAddr,uint8_t DataToWrite)
 //从BMP180读一个字节数据
 uint8_t BMP_ReadOneByte(uint8_t ReadAddr)
 {
-return IIC2_Read_One_Byte(BMP180_ADDR,ReadAddr);	
+    return IIC2_Read_One_Byte(BMP180_ADDR,ReadAddr);
 }
 
 //从BMP180读一个16位的数据

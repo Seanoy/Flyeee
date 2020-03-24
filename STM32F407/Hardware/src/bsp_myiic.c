@@ -1,29 +1,39 @@
 #include "bsp_myiic.h"
 #include <stdio.h>
 #define TRY_TIME        50
-void delay(void)//延时要足够长 ak8963才能读取到数据 因为STM32F407主频为168MHz 一个nop时间为1/168MHz
-{
-    __nop();__nop();__nop();__nop();__nop();__nop();
-    __nop();__nop();__nop();__nop();__nop();__nop();
-    __nop();__nop();__nop();__nop();__nop();__nop();
-    __nop();__nop();__nop();__nop();__nop();__nop();
-    __nop();__nop();__nop();__nop();__nop();__nop();
-    __nop();__nop();__nop();__nop();__nop();__nop();
-    __nop();__nop();__nop();__nop();__nop();__nop();
-    __nop();__nop();__nop();__nop();__nop();__nop();
-    __nop();__nop();__nop();__nop();__nop();__nop();
-    __nop();__nop();__nop();__nop();__nop();__nop();
-    __nop();__nop();__nop();__nop();__nop();__nop();
-    __nop();__nop();__nop();__nop();__nop();__nop();
-    __nop();__nop();__nop();__nop();__nop();__nop();
-    __nop();__nop();__nop();__nop();__nop();__nop();
-    __nop();__nop();__nop();__nop();__nop();__nop();
-    __nop();__nop();__nop();__nop();__nop();__nop();
-    __nop();__nop();__nop();__nop();__nop();__nop();
-    __nop();__nop();__nop();__nop();__nop();__nop();
 
+void delay1(void)//mpu6500延时
+{
+    __nop();__nop();__nop();__nop();__nop();__nop();__nop();__nop();__nop();__nop();
+    __nop();__nop();__nop();__nop();__nop();__nop();__nop();__nop();__nop();__nop();
+    __nop();__nop();__nop();__nop();__nop();__nop();__nop();__nop();__nop();__nop();
+    __nop();__nop();__nop();__nop();__nop();__nop();__nop();__nop();__nop();__nop();
+    __nop();__nop();__nop();__nop();
 }
 
+void delay3(void)//ak8963延时 延时要足够长 ak8963才能读取到数据 因为STM32F407主频为168MHz 一个nop时间为1/168MHz
+{
+    __nop();__nop();__nop();__nop();__nop();__nop();__nop();__nop();__nop();__nop();
+    __nop();__nop();__nop();__nop();__nop();__nop();__nop();__nop();__nop();__nop();
+    __nop();__nop();__nop();__nop();__nop();__nop();__nop();__nop();__nop();__nop();
+    __nop();__nop();__nop();__nop();__nop();__nop();__nop();__nop();__nop();__nop();
+    __nop();__nop();__nop();__nop();__nop();__nop();__nop();__nop();__nop();__nop();
+    __nop();__nop();__nop();__nop();__nop();__nop();__nop();__nop();__nop();__nop();
+    __nop();__nop();__nop();__nop();__nop();__nop();__nop();__nop();__nop();__nop();
+    __nop();__nop();__nop();__nop();__nop();__nop();__nop();__nop();__nop();__nop();
+    __nop();__nop();__nop();__nop();__nop();__nop();__nop();__nop();__nop();__nop();
+}
+
+void delay2(void)//BMP180延时
+{
+    __nop();__nop();__nop();__nop();__nop();__nop();__nop();__nop();__nop();__nop();
+    __nop();__nop();__nop();__nop();__nop();__nop();__nop();__nop();__nop();__nop();
+    __nop();__nop();__nop();__nop();__nop();__nop();__nop();__nop();__nop();__nop();
+    __nop();__nop();__nop();__nop();__nop();__nop();__nop();__nop();__nop();__nop();
+    __nop();__nop();__nop();__nop();__nop();__nop();__nop();__nop();__nop();__nop();
+    __nop();__nop();__nop();__nop();__nop();__nop();__nop();__nop();__nop();__nop();
+    __nop();__nop();__nop();__nop();__nop();__nop();__nop();__nop();__nop();__nop();
+}
 //初始化IIC
 void IIC_Init(void)
 {			
@@ -59,9 +69,9 @@ static void IIC1_Start(void)
 	SDA_OUT1();     //sda线输出
 	IIC_SDA1=1;	  	  
 	IIC_SCL1=1;
-	delay();
+	delay1();
  	IIC_SDA1=0;//START:when CLK is high,DATA change form high to low 
-	delay();
+	delay1();
 	IIC_SCL1=0;//钳住I2C总线，准备发送或接收数据 
 }	 
 
@@ -71,10 +81,10 @@ static void IIC1_Stop(void)
 	SDA_OUT1();//sda线输出
 	IIC_SCL1=0;
 	IIC_SDA1=0;//STOP:when CLK is high DATA change form low to high
- 	delay();
+ 	delay1();
 	IIC_SCL1=1; 
 	IIC_SDA1=1;//发送I2C总线结束信号
-	delay();							   	
+	delay1();							   	
 }
 
 //等待应答信号到来
@@ -84,8 +94,8 @@ static u8 IIC1_Wait_Ack(void)
 {
 	u8 ucErrTime=0;
 	SDA_IN1();      //SDA设置为输入  
-	IIC_SDA1=1;delay();	   
-	IIC_SCL1=1;delay();	 
+	IIC_SDA1=1;delay1();	   
+	IIC_SCL1=1;delay1();	 
 	while(READ_SDA1)
 	{
 		ucErrTime++;
@@ -105,9 +115,9 @@ static void IIC1_Ack(void)
 	IIC_SCL1=0;
 	SDA_OUT1();
 	IIC_SDA1=0;
-	delay();
+	delay1();
 	IIC_SCL1=1;
-	delay();
+	delay1();
 	IIC_SCL1=0;
 }
 
@@ -117,9 +127,9 @@ static void IIC1_NAck(void)
 	IIC_SCL1=0;
 	SDA_OUT1();
 	IIC_SDA1=1;
-	delay();
+	delay1();
 	IIC_SCL1=1;
-	delay();
+	delay1();
 	IIC_SCL1=0;
 }		
 
@@ -136,11 +146,11 @@ void IIC1_Send_Byte(u8 txd)
     {              
         IIC_SDA1=(txd&0x80)>>7;
         txd<<=1; 	  
-		delay();   //对TEA5767这三个延时都是必须的
+		delay1();   //对TEA5767这三个延时都是必须的
 		IIC_SCL1=1;
-		delay(); 
+		delay1(); 
 		IIC_SCL1=0;	
-		delay();
+		delay1();
     }	 
 } 	
 
@@ -152,11 +162,11 @@ u8 IIC1_Read_Byte(unsigned char ack)
     for(i=0;i<8;i++ )
 	{
         IIC_SCL1=0; 
-        delay();
+        delay1();
 		IIC_SCL1=1;
         receive<<=1;
         if(READ_SDA1)receive++;   
-		delay(); 
+		delay1(); 
     }					 
     if (!ack)
         IIC1_NAck();//发送nACK
@@ -277,6 +287,194 @@ u8 IIC1_Read_One_Byte(u8 addr, u8 reg)
     return res;  
 }
 
+
+
+
+/********以下是AK8963的驱动代码，由于他的延时比MPU6500长很多，所以将它分离出来，其实这很不明智，代码冗余太多了*********/
+//产生IIC起始信号
+static void IIC1_Start_(void)
+{
+	SDA_OUT1();     //sda线输出
+	IIC_SDA1=1;	  	  
+	IIC_SCL1=1;
+	delay3();
+ 	IIC_SDA1=0;//START:when CLK is high,DATA change form high to low 
+	delay3();
+	IIC_SCL1=0;//钳住I2C总线，准备发送或接收数据 
+}	 
+
+//产生IIC停止信号
+static void IIC1_Stop_(void)
+{
+	SDA_OUT1();//sda线输出
+	IIC_SCL1=0;
+	IIC_SDA1=0;//STOP:when CLK is high DATA change form low to high
+ 	delay3();
+	IIC_SCL1=1; 
+	IIC_SDA1=1;//发送I2C总线结束信号
+	delay3();							   	
+}
+
+//等待应答信号到来
+//返回值：1，接收应答失败
+//        0，接收应答成功
+static u8 IIC1_Wait_Ack_(void)
+{
+	u8 ucErrTime=0;
+	SDA_IN1();      //SDA设置为输入  
+	IIC_SDA1=1;delay3();	   
+	IIC_SCL1=1;delay3();	 
+	while(READ_SDA1)
+	{
+		ucErrTime++;
+		if(ucErrTime>TRY_TIME)
+		{
+			IIC1_Stop_();
+			return 1;
+		}
+	}
+	IIC_SCL1=0;//时钟输出0 	   
+	return 0;  
+} 
+
+//产生ACK应答
+static void IIC1_Ack_(void)
+{
+	IIC_SCL1=0;
+	SDA_OUT1();
+	IIC_SDA1=0;
+	delay3();
+	IIC_SCL1=1;
+	delay3();
+	IIC_SCL1=0;
+}
+
+//不产生ACK应答		    
+static void IIC1_NAck_(void)
+{
+	IIC_SCL1=0;
+	SDA_OUT1();
+	IIC_SDA1=1;
+	delay3();
+	IIC_SCL1=1;
+	delay3();
+	IIC_SCL1=0;
+}		
+
+//IIC发送一个字节
+//返回从机有无应答
+//1，有应答
+//0，无应答			  
+void IIC1_Send_Byte_(u8 txd)
+{                        
+    u8 t;   
+	SDA_OUT1(); 	    
+    IIC_SCL1=0;//拉低时钟开始数据传输
+    for(t=0;t<8;t++)
+    {              
+        IIC_SDA1=(txd&0x80)>>7;
+        txd<<=1; 	  
+		delay3();   //对TEA5767这三个延时都是必须的
+		IIC_SCL1=1;
+		delay3(); 
+		IIC_SCL1=0;	
+		delay3();
+    }	 
+} 	
+
+//读1个字节，ack=1时，发送ACK，ack=0，发送nACK   
+u8 IIC1_Read_Byte_(unsigned char ack)
+{
+	unsigned char i,receive=0;
+	SDA_IN1();//SDA设置为输入
+    for(i=0;i<8;i++ )
+	{
+        IIC_SCL1=0; 
+        delay3();
+		IIC_SCL1=1;
+        receive<<=1;
+        if(READ_SDA1)receive++;   
+		delay3(); 
+    }					 
+    if (!ack)
+        IIC1_NAck_();//发送nACK
+    else
+        IIC1_Ack_(); //发送ACK   
+    return receive;
+}
+
+//IIC写一个字节 
+//devaddr:器件IIC地址
+//reg:寄存器地址
+//data:数据
+//返回值:0,正常
+//    其他,错误代码
+u8 IIC1_Write_One_Byte_(u8 addr, u8 reg, u8 data)
+{
+    IIC1_Start_();
+    IIC1_Send_Byte_((addr<<1)|0); //发送器件地址+写命令
+    if(IIC1_Wait_Ack_())          //等待应答
+    {
+        IIC1_Stop_();
+        return 1;
+    }
+    IIC1_Send_Byte_(reg);         //写寄存器地址
+    IIC1_Wait_Ack_();             //等待应答
+    IIC1_Send_Byte_(data);        //发送数据
+    if(IIC1_Wait_Ack_())          //等待ACK
+    {
+        IIC1_Stop_();
+        return 1;
+    }
+    IIC1_Stop_();
+    return 0;
+}
+
+//IIC读一个字节 
+//reg:寄存器地址 
+//返回值:读到的数据
+u8 IIC1_Read_One_Byte_(u8 addr, u8 reg)
+{
+    u8 res;
+    IIC1_Start_();
+    IIC1_Send_Byte_((addr<<1)|0); //发送器件地址+写命令
+    IIC1_Wait_Ack_();             //等待应答
+    IIC1_Send_Byte_(reg);         //写寄存器地址
+    IIC1_Wait_Ack_();             //等待应答
+    IIC1_Start_();                
+    IIC1_Send_Byte_((addr<<1)|1); //发送器件地址+读命令
+    IIC1_Wait_Ack_();             //等待应答
+    res=IIC1_Read_Byte_(0);		    //读数据,发送nACK  
+    IIC1_Stop_();                 //产生一个停止条件
+    return res;  
+}
+
+u8 IIC1_Read_NByte_(u8 addr,u8 reg,u8 len,u8 *buf)
+{ 
+    IIC1_Start_();
+    IIC1_Send_Byte_((addr<<1)|0); //发送器件地址+写命令
+    if(IIC1_Wait_Ack_())          //等待应答
+    {
+        IIC1_Stop_();
+        return 1;
+    }
+    IIC1_Send_Byte_(reg);         //写寄存器地址
+    IIC1_Wait_Ack_();             //等待应答
+	  IIC1_Start_();                
+    IIC1_Send_Byte_((addr<<1)|1); //发送器件地址+读命令
+    IIC1_Wait_Ack_();             //等待应答
+    while(len)
+    {
+        if(len==1)*buf=IIC1_Read_Byte_(0);//读数据,发送nACK 
+				else *buf=IIC1_Read_Byte_(1);		//读数据,发送ACK  
+				len--;
+				buf++;  
+    }
+    IIC1_Stop_();                 //产生一个停止条件
+    return 0;       
+}
+
+
 //I2C写一位
 void IIC1_WriteBit(u8 addr, u8 reg, u8 bitNum, u8 enable)
 {
@@ -335,9 +533,9 @@ static void IIC2_Start(void)
 	SDA_OUT2();     //sda线输出
 	IIC_SDA2=1;	  	  
 	IIC_SCL2=1;
-	delay();
+	delay2();
  	IIC_SDA2=0;//START:when CLK is high,DATA change form high to low 
-	delay();
+	delay2();
 	IIC_SCL2=0;//钳住I2C总线，准备发送或接收数据 
 }	 
 
@@ -347,10 +545,10 @@ static void IIC2_Stop(void)
 	SDA_OUT2();//sda线输出
 	IIC_SCL2=0;
 	IIC_SDA2=0;//STOP:when CLK is high DATA change form low to high
- 	delay();
+ 	delay2();
 	IIC_SCL2=1; 
 	IIC_SDA2=1;//发送I2C总线结束信号
-	delay();							   	
+	delay2();							   	
 }
 
 //等待应答信号到来
@@ -360,8 +558,8 @@ static u8 IIC2_Wait_Ack(void)
 {
 	u8 ucErrTime=0;
 	SDA_IN2();      //SDA设置为输入  
-	IIC_SDA2=1;delay();	   
-	IIC_SCL2=1;delay();	 
+	IIC_SDA2=1;delay2();	   
+	IIC_SCL2=1;delay2();	 
 	while(READ_SDA2)
 	{
 		ucErrTime++;
@@ -381,9 +579,9 @@ static void IIC2_Ack(void)
 	IIC_SCL2=0;
 	SDA_OUT2();
 	IIC_SDA2=0;
-	delay();
+	delay2();
 	IIC_SCL2=1;
-	delay();
+	delay2();
 	IIC_SCL2=0;
 }
 
@@ -393,9 +591,9 @@ static void IIC2_NAck(void)
 	IIC_SCL2=0;
 	SDA_OUT2();
 	IIC_SDA2=1;
-	delay();
+	delay2();
 	IIC_SCL2=1;
-	delay();
+	delay2();
 	IIC_SCL2=0;
 }		
 
@@ -412,11 +610,11 @@ void IIC2_Send_Byte(u8 txd)
     {              
         IIC_SDA2=(txd&0x80)>>7;
         txd<<=1; 	  
-		delay();   //对TEA5767这三个延时都是必须的
+		delay2();   //对TEA5767这三个延时都是必须的
 		IIC_SCL2=1;
-		delay(); 
+		delay2(); 
 		IIC_SCL2=0;	
-		delay();
+		delay2();
     }	 
 } 	
 
@@ -428,11 +626,11 @@ u8 IIC2_Read_Byte(unsigned char ack)
     for(i=0;i<8;i++ )
 	{
         IIC_SCL2=0; 
-        delay();
+        delay2();
 		IIC_SCL2=1;
         receive<<=1;
         if(READ_SDA2)receive++;   
-		delay(); 
+		delay2(); 
     }					 
     if (!ack)
         IIC2_NAck();//发送nACK

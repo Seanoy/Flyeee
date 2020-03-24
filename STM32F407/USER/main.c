@@ -66,20 +66,13 @@ void attitude_task(void *pvParameters)
     //magnitude sensor init
     AK8963_Init();
     //barometric sensor init
-    BMP_Init();
+//    BMP_Init();
     //filter init
     Filter_Init();
     
     while(1)
     {
         LED0=~LED0;
-//        MPU_Get_Gyroscope(&attitude.gyro);
-//        MPU_Get_Accelerometer(&attitude.acc);
-//        MPU_Get_Magnetometer(&attitude.mag);
-//        temperature = MPU_Get_Temperature();
-//        IMUupdate(attitude.gyro.x, attitude.gyro.y, attitude.gyro.z, attitude.acc.x, attitude.acc.y, attitude.acc.z, &attitude.Q_ANGLE);
-//        mpu6050_send_data(attitude.acc.x,attitude.acc.y, attitude.acc.z, attitude.gyro.x, attitude.gyro.y, attitude.gyro.z);//用自定义帧发送加速度和陀螺仪原始数据
-//        usart1_report_imu(attitude.acc.x,attitude.acc.y, attitude.acc.z, attitude.gyro.x, attitude.gyro.y, attitude.gyro.z,(int)(attitude.Q_ANGLE.Pitch*100),(int)(attitude.Q_ANGLE.Roll*100),(int)(attitude.Q_ANGLE.Yaw*10));
         processSensordata();
         vTaskDelay(500);
     }
