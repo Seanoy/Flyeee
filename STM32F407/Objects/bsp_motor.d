@@ -36,3 +36,6 @@
 .\objects\bsp_motor.o: .\FWlib\inc\stm32f4xx_dcmi.h
 .\objects\bsp_motor.o: .\FWlib\inc\stm32f4xx_fsmc.h
 .\objects\bsp_motor.o: F:\keil\ARM\ARMCC\Bin\..\include\stdbool.h
+.\objects\bsp_motor.o: .\Flight\inc\stabilizer_type.h
+.\objects\bsp_motor.o: .\System\inc\bsp_sys.h
+.\objects\bsp_motor.o: .\Communication\inc\niming.h

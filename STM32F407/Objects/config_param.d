@@ -41,3 +41,5 @@
 .\objects\config_param.o: F:\keil\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\config_param.o: .\Hardware\inc\bsp_myiic.h
 .\objects\config_param.o: .\USER\sensors.h
+.\objects\config_param.o: F:\keil\ARM\ARMCC\Bin\..\include\stdbool.h
+.\objects\config_param.o: .\Flight\inc\stabilizer_type.h

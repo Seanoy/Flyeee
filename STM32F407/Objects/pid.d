@@ -40,3 +40,5 @@
 .\objects\pid.o: .\System\inc\bsp_sys.h
 .\objects\pid.o: .\Hardware\inc\bsp_myiic.h
 .\objects\pid.o: .\USER\sensors.h
+.\objects\pid.o: F:\keil\ARM\ARMCC\Bin\..\include\stdbool.h
+.\objects\pid.o: .\Flight\inc\stabilizer_type.h

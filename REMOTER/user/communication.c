@@ -21,7 +21,7 @@ static void Flush_Data(nrf_data_t *frame)
     frame->head = 0xFE;//≤π≥‰Õ∑≤ø
 }
 
-void Fill_Data(uint8_t cmd, signed char *buffer,nrf_data_t *frame)
+void Fill_Data(uint8_t cmd, signed char *buffer, nrf_data_t *frame)
 {
     uint8_t i;
     Flush_Data(frame);//clear data

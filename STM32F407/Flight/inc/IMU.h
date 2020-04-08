@@ -12,7 +12,7 @@ typedef struct float_angle{
 
 
                 
-void IMUupdate(float gx, float gy, float gz, float ax, float ay, float az, struct float_angle *angle);
-void AGMIMUupdate(float gx, float gy, float gz, float ax, float ay, float az,float mx, float my, float mz, struct float_angle *angle);
+void imuUpdate(axis3f_t acc, axis3f_t gyro, state_t *state, float dt);
+void agmImuUpdate(axis3f_t acc, axis3f_t gyro, axis3f_t mag, state_t *state, float dt);
 
 #endif

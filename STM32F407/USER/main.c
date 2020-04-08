@@ -2,21 +2,14 @@
 
 //任务句柄
 TaskHandle_t StartTask_Handler;
-TaskHandle_t Task_Handler1;
-TaskHandle_t Task_Handler2;
+TaskHandle_t Task_Handler_Sensor;
+TaskHandle_t Task_Handler_Nrf;
+TaskHandle_t Task_Handler_Stabilizer;
 
 //队列
-QueueHandle_t xQueue;
+//static xQueueHandle nrfDataQueue;
 
-typedef struct 
-{
-    axis3f_t gyro;
-    axis3f_t acc;
-    axis3f_t mag;
-    S_FLOAT_ANGLE Q_ANGLE;
-}attidude_t;
 
-attidude_t attitude;
 
 int main(void)
 { 	
@@ -24,7 +17,6 @@ int main(void)
 	BSP_Init();
     /* The queue is created to hold a maximum of 5 values, each of which is
     large enough to hold a variable of type int32_t. */
-    xQueue = xQueueCreate( 3, sizeof( struct nrf_rxdata* ) );//存储姿态结构体attitude_t
     //创建开始任务
     xTaskCreate((TaskFunction_t )start_task,            //任务函数
                 (const char*    )"start_task",          //任务名称
@@ -38,62 +30,31 @@ int main(void)
 //开始任务任务函数
 void start_task(void *pvParameters)
 {
-    taskENTER_CRITICAL();           //进入临界区
-    //创建LED0任务
-    xTaskCreate((TaskFunction_t )attitude_task,         
-                (const char*    )"attitude_task",       
-                (uint16_t       )STK_SIZE_1, 
+    //进入临界区
+    taskENTER_CRITICAL();
+    //创建传感器任务
+    xTaskCreate((TaskFunction_t )sensor_task,         
+                (const char*    )"sensor_task",       
+                (uint16_t       )STK_SIZE_SENSOR, 
                 (void*          )NULL,              
-                (UBaseType_t    )TASK_PRIO_1,    
-                (TaskHandle_t*  )&Task_Handler1);   
-    //创建LED1任务
+                (UBaseType_t    )TASK_PRIO_SENSOR,    
+                (TaskHandle_t*  )&Task_Handler_Sensor);   
+    //创建nrf通信任务
     xTaskCreate((TaskFunction_t )nrf_task,     
                 (const char*    )"nrf_task",   
-                (uint16_t       )STK_SIZE_2, 
+                (uint16_t       )STK_SIZE_NRF, 
                 (void*          )NULL,
-                (UBaseType_t    )TASK_PRIO_2,
-                (TaskHandle_t*  )&Task_Handler2);        
-   
-    vTaskDelete(StartTask_Handler); //删除开始任务
-    taskEXIT_CRITICAL();            //退出临界区
-}
-
-//获取姿态任务函数 
-void attitude_task(void *pvParameters)
-{
-    //imu init
-    MPU9250_Init();
-    //magnitude sensor init
-    AK8963_Init();
-    //barometric sensor init
-//    BMP_Init();
-    //filter init
-    Filter_Init();
-    
-    while(1)
-    {
-        LED0=~LED0;
-        processSensordata();
-        vTaskDelay(500);
-    }
-}
-
-//nrf任务函数
-void nrf_task(void *pvParameters)
-{	    
-//    BaseType_t xStatus;
-    u8 rxbuf[32] = {0};
-    while(1)
-    {
-        if(NRF24L01_RxPacket(rxbuf)==0)//接收成功
-        {
-            if(Handle_NRF_Data(rxbuf)==0)//数据正确
-            {
-                
-                //根据xy坐标值操作
-            }
-        }
-        LED1=!LED1;
-        vTaskDelay(400);
-    }
+                (UBaseType_t    )TASK_PRIO_NRF,
+                (TaskHandle_t*  )&Task_Handler_Nrf);
+    //创建姿态任务
+    xTaskCreate((TaskFunction_t )stabilize_task,     
+                (const char*    )"stabilize_task",   
+                (uint16_t       )STK_SIZE_STABILIZER, 
+                (void*          )NULL,
+                (UBaseType_t    )TASK_PRIO_STABILIZER,
+                (TaskHandle_t*  )&Task_Handler_Stabilizer);      
+    //删除开始任务
+    vTaskDelete(StartTask_Handler);
+    //退出临界区
+    taskEXIT_CRITICAL();
 }

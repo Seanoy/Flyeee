@@ -1,5 +1,5 @@
 #include "attitude_pid.h"
-
+#include <string.h>
 
 //角度环积分限幅
 #define PID_ANGLE_INTEGRATION_LIMIT_ROLL    30.0
@@ -39,6 +39,7 @@ ratePidDt 角速度pid的变化频率
 */
 void attitudeControlInit(float anglePidDt, float ratePidDt)
 {
+    memcpy((u8 *)&configParam, (u8 *)&configParamDefault, sizeof(configParam));
     //初始化角度三轴的PID参数以及积分限幅值
     pidInit(&pidAngleRoll, 0, configParam.pidAngle.roll, anglePidDt);
     pidInit(&pidAnglePitch, 0, configParam.pidAngle.pitch, anglePidDt);
@@ -100,34 +101,4 @@ void attitudeResetAllPID(void)
 	pidReset(&pidRateRoll);
 	pidReset(&pidRatePitch);
 	pidReset(&pidRateYaw);
-}
-
-//配置参数结构体
-void attitudeConfigParam(void)
-{
-    //角度环PID配置
-    configParam.pidAngle.roll.kp = pidAngleRoll.kp;
-    configParam.pidAngle.roll.ki = pidAngleRoll.ki;
-    configParam.pidAngle.roll.kd = pidAngleRoll.kd;
-    
-    configParam.pidAngle.pitch.kp = pidAnglePitch.kp;
-    configParam.pidAngle.pitch.ki = pidAnglePitch.ki;
-    configParam.pidAngle.pitch.kd = pidAnglePitch.kd;
-    
-    configParam.pidAngle.yaw.kp = pidAngleYaw.kp;
-    configParam.pidAngle.yaw.ki = pidAngleYaw.ki;
-    configParam.pidAngle.yaw.kd = pidAngleYaw.kd;
-    
-    //角速度环PID配置
-    configParam.pidRate.roll.kp = pidRateRoll.kp;
-    configParam.pidRate.roll.ki = pidRateRoll.ki;
-    configParam.pidRate.roll.kd = pidRateRoll.kd;
-    
-    configParam.pidRate.pitch.kp = pidRatePitch.kp;
-    configParam.pidRate.pitch.ki = pidRatePitch.ki;
-    configParam.pidRate.pitch.kd = pidRatePitch.kd;
-    
-    configParam.pidRate.yaw.kp = pidRateYaw.kp;
-    configParam.pidRate.yaw.ki = pidRateYaw.ki;
-    configParam.pidRate.yaw.kd = pidRateYaw.kd;
 }

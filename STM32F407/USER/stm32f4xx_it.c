@@ -29,7 +29,15 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f4xx_it.h"
+#include "FreeRTOS.h"
+#include "FreeRTOSConfig.h"
+#include "task.h"
+#include "timers.h"
+#include "queue.h"
+#include "semphr.h"
+#include "event_groups.h"
 
+static u32 sysTickCnt=0;
 
 /** @addtogroup STM32F4xx_StdPeriph_Examples
   * @{
@@ -139,9 +147,26 @@ void DebugMon_Handler(void)
 //  * @param  None
 //  * @retval None
 //  */
-//void SysTick_Handler(void)
-//{
-//}
+extern void xPortSysTickHandler(void);
+
+void  SysTick_Handler(void)
+{
+	if(xTaskGetSchedulerState()!=taskSCHEDULER_NOT_STARTED)	/*系统已经运行*/
+    {
+        xPortSysTickHandler();	
+    }else
+	{
+		sysTickCnt++;	/*调度开启之前计数*/
+	}
+}
+
+u32 getSysTickCnt(void)
+{
+	if(xTaskGetSchedulerState()!=taskSCHEDULER_NOT_STARTED)	/*系统已经运行*/
+		return xTaskGetTickCount();
+	else
+		return sysTickCnt;
+}
 
 /******************************************************************************/
 /*                 STM32F4xx Peripherals Interrupt Handlers                   */

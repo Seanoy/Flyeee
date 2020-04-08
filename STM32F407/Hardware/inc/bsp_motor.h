@@ -3,6 +3,7 @@
 
 #include <stm32f4xx.h>
 #include <stdbool.h>
+#include "stabilizer_type.h"
 
 
 #define TIM_CLOCK_HZ 				168000000
@@ -20,9 +21,18 @@
 #define MOTORS_TEST_ON_TIME_MS    300
 #define MOTORS_TEST_DELAY_TIME_MS 500
 
+typedef struct 
+{
+	u32 m1;
+	u32 m2;
+	u32 m3;
+	u32 m4;
+	
+}motorPWM_t;
 
 void MOTOR_Init(void);
 bool motorsTest(void);		/*电机测试*/
 void motorsSetRatio(u32 id, u16 ithrust);	/*设置电机占空比*/
+void powerControl(control_t *control);
 
 #endif

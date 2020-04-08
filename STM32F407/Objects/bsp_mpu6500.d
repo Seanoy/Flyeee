@@ -40,6 +40,7 @@
 .\objects\bsp_mpu6500.o: .\Hardware\inc\bsp_myiic.h
 .\objects\bsp_mpu6500.o: .\USER\sensors.h
 .\objects\bsp_mpu6500.o: F:\keil\ARM\ARMCC\Bin\..\include\stdbool.h
+.\objects\bsp_mpu6500.o: .\Flight\inc\stabilizer_type.h
 .\objects\bsp_mpu6500.o: .\USER\task_config.h
 .\objects\bsp_mpu6500.o: .\System\inc\bsp.h
 .\objects\bsp_mpu6500.o: F:\keil\ARM\ARMCC\Bin\..\include\stdlib.h
@@ -72,15 +73,9 @@
 .\objects\bsp_mpu6500.o: .\ThirdParty\FreeRTOSV10.2.1\include\semphr.h
 .\objects\bsp_mpu6500.o: .\ThirdParty\FreeRTOSV10.2.1\include\event_groups.h
 .\objects\bsp_mpu6500.o: .\Flight\inc\pid.h
-.\objects\bsp_mpu6500.o: .\Flight\inc\state_control.h
 .\objects\bsp_mpu6500.o: .\Flight\inc\attitude_pid.h
 .\objects\bsp_mpu6500.o: .\Flight\inc\config_param.h
-.\objects\bsp_mpu6500.o: .\Flight\inc\stabilizer_type.h
-.\objects\bsp_mpu6500.o: .\Flight\inc\position_pid.h
-.\objects\bsp_mpu6500.o: .\Flight\inc\maths.h
-.\objects\bsp_mpu6500.o: .\Flight\inc\attitude_pid.h
-.\objects\bsp_mpu6500.o: .\Flight\inc\stabilizer_type.h
-.\objects\bsp_mpu6500.o: .\Flight\inc\command.h
 .\objects\bsp_mpu6500.o: .\Flight\inc\kalman_filter.h
 .\objects\bsp_mpu6500.o: .\Flight\inc\imu.h
 .\objects\bsp_mpu6500.o: .\Flight\inc\filter.h
+.\objects\bsp_mpu6500.o: .\USER\stabilizer.h

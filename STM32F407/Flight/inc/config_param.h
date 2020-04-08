@@ -22,12 +22,12 @@ typedef struct
     pidParam_t pidAngle;    //角度PID
     pidParam_t pidRate;     //角速度PID
     pidParamPos_t pidPos;   //位置PID
-    float trimPitch;        //pitch微调值
-    float trimRoll;         //roll微调值
+    float trimP;            //pitch微调值
+    float trimR;            //roll微调值
     uint16_t thrustBase;    //油门基础值
     uint8_t checksum;       //校验和
 }configParam_t;
 
 extern configParam_t configParam;
-
+extern configParam_t configParamDefault;
 #endif

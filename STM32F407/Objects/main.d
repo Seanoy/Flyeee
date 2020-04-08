@@ -48,6 +48,7 @@
 .\objects\main.o: .\Hardware\inc\bsp_myiic.h
 .\objects\main.o: .\USER\sensors.h
 .\objects\main.o: F:\keil\ARM\ARMCC\Bin\..\include\stdbool.h
+.\objects\main.o: .\Flight\inc\stabilizer_type.h
 .\objects\main.o: .\Hardware\inc\bsp_ak8963.h
 .\objects\main.o: .\Hardware\inc\bsp_motor.h
 .\objects\main.o: .\Hardware\inc\bsp_watchdog.h
@@ -72,15 +73,9 @@
 .\objects\main.o: .\ThirdParty\FreeRTOSV10.2.1\include\semphr.h
 .\objects\main.o: .\ThirdParty\FreeRTOSV10.2.1\include\event_groups.h
 .\objects\main.o: .\Flight\inc\pid.h
-.\objects\main.o: .\Flight\inc\state_control.h
 .\objects\main.o: .\Flight\inc\attitude_pid.h
 .\objects\main.o: .\Flight\inc\config_param.h
-.\objects\main.o: .\Flight\inc\stabilizer_type.h
-.\objects\main.o: .\Flight\inc\position_pid.h
-.\objects\main.o: .\Flight\inc\maths.h
-.\objects\main.o: .\Flight\inc\attitude_pid.h
-.\objects\main.o: .\Flight\inc\stabilizer_type.h
-.\objects\main.o: .\Flight\inc\command.h
 .\objects\main.o: .\Flight\inc\kalman_filter.h
 .\objects\main.o: .\Flight\inc\imu.h
 .\objects\main.o: .\Flight\inc\filter.h
+.\objects\main.o: .\USER\stabilizer.h

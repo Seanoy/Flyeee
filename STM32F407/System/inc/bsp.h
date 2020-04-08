@@ -36,13 +36,12 @@
 
 //attitude
 #include "pid.h"
-#include "state_control.h"
 #include "attitude_pid.h"
-#include "position_pid.h"
 #include "kalman_filter.h"
 #include "imu.h"
 #include "sensors.h"
 #include "filter.h"
+#include "stabilizer.h"
 
 void BSP_Init(void);
 

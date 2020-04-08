@@ -48,6 +48,7 @@
 .\objects\communication.o: .\Hardware\inc\bsp_myiic.h
 .\objects\communication.o: .\USER\sensors.h
 .\objects\communication.o: F:\keil\ARM\ARMCC\Bin\..\include\stdbool.h
+.\objects\communication.o: .\Flight\inc\stabilizer_type.h
 .\objects\communication.o: .\Hardware\inc\bsp_ak8963.h
 .\objects\communication.o: .\Hardware\inc\bsp_motor.h
 .\objects\communication.o: .\Hardware\inc\bsp_watchdog.h
@@ -71,16 +72,10 @@
 .\objects\communication.o: .\ThirdParty\FreeRTOSV10.2.1\include\semphr.h
 .\objects\communication.o: .\ThirdParty\FreeRTOSV10.2.1\include\event_groups.h
 .\objects\communication.o: .\Flight\inc\pid.h
-.\objects\communication.o: .\Flight\inc\state_control.h
 .\objects\communication.o: .\Flight\inc\attitude_pid.h
 .\objects\communication.o: .\Flight\inc\config_param.h
-.\objects\communication.o: .\Flight\inc\stabilizer_type.h
-.\objects\communication.o: .\Flight\inc\position_pid.h
-.\objects\communication.o: .\Flight\inc\maths.h
-.\objects\communication.o: .\Flight\inc\attitude_pid.h
-.\objects\communication.o: .\Flight\inc\stabilizer_type.h
-.\objects\communication.o: .\Flight\inc\command.h
 .\objects\communication.o: .\Flight\inc\kalman_filter.h
 .\objects\communication.o: .\Flight\inc\imu.h
 .\objects\communication.o: .\System\inc\bsp.h
 .\objects\communication.o: .\Flight\inc\filter.h
+.\objects\communication.o: .\USER\stabilizer.h

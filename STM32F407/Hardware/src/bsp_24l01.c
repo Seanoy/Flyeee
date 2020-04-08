@@ -1,6 +1,12 @@
 #include "bsp_24l01.h"
 #include "bsp_spi.h"
 #include <stdio.h>
+#include "communication.h"
+
+#include "FreeRTOS.h"
+#include "task.h"
+#include "semphr.h"
+#include "queue.h"
 //////////////////////////////////////////////////////////////////////////////////	 
 //本程序只供学习使用，未经作者许可，不得用于其它任何用途
 //Mini STM32开发板
@@ -22,11 +28,15 @@ CSN PA4
 CE PC4
 IRQ PC5
 */
-	 
+//信号量
+xSemaphoreHandle nrfDataReady;
+
 //发送地址和接收地址相同即 自发自收
 const u8 TX_ADDRESS[TX_ADR_WIDTH]={0x66,0x66,0x66,0x66,0x66}; //发送地址
 const u8 RX_ADDRESS[RX_ADR_WIDTH]={0x88,0x88,0x88,0x88,0x88}; //接收地址
-							    
+
+void NRF_IRQ_Init(void);
+
 //初始化24L01的IO口
 void NRF24L01_Init(void)
 {
@@ -43,16 +53,11 @@ void NRF24L01_Init(void)
     //CE
 	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_4;
 	GPIO_Init(GPIOC,&GPIO_InitStructure);
-    //IRQ
-    GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_UP;
-	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN;
-	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_5;
-	GPIO_Init(GPIOC,&GPIO_InitStructure);
-    
+
+    //IRQ    
+    NRF_IRQ_Init();//使能外部中断引脚    
 	NRF24L01_CSN=1;	//SPI片选取消
-    
 	SPI1_Init();    //初始化SPI
-    
 	NRF24L01_CE=0; 	//使能24L01
 
     if(!NRF24L01_Check())//cannot check 24L01
@@ -62,6 +67,8 @@ void NRF24L01_Init(void)
     }
     else
         printf("NRF24L01 SPI Connection [FAIL].\r\n");
+    
+    nrfDataReady = xSemaphoreCreateBinary();
 }
 //检测24L01是否存在
 //返回值:0，成功;1，失败	
@@ -203,3 +210,83 @@ void TX_Mode(void)
   	NRF24L01_Write_Reg(WR_REG+CONFIG,0x0e);    //配置基本工作模式的参数;PWR_UP,EN_CRC,16BIT_CRC,接收模式,开启所有中断
 	NRF24L01_CE=1;//CE为高,10us后启动发送
 }
+
+//外部中断
+static void NRF_IRQ_GPIO_Init(void)
+{
+    GPIO_InitTypeDef GPIO_InitStructure;
+    
+    RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOC , ENABLE);
+    
+    GPIO_InitStructure.GPIO_Pin = GPIO_Pin_5;
+    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN;
+    GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
+    GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_UP;
+    GPIO_InitStructure.GPIO_Speed = GPIO_Speed_100MHz;
+    GPIO_Init(GPIOC, &GPIO_InitStructure);
+}
+
+static void NRF_IRQ_EXTI_Init(void)
+{
+    EXTI_InitTypeDef EXTI_InitStructure;
+    
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_SYSCFG, ENABLE);//使能SYSCFG时钟
+	SYSCFG_EXTILineConfig(EXTI_PortSourceGPIOC, EXTI_PinSource5);
+
+    EXTI_InitStructure.EXTI_Line = EXTI_Line5;
+    EXTI_InitStructure.EXTI_Mode = EXTI_Mode_Interrupt;
+    EXTI_InitStructure.EXTI_Trigger  =EXTI_Trigger_Falling;
+    EXTI_InitStructure.EXTI_LineCmd = ENABLE;
+    EXTI_Init(&EXTI_InitStructure);
+}
+
+static void NRF_IRQ_NVIC_Init(void)
+{
+    NVIC_InitTypeDef NVIC_InitStructure;
+    //PC5
+    NVIC_InitStructure.NVIC_IRQChannel = EXTI9_5_IRQn;
+    NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 1;
+    NVIC_InitStructure.NVIC_IRQChannelSubPriority = 1;
+    NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
+    NVIC_Init(&NVIC_InitStructure);
+}
+
+void NRF_IRQ_Init(void)
+{
+    NRF_IRQ_GPIO_Init();
+    NRF_IRQ_EXTI_Init();
+    NRF_IRQ_NVIC_Init();
+}
+
+void EXTI9_5_IRQHandler(void)
+{
+	portBASE_TYPE xHigherPriorityTaskWoken = pdFALSE;
+    if(EXTI_GetITStatus(EXTI_Line5)!=RESET)
+    {
+        xSemaphoreGiveFromISR(nrfDataReady, &xHigherPriorityTaskWoken);
+        EXTI_ClearITPendingBit(EXTI_Line5);
+    }
+}
+
+//nrf任务函数
+void nrf_task(void *pvParameters)
+{
+    u8 rxbuf[32] = {0};
+//    nrfDataQueue = xQueueCreate(1, sizeof(nrf_data_t));
+    while(1)
+    {
+        if (pdTRUE == xSemaphoreTake(nrfDataReady, portMAX_DELAY))
+        {
+            if(NRF24L01_RxPacket(rxbuf)==0 & NRF24L01_Check_Data(rxbuf)==0)//接收成功 & 数据正确
+            {
+                //处理接收到的数据
+                NRF24L01_Convert_Data(&nrf_rxdata, &nrf_ctrl);
+                //xQueueOverwrite(nrfDataQueue, &rxbuf);
+                LED1=!LED1;
+                //根据xy坐标值操作
+            }
+        }
+    }
+}
+
+

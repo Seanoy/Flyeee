@@ -41,4 +41,6 @@
 .\objects\state_control.o: .\System\inc\bsp_sys.h
 .\objects\state_control.o: .\Hardware\inc\bsp_myiic.h
 .\objects\state_control.o: .\USER\sensors.h
+.\objects\state_control.o: F:\keil\ARM\ARMCC\Bin\..\include\stdbool.h
+.\objects\state_control.o: .\Flight\inc\stabilizer_type.h
 .\objects\state_control.o: F:\keil\ARM\ARMCC\Bin\..\include\math.h

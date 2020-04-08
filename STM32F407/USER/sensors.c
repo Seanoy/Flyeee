@@ -9,6 +9,12 @@
 #define ACCEL_LPF_CUTOFF_FREQ   30
 #define MAG_LPF_CUTOFF_FREQ     20
 
+static xQueueHandle accelerometerDataQueue;
+static xQueueHandle gyroDataQueue;
+static xQueueHandle magnetometerDataQueue;
+static xQueueHandle barometerDataQueue;
+static xSemaphoreHandle sensorsDataReady;
+
 static lpf2pData accLpf[3];
 static lpf2pData gyroLpf[3];
 static lpf2pData magLpf[3];
@@ -18,27 +24,8 @@ static axis3f_t gyroBias;
 static bool gyroBiasFound = false;
 static float accScaleSum = 0;
 static float accScale = 1;
-typedef struct
-{
-	float pressure;
-	float temperature;
-	float asl;
-} baro_t;
-typedef struct zRange_s 
-{
-	uint32_t timestamp;	//时间戳
-	float distance;		//测量距离
-	float quality;		//可信度
-} zRange_t;
-typedef struct
-{
-	axis3f_t acc;
-	axis3f_t gyro;
-	axis3f_t mag;
-	baro_t baro;
-	point_t position;
-	zRange_t zrange;
-} sensorData_t;
+
+
 sensorData_t sensors;
 
 typedef union 
@@ -66,8 +53,6 @@ typedef struct
 }BiasObj;
 
 BiasObj	gyroBiasRunning;
-
-
 
 void Filter_Init(void)
 {
@@ -242,15 +227,86 @@ void processAccGyroMeasurements(const uint8_t *buffer)
 	applyAxis3fLpf(accLpf, &sensors.acc);
 }
 
-//获取初始数据
-
-void processSensordata(void)
+void sensorInit(void)
 {
-    IIC1_Read_NByte(MPU9250_ADDR,MPU_ACCEL_XOUTH_REG,14,rawDataBuf);
-    processAccGyroMeasurements(&(rawDataBuf[0]));//获取并处理陀螺仪和加速度计数据
-    IIC1_Read_NByte(AK8963_ADDR,AK8963_XOUT_L,6,rawDataBuf+14);
-    processMagnetometerMeasurements(&(rawDataBuf[14]));//获取并处理磁力计数据
-//        IMUupdate(attitude.gyro.x, attitude.gyro.y, attitude.gyro.z, attitude.acc.x, attitude.acc.y, attitude.acc.z, &attitude.Q_ANGLE);
-    ANO_Send_01(accRaw.x, accRaw.y, accRaw.z, gyroRaw.x, gyroRaw.y, gyroRaw.z,0);
+//    //创建二值信号量
+    sensorsDataReady = xSemaphoreCreateBinary();
+//	/*创建传感器数据队列*/
+	accelerometerDataQueue = xQueueCreate(1, sizeof(axis3f_t));
+	gyroDataQueue = xQueueCreate(1, sizeof(axis3f_t));
+	magnetometerDataQueue = xQueueCreate(1, sizeof(axis3f_t));
+//	barometerDataQueue = xQueueCreate(1, sizeof(baro_t));
 }
 
+/*从队列读取陀螺数据*/
+bool sensorsReadGyro(axis3f_t *gyro)
+{
+	return (pdTRUE == xQueueReceive(gyroDataQueue, gyro, 0));
+}
+/*从队列读取加速计数据*/
+bool sensorsReadAcc(axis3f_t *acc)
+{
+	return (pdTRUE == xQueueReceive(accelerometerDataQueue, acc, 0));
+}
+/*从队列读取磁力计数据*/
+bool sensorsReadMag(axis3f_t *mag)
+{
+	return (pdTRUE == xQueueReceive(magnetometerDataQueue, mag, 0));
+}
+/*从队列读取气压数据*/
+bool sensorsReadBaro(baro_t *baro)
+{
+	return (pdTRUE == xQueueReceive(barometerDataQueue, baro, 0));
+}
+
+/*获取传感器数据*/
+void sensorsAcquire(sensorData_t *sensors, const u32 tick)	
+{
+	sensorsReadGyro(&sensors->gyro);
+	sensorsReadAcc(&sensors->acc);
+	sensorsReadMag(&sensors->mag);
+//	sensorsReadBaro(&sensors->baro);
+    xSemaphoreGive(sensorsDataReady);
+}
+
+//获取初始数据
+void processSensordata(void)
+{
+    if (pdTRUE == xSemaphoreTake(sensorsDataReady, portMAX_DELAY))
+    {
+        IIC1_Read_NByte(MPU9250_ADDR,MPU_ACCEL_XOUTH_REG,14,rawDataBuf);
+        processAccGyroMeasurements(&(rawDataBuf[0]));//获取并处理陀螺仪和加速度计数据
+        IIC1_Read_NByte(AK8963_ADDR,AK8963_XOUT_L,6,rawDataBuf+14);
+        processMagnetometerMeasurements(&(rawDataBuf[14]));//获取并处理磁力计数据
+        vTaskSuspendAll();	/*确保同一时刻把数据放入队列中*/
+        xQueueOverwrite(accelerometerDataQueue, &sensors.acc);//九轴数据写入队列，等待数据处理任务处理
+        xQueueOverwrite(gyroDataQueue, &sensors.gyro);
+        xQueueOverwrite(magnetometerDataQueue, &sensors.mag);
+//        xQueueOverwrite(barometerDataQueue, &sensors.baro);//气压数据
+        xTaskResumeAll();//恢复任务
+//        ANO_Send_01(accRaw.x, accRaw.y, accRaw.z, gyroRaw.x, gyroRaw.y, gyroRaw.z,0);//发送数据到匿名上位机处理
+    }
+}
+
+
+//获取数据任务函数 
+void sensor_task(void *pvParameters)
+{    
+    sensorInit();
+    //filter init
+    Filter_Init();
+    //imu init
+    MPU9250_Init();
+    //magnitude sensor init
+    AK8963_Init();
+    //barometric sensor init
+//    BMP_Init();
+    
+    while(1)
+    {
+//        LED0=~LED0;
+        //处理传感器数据，获取姿态角
+        processSensordata();
+//        vTaskDelay(500);
+    }
+}

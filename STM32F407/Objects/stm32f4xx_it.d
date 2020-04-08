@@ -35,3 +35,17 @@
 .\objects\stm32f4xx_it.o: .\FWlib\inc\stm32f4xx_dac.h
 .\objects\stm32f4xx_it.o: .\FWlib\inc\stm32f4xx_dcmi.h
 .\objects\stm32f4xx_it.o: .\FWlib\inc\stm32f4xx_fsmc.h
+.\objects\stm32f4xx_it.o: .\ThirdParty\FreeRTOSV10.2.1\include\FreeRTOS.h
+.\objects\stm32f4xx_it.o: F:\keil\ARM\ARMCC\Bin\..\include\stddef.h
+.\objects\stm32f4xx_it.o: .\ThirdParty\FreeRTOSV10.2.1\include\FreeRTOSConfig.h
+.\objects\stm32f4xx_it.o: .\ThirdParty\FreeRTOSV10.2.1\include\projdefs.h
+.\objects\stm32f4xx_it.o: .\ThirdParty\FreeRTOSV10.2.1\include\portable.h
+.\objects\stm32f4xx_it.o: .\ThirdParty\FreeRTOSV10.2.1\include\deprecated_definitions.h
+.\objects\stm32f4xx_it.o: .\ThirdParty\FreeRTOSV10.2.1\portable\RVDS\ARM_CM4F\portmacro.h
+.\objects\stm32f4xx_it.o: .\ThirdParty\FreeRTOSV10.2.1\include\mpu_wrappers.h
+.\objects\stm32f4xx_it.o: .\ThirdParty\FreeRTOSV10.2.1\include\task.h
+.\objects\stm32f4xx_it.o: .\ThirdParty\FreeRTOSV10.2.1\include\list.h
+.\objects\stm32f4xx_it.o: .\ThirdParty\FreeRTOSV10.2.1\include\timers.h
+.\objects\stm32f4xx_it.o: .\ThirdParty\FreeRTOSV10.2.1\include\queue.h
+.\objects\stm32f4xx_it.o: .\ThirdParty\FreeRTOSV10.2.1\include\semphr.h
+.\objects\stm32f4xx_it.o: .\ThirdParty\FreeRTOSV10.2.1\include\event_groups.h

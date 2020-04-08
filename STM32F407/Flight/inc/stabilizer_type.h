@@ -2,9 +2,6 @@
 #define __STABILIZER_TYPE_H
 
 #include "bsp_sys.h"
-#include "sensors.h"
-#include "position_pid.h"
-#include "attitude_pid.h"
 #include <stdbool.h>
 
 typedef struct  
@@ -105,6 +102,40 @@ typedef struct
     mode_t mode;            //模式
     float thrust;           //油门
 }setpoint_t;
+//3axis sensor type
+typedef union 
+{
+	struct 
+	{
+		float x;
+		float y;
+		float z;
+	};
+	float axis[3];
+}axis3f_t;
 
+typedef struct
+{
+	float pressure;
+	float temperature;
+	float asl;
+} baro_t;
+
+typedef struct 
+{
+	uint32_t timestamp;	//时间戳
+	float distance;		//测量距离
+	float quality;		//可信度
+} zRange_t;
+
+typedef struct
+{
+	axis3f_t acc;
+	axis3f_t gyro;
+	axis3f_t mag;
+	baro_t baro;
+	point_t position;
+	zRange_t zrange;
+} sensorData_t;
 
 #endif

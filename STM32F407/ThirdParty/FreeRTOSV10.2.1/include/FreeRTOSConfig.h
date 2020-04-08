@@ -49,7 +49,7 @@
 
 #define vPortSVCHandler SVC_Handler
 #define xPortPendSVHandler PendSV_Handler
-#define xPortSysTickHandler SysTick_Handler
+//#define xPortSysTickHandler SysTick_Handler
 
 #define configUSE_PREEMPTION			1		//调度器采用抢占式还是协程式
 #define configUSE_IDLE_HOOK				0		//空闲任务钩子函数

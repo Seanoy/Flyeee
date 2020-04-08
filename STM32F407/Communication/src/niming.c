@@ -238,7 +238,7 @@ void ANO_Send_05(s32 alt_fu, s32 alt_add, u8 alt_sta)
     u8 ac = 0;
     DataToSend[_cnt++] = 0xAA;
     DataToSend[_cnt++] = 0xFF;
-    DataToSend[_cnt++] = 0x04;
+    DataToSend[_cnt++] = 0x05;
     DataToSend[_cnt++] = 9;
     
     DataToSend[_cnt++] = BYTE0(alt_fu);
@@ -252,6 +252,38 @@ void ANO_Send_05(s32 alt_fu, s32 alt_add, u8 alt_sta)
     DataToSend[_cnt++] = BYTE3(alt_add);
     
     DataToSend[_cnt++] = BYTE0(alt_sta);
+
+    for(u8 i = 0; i<DataToSend[3]+4; i++)
+    {
+        sc += DataToSend[i];
+        ac += sc;
+    }
+    
+    DataToSend[_cnt++] = sc;
+    DataToSend[_cnt++] = ac;
+    usart1_send_string(DataToSend, _cnt);
+}
+
+/*
+cmd:0x20 PWM 控制量
+数据类型  U8  U8  U8  U8  
+数据内容  PWM1 PWM2 PWM3 PWM4
+PWM：PWM 输出信号，范围 0-250，4 轴模式只输出前 4 通道，6 轴模式输出 6 通道，8 轴模式输出 8 通道。
+*/
+void ANO_Send_20(u8 pwm1, u8 pwm2, u8 pwm3, u8 pwm4)
+{
+    u8 _cnt = 0;
+    u8 sc = 0;
+    u8 ac = 0;
+    DataToSend[_cnt++] = 0xAA;
+    DataToSend[_cnt++] = 0xFF;
+    DataToSend[_cnt++] = 0x20;
+    DataToSend[_cnt++] = 4;
+    
+    DataToSend[_cnt++] = pwm1;
+    DataToSend[_cnt++] = pwm2;
+    DataToSend[_cnt++] = pwm3;
+    DataToSend[_cnt++] = pwm4;
 
     for(u8 i = 0; i<DataToSend[3]+4; i++)
     {

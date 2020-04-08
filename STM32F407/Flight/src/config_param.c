@@ -6,7 +6,7 @@
 
 configParam_t configParam;
 
-static configParam_t configParamDefault=
+configParam_t configParamDefault=
 {
     .version = VERSION,
     .pidAngle=
@@ -90,8 +90,13 @@ static configParam_t configParamDefault=
             .kd=4.5,
         },
     },
-    .trimPitch=0.0f,     //pitch微调值
-    .trimRoll=0.0f,     //roll微调值
+    .trimP=10.0f,     //pitch微调值
+    .trimR=10.0f,     //roll微调值
     .thrustBase=34000,  //定高油门基础值
 };
 
+
+void paramInit(void)
+{
+    
+}
