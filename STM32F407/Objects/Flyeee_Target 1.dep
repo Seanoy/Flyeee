@@ -1321,7 +1321,7 @@ I (.\Hardware\inc\bsp_spi.h)(0x5E60D71D)
 I (.\Hardware\inc\bsp_led.h)(0x5CE6832A)
 I (.\Hardware\inc\bsp_mpu6500.h)(0x5E7707FC)
 I (.\Hardware\inc\bsp_myiic.h)(0x5E79D706)
-I (.\USER\sensors.h)(0x5E7D4C74)
+I (.\USER\sensors.h)(0x5E8E7AD5)
 I (F:\keil\ARM\ARMCC\include\stdbool.h)(0x5D9AD218)
 I (.\Flight\inc\stabilizer_type.h)(0x5E8DE42E)
 I (.\Hardware\inc\bsp_ak8963.h)(0x5E76D7FF)
@@ -1408,162 +1408,6 @@ I (USER\circulebuffer.h)(0x5E660ED0)
 I (F:\keil\ARM\ARMCC\include\stdbool.h)(0x5D9AD218)
 I (F:\keil\ARM\ARMCC\include\stdint.h)(0x5D9AD218)
 I (F:\keil\ARM\ARMCC\include\string.h)(0x5D9AD218)
-F (.\USER\sensors.c)(0x5E8DE9F4)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I .\USER -I .\ThirdParty\fat_fs\inc -I .\FWlib\inc -I .\CORE -I .\Communication\inc -I .\Flight\inc -I .\Hardware\inc -I .\System\inc -I .\ThirdParty\FreeRTOSV10.2.1\include -I .\ThirdParty\FreeRTOSV10.2.1 -I .\ThirdParty\FreeRTOSV10.2.1\portable\RVDS\ARM_CM4F -I .\FREERTOS_Test-I.\RTE\_Target_1-IF:\keil\ARM\PACK\ARM\CMSIS\5.6.0\CMSIS\Core\Include-IF:\keil\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="529" -D_RTE_ -DSTM32F407xx -DUSE_STDPERIPH_DRIVER -DSTM32F40_41xxx-o .\objects\sensors.o --omf_browse .\objects\sensors.crf --depend .\objects\sensors.d)
-I (USER\sensors.h)(0x5E7D4C74)
-I (F:\keil\ARM\ARMCC\include\stdbool.h)(0x5D9AD218)
-I (.\System\inc\bsp_sys.h)(0x5E6655C4)
-I (.\CORE\stm32f4xx.h)(0x5CFC91A4)
-I (.\CORE\core_cm4.h)(0x53C7D530)
-I (F:\keil\ARM\ARMCC\include\stdint.h)(0x5D9AD218)
-I (.\CORE\core_cmInstr.h)(0x53C7D530)
-I (.\CORE\core_cmFunc.h)(0x53C7D530)
-I (.\CORE\core_cm4_simd.h)(0x53C7D530)
-I (.\CORE\system_stm32f4xx.h)(0x53DBA499)
-I (.\USER\stm32f4xx_conf.h)(0x53DFAB51)
-I (.\FWlib\inc\stm32f4xx_adc.h)(0x5710F383)
-I (.\FWlib\inc\stm32f4xx_crc.h)(0x5710F383)
-I (.\FWlib\inc\stm32f4xx_dbgmcu.h)(0x5710F383)
-I (.\FWlib\inc\stm32f4xx_dma.h)(0x5710F383)
-I (.\FWlib\inc\stm32f4xx_exti.h)(0x5710F383)
-I (.\FWlib\inc\stm32f4xx_flash.h)(0x5710F383)
-I (.\FWlib\inc\stm32f4xx_gpio.h)(0x5710F383)
-I (.\FWlib\inc\stm32f4xx_i2c.h)(0x5710F383)
-I (.\FWlib\inc\stm32f4xx_iwdg.h)(0x5710F383)
-I (.\FWlib\inc\stm32f4xx_pwr.h)(0x5710F383)
-I (.\FWlib\inc\stm32f4xx_rcc.h)(0x5710F383)
-I (.\FWlib\inc\stm32f4xx_rtc.h)(0x5710F383)
-I (.\FWlib\inc\stm32f4xx_sdio.h)(0x5710F383)
-I (.\FWlib\inc\stm32f4xx_spi.h)(0x5710F383)
-I (.\FWlib\inc\stm32f4xx_syscfg.h)(0x5710F383)
-I (.\FWlib\inc\stm32f4xx_tim.h)(0x5710F383)
-I (.\FWlib\inc\stm32f4xx_usart.h)(0x5710F383)
-I (.\FWlib\inc\stm32f4xx_wwdg.h)(0x5710F383)
-I (.\FWlib\inc\misc.h)(0x5710F383)
-I (.\FWlib\inc\stm32f4xx_cryp.h)(0x5710F383)
-I (.\FWlib\inc\stm32f4xx_hash.h)(0x5710F383)
-I (.\FWlib\inc\stm32f4xx_rng.h)(0x5710F383)
-I (.\FWlib\inc\stm32f4xx_can.h)(0x5710F383)
-I (.\FWlib\inc\stm32f4xx_dac.h)(0x5710F383)
-I (.\FWlib\inc\stm32f4xx_dcmi.h)(0x5710F383)
-I (.\FWlib\inc\stm32f4xx_fsmc.h)(0x5710F383)
-I (.\Flight\inc\stabilizer_type.h)(0x5E8DE42E)
-I (.\Hardware\inc\bsp_mpu6500.h)(0x5E7707FC)
-I (F:\keil\ARM\ARMCC\include\stdio.h)(0x5D9AD21A)
-I (.\Hardware\inc\bsp_myiic.h)(0x5E79D706)
-I (.\Hardware\inc\bsp_ak8963.h)(0x5E76D7FF)
-I (.\Flight\inc\imu.h)(0x5E7D50A9)
-I (.\System\inc\bsp.h)(0x5E7E09CE)
-I (F:\keil\ARM\ARMCC\include\stdlib.h)(0x5D9AD21A)
-I (F:\keil\ARM\ARMCC\include\string.h)(0x5D9AD218)
-I (F:\keil\ARM\ARMCC\include\math.h)(0x5D9AD212)
-I (.\System\inc\bsp_usart.h)(0x5E6651C7)
-I (.\Hardware\inc\bsp_spi.h)(0x5E60D71D)
-I (.\Hardware\inc\bsp_led.h)(0x5CE6832A)
-I (.\Hardware\inc\bsp_motor.h)(0x5E7E04AB)
-I (.\Hardware\inc\bsp_watchdog.h)(0x5E63547B)
-I (.\Hardware\inc\bsp_timer.h)(0x5E665594)
-I (.\Hardware\inc\bsp_24l01.h)(0x5E805AD5)
-I (.\Hardware\inc\bsp_bmp180.h)(0x5E79AC98)
-I (.\Communication\inc\communication.h)(0x5E8043DD)
-I (.\Communication\inc\niming.h)(0x5E8DC403)
-I (.\ThirdParty\FreeRTOSV10.2.1\include\FreeRTOS.h)(0x5E06DCF5)
-I (F:\keil\ARM\ARMCC\include\stddef.h)(0x5D9AD218)
-I (.\ThirdParty\FreeRTOSV10.2.1\include\FreeRTOSConfig.h)(0x5E8DE1FF)
-I (.\ThirdParty\FreeRTOSV10.2.1\include\projdefs.h)(0x5CD62451)
-I (.\ThirdParty\FreeRTOSV10.2.1\include\portable.h)(0x5CD62451)
-I (.\ThirdParty\FreeRTOSV10.2.1\include\deprecated_definitions.h)(0x5CD62451)
-I (.\ThirdParty\FreeRTOSV10.2.1\portable\RVDS\ARM_CM4F\portmacro.h)(0x5E06BD10)
-I (.\ThirdParty\FreeRTOSV10.2.1\include\mpu_wrappers.h)(0x5CD62451)
-I (.\ThirdParty\FreeRTOSV10.2.1\include\task.h)(0x5D01B79C)
-I (.\ThirdParty\FreeRTOSV10.2.1\include\list.h)(0x5CFC92EC)
-I (.\ThirdParty\FreeRTOSV10.2.1\include\timers.h)(0x5CD62451)
-I (.\ThirdParty\FreeRTOSV10.2.1\include\queue.h)(0x5CD62451)
-I (.\ThirdParty\FreeRTOSV10.2.1\include\semphr.h)(0x5CD62451)
-I (.\ThirdParty\FreeRTOSV10.2.1\include\event_groups.h)(0x5CD62451)
-I (.\Flight\inc\pid.h)(0x5E704964)
-I (.\Flight\inc\attitude_pid.h)(0x5E704964)
-I (.\Flight\inc\config_param.h)(0x5E8DD402)
-I (.\Flight\inc\kalman_filter.h)(0x5E6371A7)
-I (.\Flight\inc\filter.h)(0x5E704A2F)
-I (.\USER\stabilizer.h)(0x5E7E0F2F)
-F (.\USER\stabilizer.c)(0x5E8DED75)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I .\USER -I .\ThirdParty\fat_fs\inc -I .\FWlib\inc -I .\CORE -I .\Communication\inc -I .\Flight\inc -I .\Hardware\inc -I .\System\inc -I .\ThirdParty\FreeRTOSV10.2.1\include -I .\ThirdParty\FreeRTOSV10.2.1 -I .\ThirdParty\FreeRTOSV10.2.1\portable\RVDS\ARM_CM4F -I .\FREERTOS_Test-I.\RTE\_Target_1-IF:\keil\ARM\PACK\ARM\CMSIS\5.6.0\CMSIS\Core\Include-IF:\keil\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="529" -D_RTE_ -DSTM32F407xx -DUSE_STDPERIPH_DRIVER -DSTM32F40_41xxx-o .\objects\stabilizer.o --omf_browse .\objects\stabilizer.crf --depend .\objects\stabilizer.d)
-I (USER\stabilizer.h)(0x5E7E0F2F)
-I (.\ThirdParty\FreeRTOSV10.2.1\include\FreeRTOS.h)(0x5E06DCF5)
-I (F:\keil\ARM\ARMCC\include\stddef.h)(0x5D9AD218)
-I (F:\keil\ARM\ARMCC\include\stdint.h)(0x5D9AD218)
-I (.\ThirdParty\FreeRTOSV10.2.1\include\FreeRTOSConfig.h)(0x5E8DE1FF)
-I (.\ThirdParty\FreeRTOSV10.2.1\include\projdefs.h)(0x5CD62451)
-I (.\ThirdParty\FreeRTOSV10.2.1\include\portable.h)(0x5CD62451)
-I (.\ThirdParty\FreeRTOSV10.2.1\include\deprecated_definitions.h)(0x5CD62451)
-I (.\ThirdParty\FreeRTOSV10.2.1\portable\RVDS\ARM_CM4F\portmacro.h)(0x5E06BD10)
-I (.\ThirdParty\FreeRTOSV10.2.1\include\mpu_wrappers.h)(0x5CD62451)
-I (.\ThirdParty\FreeRTOSV10.2.1\include\task.h)(0x5D01B79C)
-I (.\ThirdParty\FreeRTOSV10.2.1\include\list.h)(0x5CFC92EC)
-I (USER\sensors.h)(0x5E7D4C74)
-I (F:\keil\ARM\ARMCC\include\stdbool.h)(0x5D9AD218)
-I (.\System\inc\bsp_sys.h)(0x5E6655C4)
-I (.\CORE\stm32f4xx.h)(0x5CFC91A4)
-I (.\CORE\core_cm4.h)(0x53C7D530)
-I (.\CORE\core_cmInstr.h)(0x53C7D530)
-I (.\CORE\core_cmFunc.h)(0x53C7D530)
-I (.\CORE\core_cm4_simd.h)(0x53C7D530)
-I (.\CORE\system_stm32f4xx.h)(0x53DBA499)
-I (.\USER\stm32f4xx_conf.h)(0x53DFAB51)
-I (.\FWlib\inc\stm32f4xx_adc.h)(0x5710F383)
-I (.\FWlib\inc\stm32f4xx_crc.h)(0x5710F383)
-I (.\FWlib\inc\stm32f4xx_dbgmcu.h)(0x5710F383)
-I (.\FWlib\inc\stm32f4xx_dma.h)(0x5710F383)
-I (.\FWlib\inc\stm32f4xx_exti.h)(0x5710F383)
-I (.\FWlib\inc\stm32f4xx_flash.h)(0x5710F383)
-I (.\FWlib\inc\stm32f4xx_gpio.h)(0x5710F383)
-I (.\FWlib\inc\stm32f4xx_i2c.h)(0x5710F383)
-I (.\FWlib\inc\stm32f4xx_iwdg.h)(0x5710F383)
-I (.\FWlib\inc\stm32f4xx_pwr.h)(0x5710F383)
-I (.\FWlib\inc\stm32f4xx_rcc.h)(0x5710F383)
-I (.\FWlib\inc\stm32f4xx_rtc.h)(0x5710F383)
-I (.\FWlib\inc\stm32f4xx_sdio.h)(0x5710F383)
-I (.\FWlib\inc\stm32f4xx_spi.h)(0x5710F383)
-I (.\FWlib\inc\stm32f4xx_syscfg.h)(0x5710F383)
-I (.\FWlib\inc\stm32f4xx_tim.h)(0x5710F383)
-I (.\FWlib\inc\stm32f4xx_usart.h)(0x5710F383)
-I (.\FWlib\inc\stm32f4xx_wwdg.h)(0x5710F383)
-I (.\FWlib\inc\misc.h)(0x5710F383)
-I (.\FWlib\inc\stm32f4xx_cryp.h)(0x5710F383)
-I (.\FWlib\inc\stm32f4xx_hash.h)(0x5710F383)
-I (.\FWlib\inc\stm32f4xx_rng.h)(0x5710F383)
-I (.\FWlib\inc\stm32f4xx_can.h)(0x5710F383)
-I (.\FWlib\inc\stm32f4xx_dac.h)(0x5710F383)
-I (.\FWlib\inc\stm32f4xx_dcmi.h)(0x5710F383)
-I (.\FWlib\inc\stm32f4xx_fsmc.h)(0x5710F383)
-I (.\Flight\inc\stabilizer_type.h)(0x5E8DE42E)
-I (.\Flight\inc\imu.h)(0x5E7D50A9)
-I (.\System\inc\bsp.h)(0x5E7E09CE)
-I (F:\keil\ARM\ARMCC\include\stdlib.h)(0x5D9AD21A)
-I (F:\keil\ARM\ARMCC\include\string.h)(0x5D9AD218)
-I (F:\keil\ARM\ARMCC\include\math.h)(0x5D9AD212)
-I (.\System\inc\bsp_usart.h)(0x5E6651C7)
-I (F:\keil\ARM\ARMCC\include\stdio.h)(0x5D9AD21A)
-I (.\Hardware\inc\bsp_spi.h)(0x5E60D71D)
-I (.\Hardware\inc\bsp_led.h)(0x5CE6832A)
-I (.\Hardware\inc\bsp_mpu6500.h)(0x5E7707FC)
-I (.\Hardware\inc\bsp_myiic.h)(0x5E79D706)
-I (.\Hardware\inc\bsp_ak8963.h)(0x5E76D7FF)
-I (.\Hardware\inc\bsp_motor.h)(0x5E7E04AB)
-I (.\Hardware\inc\bsp_watchdog.h)(0x5E63547B)
-I (.\Hardware\inc\bsp_timer.h)(0x5E665594)
-I (.\Hardware\inc\bsp_24l01.h)(0x5E805AD5)
-I (.\Hardware\inc\bsp_bmp180.h)(0x5E79AC98)
-I (.\Communication\inc\communication.h)(0x5E8043DD)
-I (.\Communication\inc\niming.h)(0x5E8DC403)
-I (.\ThirdParty\FreeRTOSV10.2.1\include\timers.h)(0x5CD62451)
-I (.\ThirdParty\FreeRTOSV10.2.1\include\queue.h)(0x5CD62451)
-I (.\ThirdParty\FreeRTOSV10.2.1\include\semphr.h)(0x5CD62451)
-I (.\ThirdParty\FreeRTOSV10.2.1\include\event_groups.h)(0x5CD62451)
-I (.\Flight\inc\pid.h)(0x5E704964)
-I (.\Flight\inc\attitude_pid.h)(0x5E704964)
-I (.\Flight\inc\config_param.h)(0x5E8DD402)
-I (.\Flight\inc\kalman_filter.h)(0x5E6371A7)
-I (.\Flight\inc\filter.h)(0x5E704A2F)
 F (.\Communication\src\communication.c)(0x5E8047BF)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I .\USER -I .\ThirdParty\fat_fs\inc -I .\FWlib\inc -I .\CORE -I .\Communication\inc -I .\Flight\inc -I .\Hardware\inc -I .\System\inc -I .\ThirdParty\FreeRTOSV10.2.1\include -I .\ThirdParty\FreeRTOSV10.2.1 -I .\ThirdParty\FreeRTOSV10.2.1\portable\RVDS\ARM_CM4F -I .\FREERTOS_Test-I.\RTE\_Target_1-IF:\keil\ARM\PACK\ARM\CMSIS\5.6.0\CMSIS\Core\Include-IF:\keil\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="529" -D_RTE_ -DSTM32F407xx -DUSE_STDPERIPH_DRIVER -DSTM32F40_41xxx-o .\objects\communication.o --omf_browse .\objects\communication.crf --depend .\objects\communication.d)
 I (.\Communication\inc\communication.h)(0x5E8043DD)
 I (.\System\inc\bsp.h)(0x5E7E09CE)
@@ -1611,7 +1455,7 @@ I (.\Hardware\inc\bsp_spi.h)(0x5E60D71D)
 I (.\Hardware\inc\bsp_led.h)(0x5CE6832A)
 I (.\Hardware\inc\bsp_mpu6500.h)(0x5E7707FC)
 I (.\Hardware\inc\bsp_myiic.h)(0x5E79D706)
-I (.\USER\sensors.h)(0x5E7D4C74)
+I (.\USER\sensors.h)(0x5E8E7AD5)
 I (F:\keil\ARM\ARMCC\include\stdbool.h)(0x5D9AD218)
 I (.\Flight\inc\stabilizer_type.h)(0x5E8DE42E)
 I (.\Hardware\inc\bsp_ak8963.h)(0x5E76D7FF)
@@ -1680,7 +1524,165 @@ I (.\FWlib\inc\stm32f4xx_dcmi.h)(0x5710F383)
 I (.\FWlib\inc\stm32f4xx_fsmc.h)(0x5710F383)
 I (F:\keil\ARM\ARMCC\include\stdbool.h)(0x5D9AD218)
 I (F:\keil\ARM\ARMCC\include\stdlib.h)(0x5D9AD21A)
-F (.\Flight\src\imu.c)(0x5E8DE886)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I .\USER -I .\ThirdParty\fat_fs\inc -I .\FWlib\inc -I .\CORE -I .\Communication\inc -I .\Flight\inc -I .\Hardware\inc -I .\System\inc -I .\ThirdParty\FreeRTOSV10.2.1\include -I .\ThirdParty\FreeRTOSV10.2.1 -I .\ThirdParty\FreeRTOSV10.2.1\portable\RVDS\ARM_CM4F -I .\FREERTOS_Test-I.\RTE\_Target_1-IF:\keil\ARM\PACK\ARM\CMSIS\5.6.0\CMSIS\Core\Include-IF:\keil\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="529" -D_RTE_ -DSTM32F407xx -DUSE_STDPERIPH_DRIVER -DSTM32F40_41xxx-o .\objects\imu.o --omf_browse .\objects\imu.crf --depend .\objects\imu.d)
+F (.\USER\sensors.c)(0x5E8ECF12)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I .\USER -I .\ThirdParty\fat_fs\inc -I .\FWlib\inc -I .\CORE -I .\Communication\inc -I .\Flight\inc -I .\Hardware\inc -I .\System\inc -I .\ThirdParty\FreeRTOSV10.2.1\include -I .\ThirdParty\FreeRTOSV10.2.1 -I .\ThirdParty\FreeRTOSV10.2.1\portable\RVDS\ARM_CM4F -I .\FREERTOS_Test-I.\RTE\_Target_1-IF:\keil\ARM\PACK\ARM\CMSIS\5.6.0\CMSIS\Core\Include-IF:\keil\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="529" -D_RTE_ -DSTM32F407xx -DUSE_STDPERIPH_DRIVER -DSTM32F40_41xxx-o .\objects\sensors.o --omf_browse .\objects\sensors.crf --depend .\objects\sensors.d)
+I (USER\sensors.h)(0x5E8E7AD5)
+I (F:\keil\ARM\ARMCC\include\stdbool.h)(0x5D9AD218)
+I (.\System\inc\bsp_sys.h)(0x5E6655C4)
+I (.\CORE\stm32f4xx.h)(0x5CFC91A4)
+I (.\CORE\core_cm4.h)(0x53C7D530)
+I (F:\keil\ARM\ARMCC\include\stdint.h)(0x5D9AD218)
+I (.\CORE\core_cmInstr.h)(0x53C7D530)
+I (.\CORE\core_cmFunc.h)(0x53C7D530)
+I (.\CORE\core_cm4_simd.h)(0x53C7D530)
+I (.\CORE\system_stm32f4xx.h)(0x53DBA499)
+I (.\USER\stm32f4xx_conf.h)(0x53DFAB51)
+I (.\FWlib\inc\stm32f4xx_adc.h)(0x5710F383)
+I (.\FWlib\inc\stm32f4xx_crc.h)(0x5710F383)
+I (.\FWlib\inc\stm32f4xx_dbgmcu.h)(0x5710F383)
+I (.\FWlib\inc\stm32f4xx_dma.h)(0x5710F383)
+I (.\FWlib\inc\stm32f4xx_exti.h)(0x5710F383)
+I (.\FWlib\inc\stm32f4xx_flash.h)(0x5710F383)
+I (.\FWlib\inc\stm32f4xx_gpio.h)(0x5710F383)
+I (.\FWlib\inc\stm32f4xx_i2c.h)(0x5710F383)
+I (.\FWlib\inc\stm32f4xx_iwdg.h)(0x5710F383)
+I (.\FWlib\inc\stm32f4xx_pwr.h)(0x5710F383)
+I (.\FWlib\inc\stm32f4xx_rcc.h)(0x5710F383)
+I (.\FWlib\inc\stm32f4xx_rtc.h)(0x5710F383)
+I (.\FWlib\inc\stm32f4xx_sdio.h)(0x5710F383)
+I (.\FWlib\inc\stm32f4xx_spi.h)(0x5710F383)
+I (.\FWlib\inc\stm32f4xx_syscfg.h)(0x5710F383)
+I (.\FWlib\inc\stm32f4xx_tim.h)(0x5710F383)
+I (.\FWlib\inc\stm32f4xx_usart.h)(0x5710F383)
+I (.\FWlib\inc\stm32f4xx_wwdg.h)(0x5710F383)
+I (.\FWlib\inc\misc.h)(0x5710F383)
+I (.\FWlib\inc\stm32f4xx_cryp.h)(0x5710F383)
+I (.\FWlib\inc\stm32f4xx_hash.h)(0x5710F383)
+I (.\FWlib\inc\stm32f4xx_rng.h)(0x5710F383)
+I (.\FWlib\inc\stm32f4xx_can.h)(0x5710F383)
+I (.\FWlib\inc\stm32f4xx_dac.h)(0x5710F383)
+I (.\FWlib\inc\stm32f4xx_dcmi.h)(0x5710F383)
+I (.\FWlib\inc\stm32f4xx_fsmc.h)(0x5710F383)
+I (.\Flight\inc\stabilizer_type.h)(0x5E8DE42E)
+I (.\Hardware\inc\bsp_mpu6500.h)(0x5E7707FC)
+I (F:\keil\ARM\ARMCC\include\stdio.h)(0x5D9AD21A)
+I (.\Hardware\inc\bsp_myiic.h)(0x5E79D706)
+I (.\Hardware\inc\bsp_ak8963.h)(0x5E76D7FF)
+I (.\Flight\inc\imu.h)(0x5E7D50A9)
+I (.\System\inc\bsp.h)(0x5E7E09CE)
+I (F:\keil\ARM\ARMCC\include\stdlib.h)(0x5D9AD21A)
+I (F:\keil\ARM\ARMCC\include\string.h)(0x5D9AD218)
+I (F:\keil\ARM\ARMCC\include\math.h)(0x5D9AD212)
+I (.\System\inc\bsp_usart.h)(0x5E6651C7)
+I (.\Hardware\inc\bsp_spi.h)(0x5E60D71D)
+I (.\Hardware\inc\bsp_led.h)(0x5CE6832A)
+I (.\Hardware\inc\bsp_motor.h)(0x5E7E04AB)
+I (.\Hardware\inc\bsp_watchdog.h)(0x5E63547B)
+I (.\Hardware\inc\bsp_timer.h)(0x5E665594)
+I (.\Hardware\inc\bsp_24l01.h)(0x5E805AD5)
+I (.\Hardware\inc\bsp_bmp180.h)(0x5E79AC98)
+I (.\Communication\inc\communication.h)(0x5E8043DD)
+I (.\Communication\inc\niming.h)(0x5E8DC403)
+I (.\ThirdParty\FreeRTOSV10.2.1\include\FreeRTOS.h)(0x5E06DCF5)
+I (F:\keil\ARM\ARMCC\include\stddef.h)(0x5D9AD218)
+I (.\ThirdParty\FreeRTOSV10.2.1\include\FreeRTOSConfig.h)(0x5E8DE1FF)
+I (.\ThirdParty\FreeRTOSV10.2.1\include\projdefs.h)(0x5CD62451)
+I (.\ThirdParty\FreeRTOSV10.2.1\include\portable.h)(0x5CD62451)
+I (.\ThirdParty\FreeRTOSV10.2.1\include\deprecated_definitions.h)(0x5CD62451)
+I (.\ThirdParty\FreeRTOSV10.2.1\portable\RVDS\ARM_CM4F\portmacro.h)(0x5E06BD10)
+I (.\ThirdParty\FreeRTOSV10.2.1\include\mpu_wrappers.h)(0x5CD62451)
+I (.\ThirdParty\FreeRTOSV10.2.1\include\task.h)(0x5D01B79C)
+I (.\ThirdParty\FreeRTOSV10.2.1\include\list.h)(0x5CFC92EC)
+I (.\ThirdParty\FreeRTOSV10.2.1\include\timers.h)(0x5CD62451)
+I (.\ThirdParty\FreeRTOSV10.2.1\include\queue.h)(0x5CD62451)
+I (.\ThirdParty\FreeRTOSV10.2.1\include\semphr.h)(0x5CD62451)
+I (.\ThirdParty\FreeRTOSV10.2.1\include\event_groups.h)(0x5CD62451)
+I (.\Flight\inc\pid.h)(0x5E704964)
+I (.\Flight\inc\attitude_pid.h)(0x5E704964)
+I (.\Flight\inc\config_param.h)(0x5E8DD402)
+I (.\Flight\inc\kalman_filter.h)(0x5E6371A7)
+I (.\Flight\inc\filter.h)(0x5E704A2F)
+I (.\USER\stabilizer.h)(0x5E7E0F2F)
+F (.\USER\stabilizer.c)(0x5E8ED354)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I .\USER -I .\ThirdParty\fat_fs\inc -I .\FWlib\inc -I .\CORE -I .\Communication\inc -I .\Flight\inc -I .\Hardware\inc -I .\System\inc -I .\ThirdParty\FreeRTOSV10.2.1\include -I .\ThirdParty\FreeRTOSV10.2.1 -I .\ThirdParty\FreeRTOSV10.2.1\portable\RVDS\ARM_CM4F -I .\FREERTOS_Test-I.\RTE\_Target_1-IF:\keil\ARM\PACK\ARM\CMSIS\5.6.0\CMSIS\Core\Include-IF:\keil\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="529" -D_RTE_ -DSTM32F407xx -DUSE_STDPERIPH_DRIVER -DSTM32F40_41xxx-o .\objects\stabilizer.o --omf_browse .\objects\stabilizer.crf --depend .\objects\stabilizer.d)
+I (USER\stabilizer.h)(0x5E7E0F2F)
+I (.\ThirdParty\FreeRTOSV10.2.1\include\FreeRTOS.h)(0x5E06DCF5)
+I (F:\keil\ARM\ARMCC\include\stddef.h)(0x5D9AD218)
+I (F:\keil\ARM\ARMCC\include\stdint.h)(0x5D9AD218)
+I (.\ThirdParty\FreeRTOSV10.2.1\include\FreeRTOSConfig.h)(0x5E8DE1FF)
+I (.\ThirdParty\FreeRTOSV10.2.1\include\projdefs.h)(0x5CD62451)
+I (.\ThirdParty\FreeRTOSV10.2.1\include\portable.h)(0x5CD62451)
+I (.\ThirdParty\FreeRTOSV10.2.1\include\deprecated_definitions.h)(0x5CD62451)
+I (.\ThirdParty\FreeRTOSV10.2.1\portable\RVDS\ARM_CM4F\portmacro.h)(0x5E06BD10)
+I (.\ThirdParty\FreeRTOSV10.2.1\include\mpu_wrappers.h)(0x5CD62451)
+I (.\ThirdParty\FreeRTOSV10.2.1\include\task.h)(0x5D01B79C)
+I (.\ThirdParty\FreeRTOSV10.2.1\include\list.h)(0x5CFC92EC)
+I (USER\sensors.h)(0x5E8E7AD5)
+I (F:\keil\ARM\ARMCC\include\stdbool.h)(0x5D9AD218)
+I (.\System\inc\bsp_sys.h)(0x5E6655C4)
+I (.\CORE\stm32f4xx.h)(0x5CFC91A4)
+I (.\CORE\core_cm4.h)(0x53C7D530)
+I (.\CORE\core_cmInstr.h)(0x53C7D530)
+I (.\CORE\core_cmFunc.h)(0x53C7D530)
+I (.\CORE\core_cm4_simd.h)(0x53C7D530)
+I (.\CORE\system_stm32f4xx.h)(0x53DBA499)
+I (.\USER\stm32f4xx_conf.h)(0x53DFAB51)
+I (.\FWlib\inc\stm32f4xx_adc.h)(0x5710F383)
+I (.\FWlib\inc\stm32f4xx_crc.h)(0x5710F383)
+I (.\FWlib\inc\stm32f4xx_dbgmcu.h)(0x5710F383)
+I (.\FWlib\inc\stm32f4xx_dma.h)(0x5710F383)
+I (.\FWlib\inc\stm32f4xx_exti.h)(0x5710F383)
+I (.\FWlib\inc\stm32f4xx_flash.h)(0x5710F383)
+I (.\FWlib\inc\stm32f4xx_gpio.h)(0x5710F383)
+I (.\FWlib\inc\stm32f4xx_i2c.h)(0x5710F383)
+I (.\FWlib\inc\stm32f4xx_iwdg.h)(0x5710F383)
+I (.\FWlib\inc\stm32f4xx_pwr.h)(0x5710F383)
+I (.\FWlib\inc\stm32f4xx_rcc.h)(0x5710F383)
+I (.\FWlib\inc\stm32f4xx_rtc.h)(0x5710F383)
+I (.\FWlib\inc\stm32f4xx_sdio.h)(0x5710F383)
+I (.\FWlib\inc\stm32f4xx_spi.h)(0x5710F383)
+I (.\FWlib\inc\stm32f4xx_syscfg.h)(0x5710F383)
+I (.\FWlib\inc\stm32f4xx_tim.h)(0x5710F383)
+I (.\FWlib\inc\stm32f4xx_usart.h)(0x5710F383)
+I (.\FWlib\inc\stm32f4xx_wwdg.h)(0x5710F383)
+I (.\FWlib\inc\misc.h)(0x5710F383)
+I (.\FWlib\inc\stm32f4xx_cryp.h)(0x5710F383)
+I (.\FWlib\inc\stm32f4xx_hash.h)(0x5710F383)
+I (.\FWlib\inc\stm32f4xx_rng.h)(0x5710F383)
+I (.\FWlib\inc\stm32f4xx_can.h)(0x5710F383)
+I (.\FWlib\inc\stm32f4xx_dac.h)(0x5710F383)
+I (.\FWlib\inc\stm32f4xx_dcmi.h)(0x5710F383)
+I (.\FWlib\inc\stm32f4xx_fsmc.h)(0x5710F383)
+I (.\Flight\inc\stabilizer_type.h)(0x5E8DE42E)
+I (.\Flight\inc\imu.h)(0x5E7D50A9)
+I (.\System\inc\bsp.h)(0x5E7E09CE)
+I (F:\keil\ARM\ARMCC\include\stdlib.h)(0x5D9AD21A)
+I (F:\keil\ARM\ARMCC\include\string.h)(0x5D9AD218)
+I (F:\keil\ARM\ARMCC\include\math.h)(0x5D9AD212)
+I (.\System\inc\bsp_usart.h)(0x5E6651C7)
+I (F:\keil\ARM\ARMCC\include\stdio.h)(0x5D9AD21A)
+I (.\Hardware\inc\bsp_spi.h)(0x5E60D71D)
+I (.\Hardware\inc\bsp_led.h)(0x5CE6832A)
+I (.\Hardware\inc\bsp_mpu6500.h)(0x5E7707FC)
+I (.\Hardware\inc\bsp_myiic.h)(0x5E79D706)
+I (.\Hardware\inc\bsp_ak8963.h)(0x5E76D7FF)
+I (.\Hardware\inc\bsp_motor.h)(0x5E7E04AB)
+I (.\Hardware\inc\bsp_watchdog.h)(0x5E63547B)
+I (.\Hardware\inc\bsp_timer.h)(0x5E665594)
+I (.\Hardware\inc\bsp_24l01.h)(0x5E805AD5)
+I (.\Hardware\inc\bsp_bmp180.h)(0x5E79AC98)
+I (.\Communication\inc\communication.h)(0x5E8043DD)
+I (.\Communication\inc\niming.h)(0x5E8DC403)
+I (.\ThirdParty\FreeRTOSV10.2.1\include\timers.h)(0x5CD62451)
+I (.\ThirdParty\FreeRTOSV10.2.1\include\queue.h)(0x5CD62451)
+I (.\ThirdParty\FreeRTOSV10.2.1\include\semphr.h)(0x5CD62451)
+I (.\ThirdParty\FreeRTOSV10.2.1\include\event_groups.h)(0x5CD62451)
+I (.\Flight\inc\pid.h)(0x5E704964)
+I (.\Flight\inc\attitude_pid.h)(0x5E704964)
+I (.\Flight\inc\config_param.h)(0x5E8DD402)
+I (.\Flight\inc\kalman_filter.h)(0x5E6371A7)
+I (.\Flight\inc\filter.h)(0x5E704A2F)
+I (.\Flight\inc\MadgwickAHRS.h)(0x5E8ED195)
+I (.\Flight\inc\MahonyAHRS.h)(0x5E8ED195)
+F (.\Flight\src\imu.c)(0x5E8ED1F2)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I .\USER -I .\ThirdParty\fat_fs\inc -I .\FWlib\inc -I .\CORE -I .\Communication\inc -I .\Flight\inc -I .\Hardware\inc -I .\System\inc -I .\ThirdParty\FreeRTOSV10.2.1\include -I .\ThirdParty\FreeRTOSV10.2.1 -I .\ThirdParty\FreeRTOSV10.2.1\portable\RVDS\ARM_CM4F -I .\FREERTOS_Test-I.\RTE\_Target_1-IF:\keil\ARM\PACK\ARM\CMSIS\5.6.0\CMSIS\Core\Include-IF:\keil\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="529" -D_RTE_ -DSTM32F407xx -DUSE_STDPERIPH_DRIVER -DSTM32F40_41xxx-o .\objects\imu.o --omf_browse .\objects\imu.crf --depend .\objects\imu.d)
 I (.\Flight\inc\imu.h)(0x5E7D50A9)
 I (.\System\inc\bsp.h)(0x5E7E09CE)
 I (.\CORE\stm32f4xx.h)(0x5CFC91A4)
@@ -1727,7 +1729,7 @@ I (.\Hardware\inc\bsp_spi.h)(0x5E60D71D)
 I (.\Hardware\inc\bsp_led.h)(0x5CE6832A)
 I (.\Hardware\inc\bsp_mpu6500.h)(0x5E7707FC)
 I (.\Hardware\inc\bsp_myiic.h)(0x5E79D706)
-I (.\USER\sensors.h)(0x5E7D4C74)
+I (.\USER\sensors.h)(0x5E8E7AD5)
 I (F:\keil\ARM\ARMCC\include\stdbool.h)(0x5D9AD218)
 I (.\Flight\inc\stabilizer_type.h)(0x5E8DE42E)
 I (.\Hardware\inc\bsp_ak8963.h)(0x5E76D7FF)
@@ -1800,7 +1802,7 @@ I (.\FWlib\inc\stm32f4xx_fsmc.h)(0x5710F383)
 I (F:\keil\ARM\ARMCC\include\stdio.h)(0x5D9AD21A)
 I (.\System\inc\bsp_sys.h)(0x5E6655C4)
 I (.\Hardware\inc\bsp_myiic.h)(0x5E79D706)
-I (.\USER\sensors.h)(0x5E7D4C74)
+I (.\USER\sensors.h)(0x5E8E7AD5)
 I (F:\keil\ARM\ARMCC\include\stdbool.h)(0x5D9AD218)
 I (.\Flight\inc\stabilizer_type.h)(0x5E8DE42E)
 F (.\Flight\src\attitude_pid.c)(0x5E8DDAD2)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I .\USER -I .\ThirdParty\fat_fs\inc -I .\FWlib\inc -I .\CORE -I .\Communication\inc -I .\Flight\inc -I .\Hardware\inc -I .\System\inc -I .\ThirdParty\FreeRTOSV10.2.1\include -I .\ThirdParty\FreeRTOSV10.2.1 -I .\ThirdParty\FreeRTOSV10.2.1\portable\RVDS\ARM_CM4F -I .\FREERTOS_Test-I.\RTE\_Target_1-IF:\keil\ARM\PACK\ARM\CMSIS\5.6.0\CMSIS\Core\Include-IF:\keil\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="529" -D_RTE_ -DSTM32F407xx -DUSE_STDPERIPH_DRIVER -DSTM32F40_41xxx-o .\objects\attitude_pid.o --omf_browse .\objects\attitude_pid.crf --depend .\objects\attitude_pid.d)
@@ -1844,7 +1846,7 @@ I (.\FWlib\inc\stm32f4xx_fsmc.h)(0x5710F383)
 I (F:\keil\ARM\ARMCC\include\stdio.h)(0x5D9AD21A)
 I (.\System\inc\bsp_sys.h)(0x5E6655C4)
 I (.\Hardware\inc\bsp_myiic.h)(0x5E79D706)
-I (.\USER\sensors.h)(0x5E7D4C74)
+I (.\USER\sensors.h)(0x5E8E7AD5)
 I (F:\keil\ARM\ARMCC\include\stdbool.h)(0x5D9AD218)
 I (.\Flight\inc\stabilizer_type.h)(0x5E8DE42E)
 I (F:\keil\ARM\ARMCC\include\math.h)(0x5D9AD212)
@@ -1891,7 +1893,7 @@ I (.\Flight\inc\pid.h)(0x5E704964)
 I (.\Hardware\inc\bsp_ak8963.h)(0x5E76D7FF)
 I (F:\keil\ARM\ARMCC\include\stdio.h)(0x5D9AD21A)
 I (.\Hardware\inc\bsp_myiic.h)(0x5E79D706)
-I (.\USER\sensors.h)(0x5E7D4C74)
+I (.\USER\sensors.h)(0x5E8E7AD5)
 I (F:\keil\ARM\ARMCC\include\stdbool.h)(0x5D9AD218)
 I (.\Flight\inc\stabilizer_type.h)(0x5E8DE42E)
 F (.\Flight\src\filter.c)(0x5E704B28)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I .\USER -I .\ThirdParty\fat_fs\inc -I .\FWlib\inc -I .\CORE -I .\Communication\inc -I .\Flight\inc -I .\Hardware\inc -I .\System\inc -I .\ThirdParty\FreeRTOSV10.2.1\include -I .\ThirdParty\FreeRTOSV10.2.1 -I .\ThirdParty\FreeRTOSV10.2.1\portable\RVDS\ARM_CM4F -I .\FREERTOS_Test-I.\RTE\_Target_1-IF:\keil\ARM\PACK\ARM\CMSIS\5.6.0\CMSIS\Core\Include-IF:\keil\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="529" -D_RTE_ -DSTM32F407xx -DUSE_STDPERIPH_DRIVER -DSTM32F40_41xxx-o .\objects\filter.o --omf_browse .\objects\filter.crf --depend .\objects\filter.d)
@@ -1899,7 +1901,7 @@ I (F:\keil\ARM\ARMCC\include\math.h)(0x5D9AD212)
 I (F:\keil\ARM\ARMCC\include\stdlib.h)(0x5D9AD21A)
 I (.\Flight\inc\filter.h)(0x5E704A2F)
 I (F:\keil\ARM\ARMCC\include\stdint.h)(0x5D9AD218)
-I (.\USER\sensors.h)(0x5E7D4C74)
+I (.\USER\sensors.h)(0x5E8E7AD5)
 I (F:\keil\ARM\ARMCC\include\stdbool.h)(0x5D9AD218)
 I (.\System\inc\bsp_sys.h)(0x5E6655C4)
 I (.\CORE\stm32f4xx.h)(0x5CFC91A4)
@@ -1936,6 +1938,86 @@ I (.\FWlib\inc\stm32f4xx_dac.h)(0x5710F383)
 I (.\FWlib\inc\stm32f4xx_dcmi.h)(0x5710F383)
 I (.\FWlib\inc\stm32f4xx_fsmc.h)(0x5710F383)
 I (.\Flight\inc\stabilizer_type.h)(0x5E8DE42E)
+F (.\Flight\src\MahonyAHRS.c)(0x5E8ED1F2)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I .\USER -I .\ThirdParty\fat_fs\inc -I .\FWlib\inc -I .\CORE -I .\Communication\inc -I .\Flight\inc -I .\Hardware\inc -I .\System\inc -I .\ThirdParty\FreeRTOSV10.2.1\include -I .\ThirdParty\FreeRTOSV10.2.1 -I .\ThirdParty\FreeRTOSV10.2.1\portable\RVDS\ARM_CM4F -I .\FREERTOS_Test-I.\RTE\_Target_1-IF:\keil\ARM\PACK\ARM\CMSIS\5.6.0\CMSIS\Core\Include-IF:\keil\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="529" -D_RTE_ -DSTM32F407xx -DUSE_STDPERIPH_DRIVER -DSTM32F40_41xxx-o .\objects\mahonyahrs.o --omf_browse .\objects\mahonyahrs.crf --depend .\objects\mahonyahrs.d)
+I (.\Flight\inc\MahonyAHRS.h)(0x5E8ED195)
+I (.\Flight\inc\stabilizer_type.h)(0x5E8DE42E)
+I (.\System\inc\bsp_sys.h)(0x5E6655C4)
+I (.\CORE\stm32f4xx.h)(0x5CFC91A4)
+I (.\CORE\core_cm4.h)(0x53C7D530)
+I (F:\keil\ARM\ARMCC\include\stdint.h)(0x5D9AD218)
+I (.\CORE\core_cmInstr.h)(0x53C7D530)
+I (.\CORE\core_cmFunc.h)(0x53C7D530)
+I (.\CORE\core_cm4_simd.h)(0x53C7D530)
+I (.\CORE\system_stm32f4xx.h)(0x53DBA499)
+I (.\USER\stm32f4xx_conf.h)(0x53DFAB51)
+I (.\FWlib\inc\stm32f4xx_adc.h)(0x5710F383)
+I (.\FWlib\inc\stm32f4xx_crc.h)(0x5710F383)
+I (.\FWlib\inc\stm32f4xx_dbgmcu.h)(0x5710F383)
+I (.\FWlib\inc\stm32f4xx_dma.h)(0x5710F383)
+I (.\FWlib\inc\stm32f4xx_exti.h)(0x5710F383)
+I (.\FWlib\inc\stm32f4xx_flash.h)(0x5710F383)
+I (.\FWlib\inc\stm32f4xx_gpio.h)(0x5710F383)
+I (.\FWlib\inc\stm32f4xx_i2c.h)(0x5710F383)
+I (.\FWlib\inc\stm32f4xx_iwdg.h)(0x5710F383)
+I (.\FWlib\inc\stm32f4xx_pwr.h)(0x5710F383)
+I (.\FWlib\inc\stm32f4xx_rcc.h)(0x5710F383)
+I (.\FWlib\inc\stm32f4xx_rtc.h)(0x5710F383)
+I (.\FWlib\inc\stm32f4xx_sdio.h)(0x5710F383)
+I (.\FWlib\inc\stm32f4xx_spi.h)(0x5710F383)
+I (.\FWlib\inc\stm32f4xx_syscfg.h)(0x5710F383)
+I (.\FWlib\inc\stm32f4xx_tim.h)(0x5710F383)
+I (.\FWlib\inc\stm32f4xx_usart.h)(0x5710F383)
+I (.\FWlib\inc\stm32f4xx_wwdg.h)(0x5710F383)
+I (.\FWlib\inc\misc.h)(0x5710F383)
+I (.\FWlib\inc\stm32f4xx_cryp.h)(0x5710F383)
+I (.\FWlib\inc\stm32f4xx_hash.h)(0x5710F383)
+I (.\FWlib\inc\stm32f4xx_rng.h)(0x5710F383)
+I (.\FWlib\inc\stm32f4xx_can.h)(0x5710F383)
+I (.\FWlib\inc\stm32f4xx_dac.h)(0x5710F383)
+I (.\FWlib\inc\stm32f4xx_dcmi.h)(0x5710F383)
+I (.\FWlib\inc\stm32f4xx_fsmc.h)(0x5710F383)
+I (F:\keil\ARM\ARMCC\include\stdbool.h)(0x5D9AD218)
+I (F:\keil\ARM\ARMCC\include\math.h)(0x5D9AD212)
+F (.\Flight\src\MadgwickAHRS.c)(0x5E8ED1CF)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I .\USER -I .\ThirdParty\fat_fs\inc -I .\FWlib\inc -I .\CORE -I .\Communication\inc -I .\Flight\inc -I .\Hardware\inc -I .\System\inc -I .\ThirdParty\FreeRTOSV10.2.1\include -I .\ThirdParty\FreeRTOSV10.2.1 -I .\ThirdParty\FreeRTOSV10.2.1\portable\RVDS\ARM_CM4F -I .\FREERTOS_Test-I.\RTE\_Target_1-IF:\keil\ARM\PACK\ARM\CMSIS\5.6.0\CMSIS\Core\Include-IF:\keil\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="529" -D_RTE_ -DSTM32F407xx -DUSE_STDPERIPH_DRIVER -DSTM32F40_41xxx-o .\objects\madgwickahrs.o --omf_browse .\objects\madgwickahrs.crf --depend .\objects\madgwickahrs.d)
+I (.\Flight\inc\MadgwickAHRS.h)(0x5E8ED195)
+I (.\Flight\inc\stabilizer_type.h)(0x5E8DE42E)
+I (.\System\inc\bsp_sys.h)(0x5E6655C4)
+I (.\CORE\stm32f4xx.h)(0x5CFC91A4)
+I (.\CORE\core_cm4.h)(0x53C7D530)
+I (F:\keil\ARM\ARMCC\include\stdint.h)(0x5D9AD218)
+I (.\CORE\core_cmInstr.h)(0x53C7D530)
+I (.\CORE\core_cmFunc.h)(0x53C7D530)
+I (.\CORE\core_cm4_simd.h)(0x53C7D530)
+I (.\CORE\system_stm32f4xx.h)(0x53DBA499)
+I (.\USER\stm32f4xx_conf.h)(0x53DFAB51)
+I (.\FWlib\inc\stm32f4xx_adc.h)(0x5710F383)
+I (.\FWlib\inc\stm32f4xx_crc.h)(0x5710F383)
+I (.\FWlib\inc\stm32f4xx_dbgmcu.h)(0x5710F383)
+I (.\FWlib\inc\stm32f4xx_dma.h)(0x5710F383)
+I (.\FWlib\inc\stm32f4xx_exti.h)(0x5710F383)
+I (.\FWlib\inc\stm32f4xx_flash.h)(0x5710F383)
+I (.\FWlib\inc\stm32f4xx_gpio.h)(0x5710F383)
+I (.\FWlib\inc\stm32f4xx_i2c.h)(0x5710F383)
+I (.\FWlib\inc\stm32f4xx_iwdg.h)(0x5710F383)
+I (.\FWlib\inc\stm32f4xx_pwr.h)(0x5710F383)
+I (.\FWlib\inc\stm32f4xx_rcc.h)(0x5710F383)
+I (.\FWlib\inc\stm32f4xx_rtc.h)(0x5710F383)
+I (.\FWlib\inc\stm32f4xx_sdio.h)(0x5710F383)
+I (.\FWlib\inc\stm32f4xx_spi.h)(0x5710F383)
+I (.\FWlib\inc\stm32f4xx_syscfg.h)(0x5710F383)
+I (.\FWlib\inc\stm32f4xx_tim.h)(0x5710F383)
+I (.\FWlib\inc\stm32f4xx_usart.h)(0x5710F383)
+I (.\FWlib\inc\stm32f4xx_wwdg.h)(0x5710F383)
+I (.\FWlib\inc\misc.h)(0x5710F383)
+I (.\FWlib\inc\stm32f4xx_cryp.h)(0x5710F383)
+I (.\FWlib\inc\stm32f4xx_hash.h)(0x5710F383)
+I (.\FWlib\inc\stm32f4xx_rng.h)(0x5710F383)
+I (.\FWlib\inc\stm32f4xx_can.h)(0x5710F383)
+I (.\FWlib\inc\stm32f4xx_dac.h)(0x5710F383)
+I (.\FWlib\inc\stm32f4xx_dcmi.h)(0x5710F383)
+I (.\FWlib\inc\stm32f4xx_fsmc.h)(0x5710F383)
+I (F:\keil\ARM\ARMCC\include\stdbool.h)(0x5D9AD218)
+I (F:\keil\ARM\ARMCC\include\math.h)(0x5D9AD212)
 F (.\System\src\bsp.c)(0x5E76E2A6)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I .\USER -I .\ThirdParty\fat_fs\inc -I .\FWlib\inc -I .\CORE -I .\Communication\inc -I .\Flight\inc -I .\Hardware\inc -I .\System\inc -I .\ThirdParty\FreeRTOSV10.2.1\include -I .\ThirdParty\FreeRTOSV10.2.1 -I .\ThirdParty\FreeRTOSV10.2.1\portable\RVDS\ARM_CM4F -I .\FREERTOS_Test-I.\RTE\_Target_1-IF:\keil\ARM\PACK\ARM\CMSIS\5.6.0\CMSIS\Core\Include-IF:\keil\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="529" -D_RTE_ -DSTM32F407xx -DUSE_STDPERIPH_DRIVER -DSTM32F40_41xxx-o .\objects\bsp.o --omf_browse .\objects\bsp.crf --depend .\objects\bsp.d)
 I (.\System\inc\bsp.h)(0x5E7E09CE)
 I (.\CORE\stm32f4xx.h)(0x5CFC91A4)
@@ -1982,7 +2064,7 @@ I (.\Hardware\inc\bsp_spi.h)(0x5E60D71D)
 I (.\Hardware\inc\bsp_led.h)(0x5CE6832A)
 I (.\Hardware\inc\bsp_mpu6500.h)(0x5E7707FC)
 I (.\Hardware\inc\bsp_myiic.h)(0x5E79D706)
-I (.\USER\sensors.h)(0x5E7D4C74)
+I (.\USER\sensors.h)(0x5E8E7AD5)
 I (F:\keil\ARM\ARMCC\include\stdbool.h)(0x5D9AD218)
 I (.\Flight\inc\stabilizer_type.h)(0x5E8DE42E)
 I (.\Hardware\inc\bsp_ak8963.h)(0x5E76D7FF)
@@ -2088,7 +2170,7 @@ I (.\FWlib\inc\stm32f4xx_dac.h)(0x5710F383)
 I (.\FWlib\inc\stm32f4xx_dcmi.h)(0x5710F383)
 I (.\FWlib\inc\stm32f4xx_fsmc.h)(0x5710F383)
 I (F:\keil\ARM\ARMCC\include\stdio.h)(0x5D9AD21A)
-F (.\Hardware\src\bsp_myiic.c)(0x5E79D644)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I .\USER -I .\ThirdParty\fat_fs\inc -I .\FWlib\inc -I .\CORE -I .\Communication\inc -I .\Flight\inc -I .\Hardware\inc -I .\System\inc -I .\ThirdParty\FreeRTOSV10.2.1\include -I .\ThirdParty\FreeRTOSV10.2.1 -I .\ThirdParty\FreeRTOSV10.2.1\portable\RVDS\ARM_CM4F -I .\FREERTOS_Test-I.\RTE\_Target_1-IF:\keil\ARM\PACK\ARM\CMSIS\5.6.0\CMSIS\Core\Include-IF:\keil\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="529" -D_RTE_ -DSTM32F407xx -DUSE_STDPERIPH_DRIVER -DSTM32F40_41xxx-o .\objects\bsp_myiic.o --omf_browse .\objects\bsp_myiic.crf --depend .\objects\bsp_myiic.d)
+F (.\Hardware\src\bsp_myiic.c)(0x5E8EBB13)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I .\USER -I .\ThirdParty\fat_fs\inc -I .\FWlib\inc -I .\CORE -I .\Communication\inc -I .\Flight\inc -I .\Hardware\inc -I .\System\inc -I .\ThirdParty\FreeRTOSV10.2.1\include -I .\ThirdParty\FreeRTOSV10.2.1 -I .\ThirdParty\FreeRTOSV10.2.1\portable\RVDS\ARM_CM4F -I .\FREERTOS_Test-I.\RTE\_Target_1-IF:\keil\ARM\PACK\ARM\CMSIS\5.6.0\CMSIS\Core\Include-IF:\keil\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="529" -D_RTE_ -DSTM32F407xx -DUSE_STDPERIPH_DRIVER -DSTM32F40_41xxx-o .\objects\bsp_myiic.o --omf_browse .\objects\bsp_myiic.crf --depend .\objects\bsp_myiic.d)
 I (.\Hardware\inc\bsp_myiic.h)(0x5E79D706)
 I (.\System\inc\bsp_sys.h)(0x5E6655C4)
 I (.\CORE\stm32f4xx.h)(0x5CFC91A4)
@@ -2174,7 +2256,7 @@ I (.\System\inc\bsp_usart.h)(0x5E6651C7)
 I (.\Hardware\inc\bsp_led.h)(0x5CE6832A)
 I (.\Hardware\inc\bsp_mpu6500.h)(0x5E7707FC)
 I (.\Hardware\inc\bsp_myiic.h)(0x5E79D706)
-I (.\USER\sensors.h)(0x5E7D4C74)
+I (.\USER\sensors.h)(0x5E8E7AD5)
 I (F:\keil\ARM\ARMCC\include\stdbool.h)(0x5D9AD218)
 I (.\Flight\inc\stabilizer_type.h)(0x5E8DE42E)
 I (.\Hardware\inc\bsp_ak8963.h)(0x5E76D7FF)
@@ -2204,7 +2286,7 @@ I (.\Flight\inc\kalman_filter.h)(0x5E6371A7)
 I (.\Flight\inc\imu.h)(0x5E7D50A9)
 I (.\Flight\inc\filter.h)(0x5E704A2F)
 I (.\USER\stabilizer.h)(0x5E7E0F2F)
-F (.\Hardware\src\bsp_ak8963.c)(0x5E76EAD8)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I .\USER -I .\ThirdParty\fat_fs\inc -I .\FWlib\inc -I .\CORE -I .\Communication\inc -I .\Flight\inc -I .\Hardware\inc -I .\System\inc -I .\ThirdParty\FreeRTOSV10.2.1\include -I .\ThirdParty\FreeRTOSV10.2.1 -I .\ThirdParty\FreeRTOSV10.2.1\portable\RVDS\ARM_CM4F -I .\FREERTOS_Test-I.\RTE\_Target_1-IF:\keil\ARM\PACK\ARM\CMSIS\5.6.0\CMSIS\Core\Include-IF:\keil\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="529" -D_RTE_ -DSTM32F407xx -DUSE_STDPERIPH_DRIVER -DSTM32F40_41xxx-o .\objects\bsp_ak8963.o --omf_browse .\objects\bsp_ak8963.crf --depend .\objects\bsp_ak8963.d)
+F (.\Hardware\src\bsp_ak8963.c)(0x5E8E9E4D)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I .\USER -I .\ThirdParty\fat_fs\inc -I .\FWlib\inc -I .\CORE -I .\Communication\inc -I .\Flight\inc -I .\Hardware\inc -I .\System\inc -I .\ThirdParty\FreeRTOSV10.2.1\include -I .\ThirdParty\FreeRTOSV10.2.1 -I .\ThirdParty\FreeRTOSV10.2.1\portable\RVDS\ARM_CM4F -I .\FREERTOS_Test-I.\RTE\_Target_1-IF:\keil\ARM\PACK\ARM\CMSIS\5.6.0\CMSIS\Core\Include-IF:\keil\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="529" -D_RTE_ -DSTM32F407xx -DUSE_STDPERIPH_DRIVER -DSTM32F40_41xxx-o .\objects\bsp_ak8963.o --omf_browse .\objects\bsp_ak8963.crf --depend .\objects\bsp_ak8963.d)
 I (.\Hardware\inc\bsp_ak8963.h)(0x5E76D7FF)
 I (.\CORE\stm32f4xx.h)(0x5CFC91A4)
 I (.\CORE\core_cm4.h)(0x53C7D530)
@@ -2243,7 +2325,7 @@ I (.\FWlib\inc\stm32f4xx_fsmc.h)(0x5710F383)
 I (F:\keil\ARM\ARMCC\include\stdio.h)(0x5D9AD21A)
 I (.\System\inc\bsp_sys.h)(0x5E6655C4)
 I (.\Hardware\inc\bsp_myiic.h)(0x5E79D706)
-I (.\USER\sensors.h)(0x5E7D4C74)
+I (.\USER\sensors.h)(0x5E8E7AD5)
 I (F:\keil\ARM\ARMCC\include\stdbool.h)(0x5D9AD218)
 I (.\Flight\inc\stabilizer_type.h)(0x5E8DE42E)
 I (.\USER\task_config.h)(0x5E805C5F)
@@ -2322,7 +2404,7 @@ I (.\FWlib\inc\stm32f4xx_fsmc.h)(0x5710F383)
 I (F:\keil\ARM\ARMCC\include\stdio.h)(0x5D9AD21A)
 I (.\System\inc\bsp_sys.h)(0x5E6655C4)
 I (.\Hardware\inc\bsp_myiic.h)(0x5E79D706)
-I (.\USER\sensors.h)(0x5E7D4C74)
+I (.\USER\sensors.h)(0x5E8E7AD5)
 I (F:\keil\ARM\ARMCC\include\stdbool.h)(0x5D9AD218)
 I (.\Flight\inc\stabilizer_type.h)(0x5E8DE42E)
 I (.\USER\task_config.h)(0x5E805C5F)

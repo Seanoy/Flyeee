@@ -25,22 +25,10 @@ static bool gyroBiasFound = false;
 static float accScaleSum = 0;
 static float accScale = 1;
 
-
 sensorData_t sensors;
 
-typedef union 
-{
-	struct
-	{
-		int16_t x;
-		int16_t y;
-		int16_t z;
-	};
-	int16_t axis[3];
-} Axis3i16;
-
-static Axis3i16	gyroRaw;
-static Axis3i16	accRaw;
+static Axis3i16 gyroRaw;
+static Axis3i16 accRaw;
 static Axis3i16 magRaw;
 
 typedef struct
@@ -223,14 +211,21 @@ void processAccGyroMeasurements(const uint8_t *buffer)
 	sensors.acc.x = -(ax) * SENSORS_G_PER_LSB_CFG / accScale;	/*单位 g(9.8m/s^2)*/
 	sensors.acc.y =  (ay) * SENSORS_G_PER_LSB_CFG / accScale;	/*重力加速度缩放因子accScale 根据样本计算得出*/
 	sensors.acc.z =  (az) * SENSORS_G_PER_LSB_CFG / accScale;
-
 	applyAxis3fLpf(accLpf, &sensors.acc);
+}
+
+/*传感器偏置初始化*/
+static void sensorsBiasObjInit(BiasObj* bias)
+{
+	bias->isBufferFilled = false;
+	bias->bufHead = bias->buffer;
 }
 
 void sensorInit(void)
 {
 //    //创建二值信号量
     sensorsDataReady = xSemaphoreCreateBinary();
+    sensorsBiasObjInit(&gyroBiasRunning);
 //	/*创建传感器数据队列*/
 	accelerometerDataQueue = xQueueCreate(1, sizeof(axis3f_t));
 	gyroDataQueue = xQueueCreate(1, sizeof(axis3f_t));
@@ -276,6 +271,7 @@ void processSensordata(void)
     {
         IIC1_Read_NByte(MPU9250_ADDR,MPU_ACCEL_XOUTH_REG,14,rawDataBuf);
         processAccGyroMeasurements(&(rawDataBuf[0]));//获取并处理陀螺仪和加速度计数据
+        
         IIC1_Read_NByte(AK8963_ADDR,AK8963_XOUT_L,6,rawDataBuf+14);
         processMagnetometerMeasurements(&(rawDataBuf[14]));//获取并处理磁力计数据
         vTaskSuspendAll();	/*确保同一时刻把数据放入队列中*/
@@ -284,7 +280,8 @@ void processSensordata(void)
         xQueueOverwrite(magnetometerDataQueue, &sensors.mag);
 //        xQueueOverwrite(barometerDataQueue, &sensors.baro);//气压数据
         xTaskResumeAll();//恢复任务
-//        ANO_Send_01(accRaw.x, accRaw.y, accRaw.z, gyroRaw.x, gyroRaw.y, gyroRaw.z,0);//发送数据到匿名上位机处理
+        ANO_Send_01(accRaw.x, accRaw.y, accRaw.z, gyroRaw.x, gyroRaw.y, gyroRaw.z,0);//发送数据到匿名上位机处理
+//        ANO_Send_02(magRaw.x, magRaw.y, magRaw.z, 0,0,0,0);
     }
 }
 

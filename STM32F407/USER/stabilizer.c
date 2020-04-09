@@ -5,6 +5,9 @@
 #include "stabilizer_type.h"
 #include "imu.h"
 #include "communication.h"
+#include "MadgwickAHRS.h"
+#include "MahonyAHRS.h"
+
 u32 getSysTickCnt(void);
 
 static sensorData_t sensorData;	/*传感器数据*/
@@ -83,7 +86,9 @@ void stabilize_task(void *pvParameters)
 		//四元数和欧拉角计算（250Hz）
 		if (RATE_DO_EXECUTE(ATTITUDE_ESTIMAT_RATE, tick))
 		{
-			imuUpdate(sensorData.acc, sensorData.gyro, &state, ATTITUDE_ESTIMAT_DT);
+//			agmImuUpdate(sensorData.acc, sensorData.gyro, sensorData.mag, &state, ATTITUDE_ESTIMAT_DT);
+//          imuUpdate(sensorData.acc, sensorData.gyro, &state, ATTITUDE_ESTIMAT_DT);
+            AHRSupdateIMUMadgwick(sensorData.acc, sensorData.gyro, &state, ATTITUDE_ESTIMAT_DT);
             ANO_Send_03(state.attitude.roll*100, state.attitude.pitch*100, state.attitude.yaw*100, 0);
 		}
         

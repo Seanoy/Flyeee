@@ -22,6 +22,12 @@ void delay3(void)//ak8963ÑÓÊ± ÑÓÊ±Òª×ã¹»³¤ ak8963²ÅÄÜ¶ÁÈ¡µ½Êý¾Ý ÒòÎªSTM32F407Ö÷Æ
     __nop();__nop();__nop();__nop();__nop();__nop();__nop();__nop();__nop();__nop();
     __nop();__nop();__nop();__nop();__nop();__nop();__nop();__nop();__nop();__nop();
     __nop();__nop();__nop();__nop();__nop();__nop();__nop();__nop();__nop();__nop();
+    __nop();__nop();__nop();__nop();__nop();__nop();__nop();__nop();__nop();__nop();
+    __nop();__nop();__nop();__nop();__nop();__nop();__nop();__nop();__nop();__nop();
+    __nop();__nop();__nop();__nop();__nop();__nop();__nop();__nop();__nop();__nop();
+    __nop();__nop();__nop();__nop();__nop();__nop();__nop();__nop();__nop();__nop();
+    __nop();__nop();__nop();__nop();__nop();__nop();__nop();__nop();__nop();__nop();
+    __nop();__nop();__nop();__nop();__nop();__nop();__nop();__nop();__nop();__nop();
 }
 
 void delay2(void)//BMP180ÑÓÊ±
@@ -227,7 +233,7 @@ u8 IIC1_Read_NByte(u8 addr,u8 reg,u8 len,u8 *buf)
     }
     IIC1_Send_Byte(reg);         //Ð´¼Ä´æÆ÷µØÖ·
     IIC1_Wait_Ack();             //µÈ´ýÓ¦´ð
-	  IIC1_Start();                
+    IIC1_Start();                
     IIC1_Send_Byte((addr<<1)|1); //·¢ËÍÆ÷¼þµØÖ·+¶ÁÃüÁî
     IIC1_Wait_Ack();             //µÈ´ýÓ¦´ð
     while(len)

@@ -5,7 +5,16 @@
 #include "bsp_sys.h"
 #include "stabilizer_type.h"
 
-
+typedef union 
+{
+	struct
+	{
+		int16_t x;
+		int16_t y;
+		int16_t z;
+	};
+	int16_t axis[3];
+} Axis3i16;
 
 void Filter_Init(void);
 void sensorInit(void);

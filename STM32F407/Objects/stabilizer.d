@@ -79,3 +79,5 @@
 .\objects\stabilizer.o: .\Flight\inc\kalman_filter.h
 .\objects\stabilizer.o: .\Flight\inc\imu.h
 .\objects\stabilizer.o: .\Flight\inc\filter.h
+.\objects\stabilizer.o: .\Flight\inc\MadgwickAHRS.h
+.\objects\stabilizer.o: .\Flight\inc\MahonyAHRS.h

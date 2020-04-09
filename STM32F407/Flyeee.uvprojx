@@ -647,16 +647,6 @@
               <FileType>1</FileType>
               <FilePath>.\USER\circulebuffer.c</FilePath>
             </File>
-            <File>
-              <FileName>sensors.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\USER\sensors.c</FilePath>
-            </File>
-            <File>
-              <FileName>stabilizer.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\USER\stabilizer.c</FilePath>
-            </File>
           </Files>
         </Group>
         <Group>
@@ -677,6 +667,16 @@
         <Group>
           <GroupName>Flight</GroupName>
           <Files>
+            <File>
+              <FileName>sensors.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\USER\sensors.c</FilePath>
+            </File>
+            <File>
+              <FileName>stabilizer.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\USER\stabilizer.c</FilePath>
+            </File>
             <File>
               <FileName>imu.c</FileName>
               <FileType>1</FileType>
@@ -706,6 +706,16 @@
               <FileName>filter.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Flight\src\filter.c</FilePath>
+            </File>
+            <File>
+              <FileName>MahonyAHRS.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Flight\src\MahonyAHRS.c</FilePath>
+            </File>
+            <File>
+              <FileName>MadgwickAHRS.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Flight\src\MadgwickAHRS.c</FilePath>
             </File>
           </Files>
         </Group>

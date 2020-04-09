@@ -39,3 +39,5 @@ u8 MPU_Get_Magnetometer(axis3f_t *mag_s)
     IIC1_Write_One_Byte_(AK8963_ADDR,AK8963_CNTL1,0X11); //AK8963每次读完以后都需要重新设置为单次测量模式
     return res;
 }
+
+
