@@ -87,8 +87,8 @@ void stabilize_task(void *pvParameters)
 		if (RATE_DO_EXECUTE(ATTITUDE_ESTIMAT_RATE, tick))
 		{
 //			agmImuUpdate(sensorData.acc, sensorData.gyro, sensorData.mag, &state, ATTITUDE_ESTIMAT_DT);
-//          imuUpdate(sensorData.acc, sensorData.gyro, &state, ATTITUDE_ESTIMAT_DT);
-            AHRSupdateIMUMadgwick(sensorData.acc, sensorData.gyro, &state, ATTITUDE_ESTIMAT_DT);
+          imuUpdate(sensorData.acc, sensorData.gyro, &state, ATTITUDE_ESTIMAT_DT);
+//            AHRSupdateIMUMadgwick(sensorData.acc, sensorData.gyro, &state, ATTITUDE_ESTIMAT_DT);
             ANO_Send_03(state.attitude.roll*100, state.attitude.pitch*100, state.attitude.yaw*100, 0);
 		}
         

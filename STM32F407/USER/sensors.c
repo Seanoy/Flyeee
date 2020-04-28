@@ -206,12 +206,12 @@ void processAccGyroMeasurements(const uint8_t *buffer)
 	sensors.gyro.x = -(gx - gyroBias.x) * SENSORS_DEG_PER_LSB_CFG;	/*单位 °/s */
 	sensors.gyro.y =  (gy - gyroBias.y) * SENSORS_DEG_PER_LSB_CFG;
 	sensors.gyro.z =  (gz - gyroBias.z) * SENSORS_DEG_PER_LSB_CFG;
-	applyAxis3fLpf(gyroLpf, &sensors.gyro);	
+//	applyAxis3fLpf(gyroLpf, &sensors.gyro);	//低通滤波器有问题，需要改
 
 	sensors.acc.x = -(ax) * SENSORS_G_PER_LSB_CFG / accScale;	/*单位 g(9.8m/s^2)*/
 	sensors.acc.y =  (ay) * SENSORS_G_PER_LSB_CFG / accScale;	/*重力加速度缩放因子accScale 根据样本计算得出*/
 	sensors.acc.z =  (az) * SENSORS_G_PER_LSB_CFG / accScale;
-	applyAxis3fLpf(accLpf, &sensors.acc);
+//	applyAxis3fLpf(accLpf, &sensors.acc);
 }
 
 /*传感器偏置初始化*/
@@ -280,7 +280,7 @@ void processSensordata(void)
         xQueueOverwrite(magnetometerDataQueue, &sensors.mag);
 //        xQueueOverwrite(barometerDataQueue, &sensors.baro);//气压数据
         xTaskResumeAll();//恢复任务
-        ANO_Send_01(accRaw.x, accRaw.y, accRaw.z, gyroRaw.x, gyroRaw.y, gyroRaw.z,0);//发送数据到匿名上位机处理
+//        ANO_Send_01(accRaw.x, accRaw.y, accRaw.z, gyroRaw.x, gyroRaw.y, gyroRaw.z,0);//发送数据到匿名上位机处理
 //        ANO_Send_02(magRaw.x, magRaw.y, magRaw.z, 0,0,0,0);
     }
 }
